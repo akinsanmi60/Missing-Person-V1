@@ -67,11 +67,6 @@
     "prettier": "2.7.1",
     "prettier-eslint": "^15.0.1"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "config": {
     "commitizen": {
       "path": "cz-conventional-changelog"
@@ -79,8 +74,10 @@
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": [
+      "npm run lint",
       "prettier --write",
       "git add"
-    ]
+    ],
+    "*.ts": "eslint --cache --fix"
   }
 }
