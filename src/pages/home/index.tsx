@@ -1,7 +1,8 @@
 import React from "react";
+import HomeWrapper from "./style";
 
 function HomePage() {
-  return <div>HomePag e move</div>;
+  return <HomeWrapper>HomePag e move</HomeWrapper>;
 }
 
 export default HomePage;
