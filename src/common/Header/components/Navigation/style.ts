@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { NavLink as Link } from "react-router-dom";
 
 const NavigationStyled = styled.nav`
-  height: 19%;
+  // height: 30%;
   display: flex;
   flex-direction: column;
   padding: 0.5rem calc((100vw - 1300px) / 2);
@@ -46,7 +46,7 @@ const NavigationStyled = styled.nav`
   @media screen and (min-width: 1026px) {
     flex-direction: row;
     justify-content: space-between;
-    padding: 10px 30px;
+    padding: 20px 30px;
   }
 `;
 export default NavigationStyled;
@@ -58,7 +58,6 @@ export const NavLink = styled(Link)`
   align-items: center;
   font-weight: 700;
   text-decoration: none;
-  // padding: 0 1rem;
   height: 100%;
   cursor: pointer;
   &.active {

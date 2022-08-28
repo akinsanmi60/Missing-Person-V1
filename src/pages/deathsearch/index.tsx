@@ -1,19 +1,16 @@
 import SearchBar from "common/Search";
-import { FormDataProp } from "common/Search/type";
-import React, { useState } from "react";
+
+import DeathWrapper from "./style";
 
 function DeathPage() {
-  const [st, setSt] = useState("");
-  const submit = async (data: FormDataProp) => {
-    console.log(data);
-    setSt(data.firstName);
-  };
+  const viewPage = "Dead Body";
+
   return (
-    <>
-      Death
-      <SearchBar submit={submit} />
-      {st}
-    </>
+    <DeathWrapper>
+      <div className="box">
+        <SearchBar view={viewPage} />
+      </div>
+    </DeathWrapper>
   );
 }
 

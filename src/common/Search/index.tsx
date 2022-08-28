@@ -4,69 +4,65 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import FormField from "common/FormField";
 import { SearchPprop, schema, FormDataProp } from "./type";
+import SearchBox, { ButtonStyled, inputStyles } from "./style";
+import { FaSearch } from "react-icons/fa";
 
-// type FormData = {
-//   firstName: string;
-//   lastName: string;
-//   age: string;
-//   gender: string;
-//   state: string;
-//   lga: string;
-// };
-
-// type SearchPprop = {
-//   submit: (data: any) => Promise<void>;
-// };
-
-// const schema = yup
-//   .object({
-//     firstName: yup.string().required(),
-//     lastName: yup.string().required(),
-//     age: yup.string().required(),
-//     gender: yup.string().required(),
-//     state: yup.string().required(),
-//     lga: yup.string().required(),
-//   })
-//   .required();
-
-function SearchBar({ submit }: SearchPprop) {
+function SearchBar({ view }: SearchPprop) {
   const { register, handleSubmit } = useForm<FormDataProp>({
     resolver: yupResolver(schema),
   });
+  const submit = async (data: FormDataProp) => {
+    console.log(data);
+  };
   return (
-    <form onSubmit={handleSubmit(submit)}>
-      <div>
-        <FormField label="First Name">
-          <Input {...register("firstName")} />
-        </FormField>
-      </div>
-      <div>
-        <FormField label="Last Name">
-          <Input {...register("lastName")} />
-        </FormField>
-      </div>
-      <div>
-        <FormField label="Gender">
-          <Input {...register("gender")} />
-        </FormField>
-      </div>
-      <div>
-        <FormField label="Age">
-          <Input {...register("age")} />
-        </FormField>
-      </div>
-      <div>
-        <FormField label="State">
-          <Input {...register("state")} />
-        </FormField>
-      </div>
-      <div>
-        <FormField label="LGA">
-          <Input {...register("lga")} />
-        </FormField>
-      </div>
-      <button>Search</button>
-    </form>
+    <SearchBox>
+      <form onSubmit={handleSubmit(submit)}>
+        <div className="box">
+          <h1>Search for {view}</h1>
+          <div className="boxA">
+            <div>
+              <FormField label="First Name">
+                <Input sx={inputStyles} {...register("firstName")} />
+              </FormField>
+            </div>
+            <div>
+              <FormField label="Last Name">
+                <Input sx={inputStyles} {...register("lastName")} />
+              </FormField>
+            </div>
+            <div>
+              <FormField label="Age">
+                <Input sx={inputStyles} {...register("age")} />
+              </FormField>
+            </div>
+          </div>
+          <div className="boxB">
+            <div>
+              <FormField label="Gender">
+                <Input sx={inputStyles} {...register("gender")} />
+              </FormField>
+            </div>
+            <div>
+              <FormField label="State">
+                <Input sx={inputStyles} {...register("state")} />
+              </FormField>
+            </div>
+            <div>
+              <FormField label="LGA">
+                <Input sx={inputStyles} {...register("lga")} />
+              </FormField>
+            </div>
+          </div>
+          <div className="btnbox">
+            <ButtonStyled>
+              <p className="text">
+                <FaSearch className="icon" /> Search
+              </p>
+            </ButtonStyled>
+          </div>
+        </div>
+      </form>
+    </SearchBox>
   );
 }
 

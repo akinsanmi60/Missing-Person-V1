@@ -4,6 +4,7 @@ import DeathPage from "pages/deathsearch";
 import BirthPage from "pages/birthsearch/birth";
 import HomePage from "pages/home";
 import Header from "common/Header";
+import MissingPage from "pages/missingPerson/missing";
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/missing_person" element={<DeathPage />} />
+        <Route path="/missing_person" element={<MissingPage />} />
         <Route path="/identified_person" element={<DeathPage />} />
         <Route path="/dead_bodies" element={<DeathPage />} />
         <Route path="/birth" element={<BirthPage />} />

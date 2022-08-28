@@ -11,7 +11,7 @@ export type FormDataProp = {
 };
 
 export type SearchPprop = {
-  submit: (data: any) => Promise<void>;
+  view: string;
 };
 
 export const schema = yup
@@ -21,6 +21,6 @@ export const schema = yup
     age: yup.string().required(),
     gender: yup.string().required(),
     state: yup.string().required(),
-    lga: yup.string().required(),
+    lga: yup.string(),
   })
   .required();
