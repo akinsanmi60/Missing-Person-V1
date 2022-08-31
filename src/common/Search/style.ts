@@ -73,7 +73,7 @@ export const inputStyles = {
 };
 
 export const ButtonStyled = styled.button`
-  background-color: #16194f;
+  background-color: #0e2038;
   padding: 0.7rem 2rem;
   color: white;
   box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%),

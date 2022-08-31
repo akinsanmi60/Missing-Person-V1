@@ -1,10 +1,7 @@
 import React, { useLayoutEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
-import DeathPage from "pages/deathsearch";
-import BirthPage from "pages/birthsearch/birth";
-import HomePage from "pages/home";
-import Header from "common/Header";
-import MissingPage from "pages/missingPerson/missing";
+import LayoutWrapper from "utils/WebpageWrap";
+import ROUTESWITHLAYER from "Routes";
 
 function Wrapper() {
   const location = useLocation();
@@ -18,17 +15,22 @@ function App() {
   return (
     <div>
       <Wrapper />
-      <Header />
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/missing_person" element={<MissingPage />} />
-        <Route path="/identified_person" element={<DeathPage />} />
-        <Route path="/dead_bodies" element={<DeathPage />} />
-        <Route path="/birth" element={<BirthPage />} />
-        <Route path="/about" element={<DeathPage />} />
-        <Route path="/contact" element={<BirthPage />} />
-        <Route path="/press" element={<BirthPage />} />
-        <Route path="/question" element={<BirthPage />} />
+        {Object.entries(ROUTESWITHLAYER).map(itemRoute => {
+          const [key, value] = itemRoute;
+          const RouteComponent = value.element;
+          return (
+            <Route
+              key={key}
+              path={value.path}
+              element={
+                <LayoutWrapper>
+                  <RouteComponent />
+                </LayoutWrapper>
+              }
+            />
+          );
+        })}
       </Routes>
     </div>
   );
