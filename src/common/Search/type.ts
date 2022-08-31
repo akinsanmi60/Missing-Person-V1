@@ -10,8 +10,35 @@ export type FormDataProp = {
   lga: string;
 };
 
+type DataProp = {
+  id: number;
+  firstName: string;
+  lastName: string;
+  maidenName: string;
+  bloodGroup: string;
+  age: string;
+  gender: string;
+  email: string;
+  image: string;
+  address: {
+    address: string;
+    city: string;
+    postalcode: string;
+  };
+  birthDate: string;
+  height: number;
+  weight: number;
+  hair: {
+    color: string;
+    type: string;
+  };
+  eyeColor: string;
+};
+
 export type SearchPprop = {
   view: string;
+  people: DataProp[];
+  setData: React.Dispatch<React.SetStateAction<DataProp[]>>;
 };
 
 export const schema = yup
@@ -20,7 +47,7 @@ export const schema = yup
     lastName: yup.string().required(),
     age: yup.string().required(),
     gender: yup.string().required(),
-    state: yup.string().required(),
+    state: yup.string(),
     lga: yup.string(),
   })
   .required();

@@ -1,10 +1,15 @@
+import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+// import ReactPaginate from "react-paginate";
 import SearchBar from "common/Search";
-import React, { useState } from "react";
 import BirthWrapper from "./style";
+import OuterLayout from "styles/layout";
+import ListView from "common/ListView";
+import CardPerson from "common/Card";
 
 type DataProp = {
+  id: number;
   firstName: string;
   lastName: string;
   maidenName: string;
@@ -26,36 +31,58 @@ type DataProp = {
     type: string;
   };
   eyeColor: string;
-}[];
+};
 
 function BirthPage() {
   const viewPage = "Birth";
-  const [dataSet, setData] = useState<DataProp>();
+  const [dataSet, setData] = useState<DataProp[]>([]);
+  const [pageNumber, setPageNumber] = useState(1);
 
-  useQuery(["user"], () => axios.get(`https://dummyjson.com/users`), {
-    onSuccess(e) {
-      setData(e?.data?.users);
+  const { isLoading, isRefetching, isError } = useQuery(
+    ["user"],
+    () => axios.get(`https://dummyjson.com/users`),
+    {
+      onSuccess(e) {
+        setData(e?.data.users);
+      },
+      refetchOnWindowFocus: false,
     },
-    refetchOnWindowFocus: false,
-  });
+  );
 
-  console.log("data", dataSet);
+  const personPerPage = 15;
+  const pagesVisited = pageNumber * personPerPage;
+  // setting the pageCount in number
+  const pageCount = Math.ceil(dataSet?.length / personPerPage);
+  // enable to change page number
+  const changePage = ({ selected }: { selected: number }) => {
+    setPageNumber(selected);
+  };
+
+  const displayPeople = dataSet
+    ?.slice(pagesVisited, pagesVisited + personPerPage)
+    .map(person => (
+      <div key={person.id}>
+        <CardPerson person={person} />
+      </div>
+    ));
 
   return (
     <BirthWrapper>
       <div className="wallpaper">
-        <SearchBar view={viewPage} />
+        <SearchBar view={viewPage} people={dataSet} setData={setData} />
       </div>
-      <div className="box5">
-        hello
-        {dataSet?.map(n => (
-          <div key={n.firstName}>
-            <p>{n.lastName}</p>
-            <p>{n.birthDate}</p>
-            <p>{n.eyeColor}</p>
-          </div>
-        ))}
-      </div>
+      <OuterLayout>
+        <div>
+          <ListView
+            isLoading={isLoading}
+            isError={isError}
+            isRefetching={isRefetching}
+            displayPeople={displayPeople}
+            changePage={changePage}
+            pageCount={pageCount}
+          />
+        </div>
+      </OuterLayout>
     </BirthWrapper>
   );
 }

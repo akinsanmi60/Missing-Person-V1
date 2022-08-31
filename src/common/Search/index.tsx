@@ -1,4 +1,5 @@
-import React from "react";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React, { useState } from "react";
 import { Input } from "@chakra-ui/react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -6,13 +7,34 @@ import FormField from "common/FormField";
 import { SearchPprop, schema, FormDataProp } from "./type";
 import SearchBox, { ButtonStyled, inputStyles } from "./style";
 import { FaSearch } from "react-icons/fa";
+import { Spinner } from "@chakra-ui/react";
 
-function SearchBar({ view }: SearchPprop) {
+function SearchBar({ view, people, setData }: SearchPprop) {
+  const [loading, setLoading] = useState(false);
   const { register, handleSubmit } = useForm<FormDataProp>({
     resolver: yupResolver(schema),
   });
   const submit = async (data: FormDataProp) => {
-    console.log(data);
+    setLoading(true);
+    const lowerCaseFirstname = data?.firstName.toLowerCase();
+    const lowerCaseLastname = data?.lastName.toLowerCase();
+    const lowerCaseGender = data?.gender.toLowerCase();
+    const lowerCaseAge = data?.age.toLowerCase();
+
+    const fiteredPerson = people?.filter(person =>
+      Object.values(person)
+        .toString()
+        .toLowerCase()
+        .includes(
+          lowerCaseFirstname &&
+            lowerCaseLastname &&
+            lowerCaseGender &&
+            lowerCaseAge,
+        ),
+    );
+
+    setData(fiteredPerson);
+    setLoading(false);
   };
   return (
     <SearchBox>
@@ -55,9 +77,13 @@ function SearchBar({ view }: SearchPprop) {
           </div>
           <div className="btnbox">
             <ButtonStyled>
-              <p className="text">
-                <FaSearch className="icon" /> Search
-              </p>
+              {loading ? (
+                <Spinner />
+              ) : (
+                <p className="text">
+                  <FaSearch className="icon" /> Search
+                </p>
+              )}
             </ButtonStyled>
           </div>
         </div>

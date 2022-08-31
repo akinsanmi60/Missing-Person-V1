@@ -8,8 +8,5 @@ const BirthWrapper = styled.div`
     color: var(--neutral-light);
     padding: 40px 60px;
   }
-  .box5 {
-    background-color: blue;
-  }
 `;
 export default BirthWrapper;
