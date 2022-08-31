@@ -6,7 +6,7 @@ const GlobalStyle = createGlobalStyle`
         --accent-pink: #F44E77;
         --neutral-light: #F2F6FF;
         --lavender-secondary: #6A6D9E; /*Primary Font Color*/
-        --dark-primary: #16194F;
+        --dark-primary: #0E2038;
         --border-colour: #CAD6F1;
         
     }
