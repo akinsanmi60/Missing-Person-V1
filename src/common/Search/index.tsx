@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from "react";
-import { Input } from "@chakra-ui/react";
+import { Input, Select } from "@chakra-ui/react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import FormField from "common/FormField";
@@ -15,18 +15,15 @@ function SearchBar({ view, people, setData }: SearchPprop) {
     resolver: yupResolver(schema),
   });
 
-  // // age calculation
-  // const getAge = people.map(person => person.age);
-  // console.log("getAge", getAge);
-  // const filterAge = getAge
-  //   .filter(function (age, d) {
-  //     return getAge.indexOf(age) === d;
-  //   })
-  //   .sort(function (a: any, b: any) {
-  //     return a - b;
-  //   });
-
-  // console.log("filterAge", filterAge);
+  // age calculation for dropdown
+  const getAge = people.map(person => person.age);
+  const filterAge = getAge
+    .filter(function (age, index) {
+      return getAge.indexOf(age) === index;
+    })
+    .sort(function (a, b) {
+      return Number(a) - Number(b);
+    });
 
   const submit = async (data: FormDataProp) => {
     console.log(data);
@@ -69,7 +66,13 @@ function SearchBar({ view, people, setData }: SearchPprop) {
             </div>
             <div>
               <FormField label="Age">
-                <Input sx={inputStyles} {...register("age")} />
+                <Select placeholder="Please Select Age" {...register("age")}>
+                  {filterAge.map(yearAge => (
+                    <option value={yearAge} key={yearAge}>
+                      {yearAge}
+                    </option>
+                  ))}
+                </Select>
               </FormField>
             </div>
           </div>

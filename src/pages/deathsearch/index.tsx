@@ -35,7 +35,7 @@ type DataProp = {
 function DeathPage() {
   const viewPage = "Dead Body";
   const [dataDead, setData] = useState<DataProp[]>([]);
-  const [pageNumber, setPageNumber] = useState(1);
+  const [pageNumber, setPageNumber] = useState(0);
 
   const { isLoading, isError, isRefetching } = useQuery(
     ["user"],

@@ -35,7 +35,7 @@ type DataProp = {
 function BirthPage() {
   const viewPage = "Birth";
   const [dataSet, setData] = useState<DataProp[]>([]);
-  const [pageNumber, setPageNumber] = useState(1);
+  const [pageNumber, setPageNumber] = useState(0);
 
   const { isLoading, isRefetching, isError } = useQuery(
     ["user"],

@@ -23,10 +23,11 @@ const SearchBox = styled.div`
       margin-bottom: 10px;
     }
   }
-  Input {
+  Input,
+  Select {
     width: 26vw;
     height: 40px;
-    background: none;
+    /* background: none; */
     color: var(--neutral-light);
     border: none;
     border: 1px solid;
@@ -37,6 +38,10 @@ const SearchBox = styled.div`
     @media screen and (max-width: 768px) {
       width: 100%;
     }
+  }
+
+  Select option {
+    background-color: var(--dark-primary);
   }
 
   .btnbox {
