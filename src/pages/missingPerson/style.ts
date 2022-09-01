@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const BirthWrapper = styled.div`
+const MissingWrapper = styled.div`
   .wallpaper {
     background: #42275a; /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #734b6d, #42275a);
@@ -9,4 +9,4 @@ const BirthWrapper = styled.div`
     padding: 40px 60px;
   }
 `;
-export default BirthWrapper;
+export default MissingWrapper;

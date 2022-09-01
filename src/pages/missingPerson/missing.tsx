@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import SearchBar from "common/Search";
-import BirthWrapper from "./style";
 import OuterLayout from "styles/layout";
-import ListView from "common/ListView";
+// import ListView from "common/ListView";
 import CardPerson from "common/Card";
+import MissingWrapper from "./style";
+
+const ListView = React.lazy(() => import("common/ListView"));
 
 type DataProp = {
   id: number;
@@ -66,7 +68,7 @@ function MissingPage() {
     ));
 
   return (
-    <BirthWrapper>
+    <MissingWrapper>
       <div className="wallpaper">
         <SearchBar view={viewPage} people={dataMissing} setData={setData} />
       </div>
@@ -82,7 +84,7 @@ function MissingPage() {
           />
         </div>
       </OuterLayout>
-    </BirthWrapper>
+    </MissingWrapper>
   );
 }
 

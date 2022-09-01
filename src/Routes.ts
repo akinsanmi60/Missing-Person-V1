@@ -1,7 +1,10 @@
-import DeathPage from "pages/deathsearch";
-import BirthPage from "pages/birthsearch/birth";
+import React from "react";
 import HomePage from "pages/home";
-import MissingPage from "pages/missingPerson/missing";
+
+const DeathPage = React.lazy(() => import("pages/deathsearch"));
+const BirthPage = React.lazy(() => import("pages/birthsearch/birth"));
+const MissingPage = React.lazy(() => import("pages/missingPerson/missing"));
+const Question = React.lazy(() => import("pages/faq"));
 
 const ROUTESWITHLAYER = {
   HomePage: {
@@ -47,7 +50,7 @@ const ROUTESWITHLAYER = {
   },
   QuestionPage: {
     id: "9",
-    element: MissingPage,
+    element: Question,
     path: "/question",
   },
 };

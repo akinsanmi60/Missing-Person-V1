@@ -15,23 +15,25 @@ function App() {
   return (
     <div>
       <Wrapper />
-      <Routes>
-        {Object.entries(ROUTESWITHLAYER).map(itemRoute => {
-          const [key, value] = itemRoute;
-          const RouteComponent = value.element;
-          return (
-            <Route
-              key={key}
-              path={value.path}
-              element={
-                <LayoutWrapper>
-                  <RouteComponent />
-                </LayoutWrapper>
-              }
-            />
-          );
-        })}
-      </Routes>
+      <React.Suspense fallback="loading">
+        <Routes>
+          {Object.entries(ROUTESWITHLAYER).map(itemRoute => {
+            const [key, value] = itemRoute;
+            const RouteComponent = value.element;
+            return (
+              <Route
+                key={key}
+                path={value.path}
+                element={
+                  <LayoutWrapper>
+                    <RouteComponent />
+                  </LayoutWrapper>
+                }
+              />
+            );
+          })}
+        </Routes>
+      </React.Suspense>
     </div>
   );
 }

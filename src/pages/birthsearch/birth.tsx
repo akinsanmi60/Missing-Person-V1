@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-// import ReactPaginate from "react-paginate";
 import SearchBar from "common/Search";
 import BirthWrapper from "./style";
 import OuterLayout from "styles/layout";

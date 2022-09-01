@@ -14,7 +14,22 @@ function SearchBar({ view, people, setData }: SearchPprop) {
   const { register, handleSubmit } = useForm<FormDataProp>({
     resolver: yupResolver(schema),
   });
+
+  // // age calculation
+  // const getAge = people.map(person => person.age);
+  // console.log("getAge", getAge);
+  // const filterAge = getAge
+  //   .filter(function (age, d) {
+  //     return getAge.indexOf(age) === d;
+  //   })
+  //   .sort(function (a: any, b: any) {
+  //     return a - b;
+  //   });
+
+  // console.log("filterAge", filterAge);
+
   const submit = async (data: FormDataProp) => {
+    console.log(data);
     setLoading(true);
     const lowerCaseFirstname = data?.firstName.toLowerCase();
     const lowerCaseLastname = data?.lastName.toLowerCase();
