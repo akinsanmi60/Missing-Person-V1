@@ -21,9 +21,7 @@ function SearchBar({ view, people, setData }: SearchPprop) {
     .filter(function (age, index) {
       return getAge.indexOf(age) === index;
     })
-    .sort(function (a, b) {
-      return Number(a) - Number(b);
-    });
+    .sort((a, b) => Number(a) - Number(b));
 
   const submit = async (data: FormDataProp) => {
     console.log(data);
@@ -66,7 +64,7 @@ function SearchBar({ view, people, setData }: SearchPprop) {
             </div>
             <div>
               <FormField label="Age">
-                <Select placeholder="Please Select Age" {...register("age")}>
+                <Select placeholder="Please Select" {...register("age")}>
                   {filterAge.map(yearAge => (
                     <option value={yearAge} key={yearAge}>
                       {yearAge}

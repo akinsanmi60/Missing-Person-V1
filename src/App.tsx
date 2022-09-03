@@ -1,7 +1,10 @@
 import React, { useLayoutEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import LayoutWrapper from "utils/WebpageWrap";
-import ROUTESWITHLAYER from "Routes";
+import ROUTESWITHLAYER, { APPROUTES } from "Routes";
+import AppLayout from "pages/appLayout";
+
+const AddMissingPage = React.lazy(() => import("pages/addMissing"));
 
 function Wrapper() {
   const location = useLocation();
@@ -32,6 +35,20 @@ function App() {
               />
             );
           })}
+          <Route path="/auth_profile" element={<AppLayout />}>
+            <Route index element={<AddMissingPage />} />
+            {Object.entries(APPROUTES).map(appRoute => {
+              const [key, value] = appRoute;
+              const AppRouteComponent = value.element;
+              return (
+                <Route
+                  key={key}
+                  path={value.path}
+                  element={<AppRouteComponent />}
+                />
+              );
+            })}
+          </Route>
         </Routes>
       </React.Suspense>
     </div>

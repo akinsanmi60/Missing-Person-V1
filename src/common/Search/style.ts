@@ -14,7 +14,7 @@ const SearchBox = styled.div`
   .boxB {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    justify-items: center;
+    /* justify-items: center; */
     gap: 10px;
     margin-bottom: 20px;
     @media screen and (max-width: 425px) {
@@ -25,7 +25,7 @@ const SearchBox = styled.div`
   }
   Input,
   Select {
-    width: 26vw;
+    width: 100%;
     height: 40px;
     /* background: none; */
     color: var(--neutral-light);
@@ -35,9 +35,6 @@ const SearchBox = styled.div`
     font-weight: 300;
     padding: 0.125em 0.25em;
     outline: none;
-    @media screen and (max-width: 768px) {
-      width: 100%;
-    }
   }
 
   Select option {
@@ -57,12 +54,10 @@ const SearchBox = styled.div`
       margin-top: 5px;
     }
   }
+
   @media screen and (max-width: 425px) {
-    .box {
-      padding: 2rem 1rem;
-    }
     .btnbox {
-      margin-top: 9px;
+      margin-top: 15px;
     }
     h1 {
       text-align: center;

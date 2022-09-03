@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as yup from "yup";
 
 export type FormDataProp = {

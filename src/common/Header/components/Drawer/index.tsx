@@ -1,4 +1,3 @@
-/* eslint-disable no-nested-ternary */
 import {
   Drawer,
   DrawerBody,
@@ -27,7 +26,6 @@ import {
   FaWhatsappSquare,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
-// import ride from "../../../../assets/hands.jpg";
 import routesLinks from "./routes";
 import ButtonBox, { DrawerButton, IconBox } from "./style";
 
@@ -44,7 +42,12 @@ function DrawerExample() {
           <FaBars />
         </Box>
       </Box>
-      <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
+      <Drawer
+        isOpen={isOpen}
+        placement="right"
+        onClose={onClose}
+        blockScrollOnMount={false}
+      >
         <DrawerOverlay />
         <DrawerContent color=" #16194f">
           <DrawerCloseButton

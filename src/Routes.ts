@@ -4,7 +4,12 @@ import HomePage from "pages/home";
 const DeathPage = React.lazy(() => import("pages/deathsearch"));
 const BirthPage = React.lazy(() => import("pages/birthsearch/birth"));
 const MissingPage = React.lazy(() => import("pages/missingPerson/missing"));
+const IdentifiedPage = React.lazy(() => import("pages/foundPerson/index"));
 const Question = React.lazy(() => import("pages/faq"));
+
+// App Routes
+const AddFoundPage = React.lazy(() => import("pages/addFound"));
+const AddMissingPage = React.lazy(() => import("pages/addMissing"));
 
 const ROUTESWITHLAYER = {
   HomePage: {
@@ -30,7 +35,7 @@ const ROUTESWITHLAYER = {
   },
   IdentifiedPage: {
     id: "5",
-    element: DeathPage,
+    element: IdentifiedPage,
     path: "/identified_person",
   },
   ContactPage: {
@@ -56,3 +61,16 @@ const ROUTESWITHLAYER = {
 };
 
 export default ROUTESWITHLAYER;
+
+export const APPROUTES = {
+  AddMissingPage: {
+    id: "9",
+    element: AddMissingPage,
+    path: "add_missing_person",
+  },
+  AddFoundPage: {
+    id: "9",
+    element: AddFoundPage,
+    path: "add_found_person",
+  },
+};
