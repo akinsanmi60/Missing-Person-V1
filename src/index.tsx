@@ -6,6 +6,8 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import { ChakraProvider } from "@chakra-ui/react";
 import GlobalStyle from "global";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const queryClient = new QueryClient();
 
@@ -19,6 +21,7 @@ root.render(
         <QueryClientProvider client={queryClient}>
           <GlobalStyle />
           <App />
+          <ToastContainer />
           <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
         </QueryClientProvider>
       </ChakraProvider>

@@ -12,6 +12,13 @@ type AuthUserType = {
     userIdNos: string;
   };
   token?: string;
+  transaction: {
+    reference: string;
+    status: string;
+    trans: string;
+    message: string;
+    transacton: string;
+  };
 };
 
 type ContextType = {
@@ -25,23 +32,28 @@ type ProviderProps = {
 };
 const AuthContext = createContext({} as ContextType);
 
-export const pushToLocalStorage = (token: string, user: any) => {
+export const pushToLocalStorage = (token: string, user?: any) => {
   localStorage.setItem("token", token);
   localStorage.setItem("user", JSON.stringify(user));
 };
 
 const getUser = () => {
-  // const token = localStorage.getItem("token");
+  // const userToken = localStorage.getItem("token");
   const userString = localStorage.getItem("user") as string;
+  const userTransaction = localStorage.getItem("transaction") as string;
 
-  return { userString };
+  return { userString, userTransaction };
 };
 
-const { userString } = getUser();
+const { userString, userTransaction } = getUser();
 const user = JSON.parse(userString);
+const transaction = JSON.parse(userTransaction);
 
 export function AuthProvider({ children }: ProviderProps) {
-  const [authUser, setAuthUser] = useState<AuthUserType | null>({ user });
+  const [authUser, setAuthUser] = useState<AuthUserType | null>({
+    user,
+    transaction,
+  });
   const navigate = useNavigate();
 
   const logout = () => {

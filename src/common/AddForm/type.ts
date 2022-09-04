@@ -59,3 +59,43 @@ export const bodyType = [
   "Handicapped",
   "Fat (stout/strong)",
 ].sort((a, b) => (a > b ? 1 : -1));
+
+export type PropTran = {
+  reference: string;
+  status: string;
+  trans: string;
+  message: string;
+  transacton: string;
+};
+
+export type FasProp = {
+  firstName: string;
+  lastName: string;
+  middleName: string;
+  gender: string;
+  height: string;
+  weight: string;
+  skin: string;
+  hair: string;
+  body: string;
+  personAd: string;
+  personSt: string;
+  personLga: string;
+  father: string;
+  mother: string;
+  date: string;
+  sibling: string;
+  parentAd: string;
+  state: string;
+  lga: string;
+  issueAd: string;
+  poName: string;
+  poState: string;
+  poLga: string;
+  poAd: string;
+};
+
+export type FormPageProp = {
+  formType: string;
+  setData: React.Dispatch<React.SetStateAction<FasProp>>;
+};

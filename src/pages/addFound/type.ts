@@ -1,30 +1,26 @@
-import * as yup from "yup";
-
-export const schema = yup
-  .object({
-    firstName: yup.string().required(),
-    lastName: yup.string().required(),
-    age: yup.string().required(),
-    gender: yup.string().required(),
-    state: yup.string(),
-    lga: yup.string(),
-    hair: yup.string(),
-    complexion: yup.string(),
-    build: yup.string(),
-    foundAd: yup.string(),
-    missingAd: yup.string(),
-  })
-  .required();
-
-export type FormAddProp = {
+export type FasProp = {
   firstName: string;
   lastName: string;
   middleName: string;
-  age: string;
   gender: string;
-  complexion: string;
+  height: string;
+  weight: string;
+  skin: string;
   hair: string;
-  build: string;
-  foundAd: string;
-  missingAd: string;
+  body: string;
+  personAd: string;
+  personSt: string;
+  personLga: string;
+  father: string;
+  mother: string;
+  sibling: string;
+  date: string;
+  parentAd: string;
+  state: string;
+  lga: string;
+  issueAd: string;
+  poName: string;
+  poState: string;
+  poLga: string;
+  poAd: string;
 };

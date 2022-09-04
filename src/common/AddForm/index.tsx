@@ -1,48 +1,23 @@
-import React from "react";
-import { Input, Select } from "@chakra-ui/react";
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+import React, { useContext } from "react";
+import { Input, Select, useDisclosure } from "@chakra-ui/react";
 import FormField from "common/FormField";
 import { SubmitHandler, useForm } from "react-hook-form";
 import FormAddBox, { ButtonStyled } from "./style";
-import { bodyType, hairType, skinColor } from "./type";
-
-type FasProp = {
-  firstName: string;
-  lastName: string;
-  middleName: string;
-  gender: string;
-  height: string;
-  weight: string;
-  skin: string;
-  hair: string;
-  body: string;
-  personAd: string;
-  personSt: string;
-  personLga: string;
-  father: string;
-  mother: string;
-  sibling: string;
-  parentAd: string;
-  state: string;
-  lga: string;
-  issueAd: string;
-  poName: string;
-  poState: string;
-  poLga: string;
-  poAd: string;
-};
-
-type FormPageProp = {
-  formType: string;
-  setData: React.Dispatch<React.SetStateAction<FasProp>>;
-};
+import { bodyType, FasProp, FormPageProp, hairType, skinColor } from "./type";
+import PaymentModal from "./component";
+import AuthContext from "contexts/AuthProvider";
 
 function AddFormPage({ formType, setData }: FormPageProp) {
+  const { authUser } = useContext(AuthContext);
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const { register, handleSubmit } = useForm<FasProp>();
 
   const onSubmit: SubmitHandler<FasProp> = data => {
     console.log(data);
     setData(data);
   };
+
   return (
     <FormAddBox>
       <div className="formWrapper">
@@ -181,7 +156,7 @@ function AddFormPage({ formType, setData }: FormPageProp) {
                 <FormField label="Date">
                   <Input
                     type="date"
-                    {...register("state", { required: true })}
+                    {...register("date", { required: true })}
                   />
                 </FormField>
               </div>
@@ -226,15 +201,41 @@ function AddFormPage({ formType, setData }: FormPageProp) {
           </div>
           <div className="police_ad_box">
             <div>
-              <FormField label="Parent Address">
+              <FormField label="Police Station Address">
                 <Input {...register("poAd", { required: true })} />
               </FormField>
             </div>
           </div>
+          {formType === "missing" ? (
+            <div className="payment">
+              <p>
+                Kindly make payment to enable submission of form.{" "}
+                <span
+                  onClick={() => {
+                    onOpen();
+                  }}
+                >
+                  Click to make payment
+                </span>
+              </p>
+            </div>
+          ) : null}
+
           <div className="btn">
-            <ButtonStyled>Submit</ButtonStyled>
+            {formType === "missing" ? (
+              <ButtonStyled
+                disabled={
+                  authUser?.transaction?.status !== "success" ? true : false
+                }
+              >
+                Submit
+              </ButtonStyled>
+            ) : (
+              <ButtonStyled>Submit</ButtonStyled>
+            )}
           </div>
         </form>
+        <PaymentModal onClose={onClose} isOpen={isOpen} />
       </div>
     </FormAddBox>
   );

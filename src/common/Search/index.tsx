@@ -8,12 +8,23 @@ import { SearchPprop, schema, FormDataProp } from "./type";
 import SearchBox, { ButtonStyled, inputStyles } from "./style";
 import { FaSearch } from "react-icons/fa";
 import { Spinner } from "@chakra-ui/react";
+import dataNig from "../../utils/states_and_lgas.json";
 
 function SearchBar({ view, people, setData }: SearchPprop) {
   const [loading, setLoading] = useState(false);
   const { register, handleSubmit } = useForm<FormDataProp>({
     resolver: yupResolver(schema),
   });
+
+  const lgaGetter = () => {
+    const state = "";
+    const listLGA = dataNig?.find(({ alias }) => alias === state) || {
+      lgas: [],
+    };
+    return listLGA;
+  };
+
+  const { lgas = [] } = lgaGetter();
 
   // age calculation for dropdown
   const getAge = people.map(person => person.age);
@@ -82,12 +93,24 @@ function SearchBar({ view, people, setData }: SearchPprop) {
             </div>
             <div>
               <FormField label="State">
-                <Input sx={inputStyles} {...register("state")} />
+                <Select placeholder="Select State" {...register("state")}>
+                  {dataNig.map(({ state, alias }) => (
+                    <option value={alias} key={alias}>
+                      {state}
+                    </option>
+                  ))}
+                </Select>
               </FormField>
             </div>
             <div>
               <FormField label="LGA">
-                <Input sx={inputStyles} {...register("lga")} />
+                <Select placeholder="Local govt area" {...register("lga")}>
+                  {lgas?.map(lga => (
+                    <option value={lga.toLowerCase()} key={lga.toLowerCase()}>
+                      {lga}
+                    </option>
+                  ))}
+                </Select>
               </FormField>
             </div>
           </div>

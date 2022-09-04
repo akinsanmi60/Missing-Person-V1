@@ -8,7 +8,7 @@ const ButtonBox = styled.div`
 export default ButtonBox;
 
 export const DrawerButton = styled.button`
-  background-color: #16194f;
+  background-color: var(--dark-primary);
   padding: 0.7rem 1rem;
   color: white;
   box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%),

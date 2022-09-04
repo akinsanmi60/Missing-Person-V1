@@ -35,7 +35,7 @@ function DrawerExample() {
   return (
     <>
       <Box onClick={onOpen}>
-        <Box display="flex" color=" #16194f">
+        <Box display="flex" color="#0E2038">
           <Text marginTop="-1" marginRight="2" fontWeight="800">
             Menu
           </Text>
@@ -49,7 +49,7 @@ function DrawerExample() {
         blockScrollOnMount={false}
       >
         <DrawerOverlay />
-        <DrawerContent color=" #16194f">
+        <DrawerContent color="#0E2038">
           <DrawerCloseButton
             color="white"
             fontWeight="900"
@@ -64,9 +64,8 @@ function DrawerExample() {
             paddingLeft="6"
           >
             <Text marginTop="130px" fontWeight="900" fontSize="30">
-              HUMONI
+              People
             </Text>
-            <Text marginTop="-1">+234813759225</Text>
           </Box>
           <DrawerBody>
             {routesLinks.map(routeLink => {

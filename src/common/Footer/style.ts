@@ -73,18 +73,24 @@ const FootWrapper = styled.footer`
       /* row-gap: 80px; */
     }
     @media screen and (max-width: 768px) {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       padding-left: 40px;
       padding-right: 40px;
       .detail {
         margin-top: 20px;
       }
+
+      .marbox,
+      .curvedetails {
+        margin-top: 23px;
+      }
     }
     @media screen and (max-width: 425px) {
       grid-template-columns: 1fr;
-      padding: 24px 20px;
+      padding: 20px;
     }
   }
+
   .foottext {
     padding: 0px 30px;
     color: var(--neutral-light);

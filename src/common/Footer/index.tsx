@@ -18,40 +18,57 @@ function index() {
         <div className="footercase">
           <div className="detail">
             <h4>Company</h4>
-            <Link to="/about" className="link">
-              About
-            </Link>
-
-            <Link to="/press" className="link">
-              Press
-            </Link>
-            <Link to="/contact" className="link">
-              Contact Info
-            </Link>
-            <Link to="/question" className="link">
-              FAQ
-            </Link>
+            <div>
+              <Link to="/about" className="link">
+                About
+              </Link>
+            </div>
+            <div>
+              <Link to="/press" className="link">
+                Press
+              </Link>
+            </div>
+            <div>
+              <Link to="/contact" className="link">
+                Contact Info
+              </Link>
+            </div>
+            <div>
+              <Link to="/question" className="link">
+                FAQ
+              </Link>
+            </div>
           </div>
           <div className="detail">
             <h4>Pages</h4>
-            <Link to="/birth" className="link">
-              Birth
-            </Link>
-            <Link to="/dead_bodies" className="link">
-              Dead Bodies
-            </Link>
-            <Link to="/missing_person" className="link">
-              Missing Person
-            </Link>
-            <Link to="/identified_person" className="link">
-              Identified Person
-            </Link>
+            <div>
+              <Link to="/birth" className="link">
+                Birth
+              </Link>
+            </div>
+            <div>
+              <Link to="/dead_bodies" className="link">
+                Dead Bodies
+              </Link>
+            </div>
+            <div>
+              <Link to="/missing_person" className="link">
+                Missing Person
+              </Link>
+            </div>
+            <div>
+              <Link to="/identified_person" className="link">
+                Identified Person
+              </Link>
+            </div>
           </div>
           <div className="detail">
             <h4>Resources</h4>
-            <Link to="/stat" className="link">
-              Statistic
-            </Link>
+            <div>
+              <Link to="/stat" className="link">
+                Statistic
+              </Link>
+            </div>
           </div>
           <div className="detail">
             <div className="marbox">

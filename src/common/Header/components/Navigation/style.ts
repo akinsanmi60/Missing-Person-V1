@@ -2,10 +2,8 @@ import styled from "styled-components";
 import { NavLink as Link } from "react-router-dom";
 
 const NavigationStyled = styled.nav`
-  // height: 30%;
   display: flex;
   flex-direction: column;
-  padding: 0.5rem calc((100vw - 1300px) / 2);
   z-index: 9999;
   .boxnav {
     display: flex;
@@ -17,11 +15,14 @@ const NavigationStyled = styled.nav`
   .navitemsbox {
     display: flex;
     gap: 30px;
+    padding: 7px 13px;
+
     .Link {
       color: #3e3e3e;
       font-weight: 700;
       font-size: 16px;
-      padding: 7px 13px;
+      margin-top: 5px;
+      /* padding: 7px 13px; */
       text-decoration: none;
       line-height: 1em;
       cursor: pointer;
@@ -46,7 +47,7 @@ const NavigationStyled = styled.nav`
   @media screen and (min-width: 1026px) {
     flex-direction: row;
     justify-content: space-between;
-    padding: 20px 30px;
+    padding: 15px;
   }
 `;
 export default NavigationStyled;
