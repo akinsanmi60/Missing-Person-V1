@@ -54,7 +54,9 @@ const Wrapper = styled.div`
   }
   @media screen and (max-width: 768px) {
     .container {
+      padding: 10px;
       flex-direction: column-reverse;
+      gap: 50px;
     }
     .userbox {
       margin-bottom: 15px;

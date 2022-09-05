@@ -7,7 +7,6 @@ function Header() {
   const { authUser } = useContext(AuthContext);
   const userLocation = Intl.DateTimeFormat().resolvedOptions().timeZone;
   const userTime = new Date().toLocaleString();
-  console.log(userLocation);
 
   return (
     <HeaderBox>

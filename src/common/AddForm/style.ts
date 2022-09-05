@@ -23,10 +23,11 @@ const FormAddBox = styled.div`
     color: var(--dark-primary);
   }
 
-  p {
+  h1 {
     font-size: 20px;
-    margin-bottom: 6px;
-    margin-top: 25px;
+    margin-bottom: 17px;
+    margin-top: 28px;
+    border-bottom: 1px solid var(--dark-primary);
   }
 
   .person_ad_box,
@@ -75,13 +76,19 @@ const FormAddBox = styled.div`
   }
 
   @media screen and (max-width: 425px) {
+    h1 {
+      font-size: 16px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid var(--dark-primary);
+    }
     .boxname,
     .personbox,
     .dropbox,
     .parentbox,
+    .issue_ad,
+    .policebox,
     .person_st_box {
       grid-template-columns: 1fr;
-
       margin-bottom: 17px;
     }
   }

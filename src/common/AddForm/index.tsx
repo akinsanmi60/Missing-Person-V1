@@ -7,11 +7,18 @@ import FormAddBox, { ButtonStyled } from "./style";
 import { bodyType, FasProp, FormPageProp, hairType, skinColor } from "./type";
 import PaymentModal from "./component";
 import AuthContext from "contexts/AuthProvider";
+import dataNig from "../../utils/states_and_lgas.json";
 
 function AddFormPage({ formType, setData }: FormPageProp) {
   const { authUser } = useContext(AuthContext);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { register, handleSubmit } = useForm<FasProp>();
+  const { register, handleSubmit, watch } = useForm<FasProp>();
+
+  // the watch() is used to observe value change in state select
+  const formData = watch();
+
+  // LGA
+  const stateLGA = dataNig.find(s => s.state === formData.state);
 
   const onSubmit: SubmitHandler<FasProp> = data => {
     console.log(data);
@@ -146,9 +153,9 @@ function AddFormPage({ formType, setData }: FormPageProp) {
 
           <div>
             {formType === "found" ? (
-              <p>Found Details</p>
+              <h1>Found Details</h1>
             ) : formType === "missing" ? (
-              <p>Missing Details</p>
+              <h1>Missing Details</h1>
             ) : null}
 
             <div className="issue_ad">
@@ -162,12 +169,32 @@ function AddFormPage({ formType, setData }: FormPageProp) {
               </div>
               <div>
                 <FormField label="State">
-                  <Input {...register("state", { required: true })} />
+                  <Select placeholder="Select State" {...register("state")}>
+                    {dataNig.map(({ state }) => (
+                      <option value={state} key={state}>
+                        {state}
+                      </option>
+                    ))}
+                  </Select>{" "}
                 </FormField>
               </div>
               <div>
                 <FormField label="Local Government">
-                  <Input {...register("lga", { required: true })} />
+                  <Select
+                    placeholder="Local govt area"
+                    {...register("lga", { required: true })}
+                    disabled={!stateLGA}
+                  >
+                    {stateLGA &&
+                      stateLGA.lgas.map(lga => (
+                        <option
+                          value={lga.toLowerCase()}
+                          key={lga.toLowerCase()}
+                        >
+                          {lga}
+                        </option>
+                      ))}
+                  </Select>{" "}
                 </FormField>
               </div>
             </div>
@@ -180,7 +207,7 @@ function AddFormPage({ formType, setData }: FormPageProp) {
             </div>
           </div>
           <div>
-            <p>Police Officer-in-charge</p>
+            <h1>Police Officer-in-charge</h1>
           </div>
           <div className="policebox">
             <div>

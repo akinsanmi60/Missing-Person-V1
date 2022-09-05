@@ -9,7 +9,7 @@ function AddMissingPage() {
   return (
     <FoundWrapper>
       <div className="head">
-        <h1>Add Missing Person Details</h1>
+        <h1>Please Add Missing Person Details</h1>
       </div>
       <AddFormPage formType={formType} setData={setData} />
     </FoundWrapper>

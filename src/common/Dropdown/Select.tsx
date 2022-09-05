@@ -18,7 +18,8 @@ const StateSelect = () => {
   );
 };
 
-const LgaSelect = (state: string) => {
+const LgaSelect = () => {
+  const state = "";
   const { lgas = [] } = data?.find(({ alias }) => alias === state) || {
     lgas: [],
   };

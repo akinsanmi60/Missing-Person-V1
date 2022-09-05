@@ -50,3 +50,28 @@ export const schema = yup
     lga: yup.string(),
   })
   .required();
+
+export const DataPropValue = {
+  id: "",
+  firstName: "",
+  lastName: "",
+  maidenName: "",
+  bloodGroup: "",
+  age: "",
+  gender: "",
+  email: "",
+  image: "",
+  address: {
+    address: "",
+    city: "",
+    postalcode: "",
+  },
+  birthDate: "",
+  height: "",
+  weight: "",
+  hair: {
+    color: "",
+    type: "",
+  },
+  eyeColor: "",
+};

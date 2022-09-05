@@ -12,7 +12,7 @@ function AddFoundPage() {
   return (
     <FoundWrapper>
       <div className="head">
-        <h1>Add Found Person Details</h1>
+        <h1> Please Add Found Person Details</h1>
       </div>
       <AddFormPage formType={formType} setData={setData} />
     </FoundWrapper>

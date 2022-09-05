@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Input, Select } from "@chakra-ui/react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -12,19 +12,15 @@ import dataNig from "../../utils/states_and_lgas.json";
 
 function SearchBar({ view, people, setData }: SearchPprop) {
   const [loading, setLoading] = useState(false);
-  const { register, handleSubmit } = useForm<FormDataProp>({
+  const { register, handleSubmit, watch } = useForm<FormDataProp>({
     resolver: yupResolver(schema),
   });
 
-  const lgaGetter = () => {
-    const state = "";
-    const listLGA = dataNig?.find(({ alias }) => alias === state) || {
-      lgas: [],
-    };
-    return listLGA;
-  };
+  // the watch() is used to observe value change in state select
+  const formData = watch();
 
-  const { lgas = [] } = lgaGetter();
+  // LGA
+  const stateLGA = dataNig.find(s => s.state === formData.state);
 
   // age calculation for dropdown
   const getAge = people.map(person => person.age);
@@ -94,8 +90,8 @@ function SearchBar({ view, people, setData }: SearchPprop) {
             <div>
               <FormField label="State">
                 <Select placeholder="Select State" {...register("state")}>
-                  {dataNig.map(({ state, alias }) => (
-                    <option value={alias} key={alias}>
+                  {dataNig.map(({ state }) => (
+                    <option value={state} key={state}>
                       {state}
                     </option>
                   ))}
@@ -104,12 +100,17 @@ function SearchBar({ view, people, setData }: SearchPprop) {
             </div>
             <div>
               <FormField label="LGA">
-                <Select placeholder="Local govt area" {...register("lga")}>
-                  {lgas?.map(lga => (
-                    <option value={lga.toLowerCase()} key={lga.toLowerCase()}>
-                      {lga}
-                    </option>
-                  ))}
+                <Select
+                  placeholder="Local govt area"
+                  {...register("lga", { required: true })}
+                  disabled={!stateLGA}
+                >
+                  {stateLGA &&
+                    stateLGA.lgas.map(lga => (
+                      <option value={lga.toLowerCase()} key={lga.toLowerCase()}>
+                        {lga}
+                      </option>
+                    ))}
                 </Select>
               </FormField>
             </div>
