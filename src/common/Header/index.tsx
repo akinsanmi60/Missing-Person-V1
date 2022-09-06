@@ -2,11 +2,13 @@ import AuthContext from "contexts/AuthProvider";
 import React, { useContext } from "react";
 import Navigation from "./components/Navigation";
 import HeaderBox from "./style";
+import moment from "moment";
 
 function Header() {
   const { authUser } = useContext(AuthContext);
   const userLocation = Intl.DateTimeFormat().resolvedOptions().timeZone;
-  const userTime = new Date().toLocaleString();
+
+  const userTime = moment().format("dddd, MMMM Do YYYY");
 
   return (
     <HeaderBox>

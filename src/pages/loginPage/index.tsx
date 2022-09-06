@@ -27,7 +27,7 @@ import {
   FaTwitterSquare,
 } from "react-icons/fa";
 import AppHeader, { AppFooter } from "common/AppWrapper";
-import ResetPasswordModal from "pages/ForgotPassword";
+import ResetPasswordModal from "pages/forgotPassword";
 
 interface LoginFormInputs {
   email: string;

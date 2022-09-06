@@ -43,7 +43,7 @@ function ResetPasswordModal({ isOpen, onClose, overlay }: ResetProps) {
   const { mutate, isLoading } = useMutation(postRequest, {
     onSuccess(res) {
       toast.success(res?.message, toastOptions);
-      navigate("/resetpassword");
+      navigate("/reset_password");
     },
     onError(err: any) {
       toast.error(err?.message, toastOptions);
