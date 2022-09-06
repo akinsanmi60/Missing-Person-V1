@@ -9,10 +9,10 @@ type ToastProp = {
 };
 
 const toastOptions: ToastProp = {
-  position: "top-right",
-  autoClose: 2000,
+  position: "bottom-left",
+  autoClose: 4000,
   pauseOnHover: false,
   draggable: true,
-  theme: "light",
+  theme: "dark",
 };
 export default toastOptions;

@@ -12,7 +12,7 @@ type AuthUserType = {
     userIdNos: string;
   };
   token?: string;
-  transaction: {
+  transaction?: {
     reference: string;
     status: string;
     trans: string;

@@ -2,31 +2,14 @@ import AuthContext from "contexts/AuthProvider";
 import React, { useContext } from "react";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 
-enum Account {
-  User = "user",
-  Admin = "admin",
-}
-
-function PrivateRoute({ accounts }: { accounts: Array<Account | string> }) {
+function PrivateRoute() {
   const { authUser } = useContext(AuthContext);
   const location = useLocation();
 
-  const accountType = authUser?.user?.accountType;
-
-  const userHasRequiredAccount =
-    authUser?.user && accounts.includes(accountType || "");
-
-  // checks on authUser
-  if (!authUser?.user) {
-    return <Navigate to="/unauthorized" state={{ from: location }} replace />;
-  }
-
-  return authUser?.user && userHasRequiredAccount ? (
+  return authUser?.user ? (
     <Outlet />
-  ) : authUser?.user && !userHasRequiredAccount ? (
-    <Navigate to="/unauthorized" state={{ from: location }} replace />
   ) : (
-    <Navigate to="/" state={{ from: location }} replace />
+    <Navigate to="/unauthorized" state={{ from: location }} replace />
   );
 }
 

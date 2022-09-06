@@ -4,7 +4,13 @@ import HeaderWrapper, { FooterBox } from "./style";
 function AppHeader() {
   return (
     <HeaderWrapper>
-      <h1>People</h1>
+      <div className="titlebox">
+        <h1>People</h1>
+        <div className="box">
+          <p>Hot-line:</p>
+          <p>+2348164279799</p>
+        </div>
+      </div>
     </HeaderWrapper>
   );
 }

@@ -3,7 +3,9 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import LayoutWrapper from "utils/WebpageWrap";
 import ROUTESWITHLAYER, { APPROUTES } from "Routes";
 import AppLayout from "pages/appLayout";
+import LoginPage from "pages/loginPage";
 
+const ResetFormPage = React.lazy(() => import("pages/ResetPassword"));
 const AddMissingPage = React.lazy(() => import("pages/addMissing"));
 
 function Wrapper() {
@@ -20,6 +22,9 @@ function App() {
       <Wrapper />
       <React.Suspense fallback="loading">
         <Routes>
+          <Route path="/resetpassword" element={<ResetFormPage />} />
+
+          <Route path="/login" element={<LoginPage />} />
           {Object.entries(ROUTESWITHLAYER).map(itemRoute => {
             const [key, value] = itemRoute;
             const RouteComponent = value.element;

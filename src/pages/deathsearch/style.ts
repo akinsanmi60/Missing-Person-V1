@@ -8,5 +8,11 @@ const DeathWrapper = styled.div`
     color: var(--neutral-light);
     padding: 40px 60px;
   }
+
+  @media screen and (max-width: 375px) {
+    .box {
+      padding: 20px;
+    }
+  }
 `;
 export default DeathWrapper;

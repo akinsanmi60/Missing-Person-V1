@@ -14,5 +14,10 @@ declare module "*.jpg" {
   const value: string;
   export default value;
 }
+declare module "*.jpeg" {
+  const value: string;
+  export default value;
+}
 
 declare module "@paystack/inline-js";
+declare module "@chakra-ui/icons";

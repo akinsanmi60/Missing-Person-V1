@@ -10,7 +10,8 @@ const FormAddBox = styled.div`
   .dropbox,
   .parentbox,
   .issue_ad,
-  .policebox {
+  .policebox,
+  .police_nos {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 20px;
@@ -32,7 +33,8 @@ const FormAddBox = styled.div`
 
   .person_ad_box,
   .parent_ad_box,
-  .person_st_box {
+  .person_st_box,
+  .police_ad_box {
     margin-bottom: 20px;
   }
 
@@ -87,7 +89,8 @@ const FormAddBox = styled.div`
     .parentbox,
     .issue_ad,
     .policebox,
-    .person_st_box {
+    .person_st_box,
+    .police_nos {
       grid-template-columns: 1fr;
       margin-bottom: 17px;
     }

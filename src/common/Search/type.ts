@@ -5,8 +5,8 @@ export type FormDataProp = {
   lastName: string;
   age: string;
   gender: string;
-  state: string;
-  lga: string;
+  personSt: string;
+  personLga: string;
 };
 
 type DataProp = {
@@ -46,8 +46,8 @@ export const schema = yup
     lastName: yup.string().required(),
     age: yup.string().required(),
     gender: yup.string().required(),
-    state: yup.string(),
-    lga: yup.string(),
+    personSt: yup.string(),
+    personLga: yup.string(),
   })
   .required();
 

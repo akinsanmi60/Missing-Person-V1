@@ -18,7 +18,13 @@ function AddFormPage({ formType, setData }: FormPageProp) {
   const formData = watch();
 
   // LGA
-  const stateLGA = dataNig.find(s => s.state === formData.state);
+  const stateLGA = dataNig.find(
+    s =>
+      s.state === formData.issueState || formData.personSt || formData.poState,
+  );
+
+  // sort dataNig
+  const givenState = dataNig.sort((a, b) => (a.state > b.state ? 1 : -1));
 
   const onSubmit: SubmitHandler<FasProp> = data => {
     console.log(data);
@@ -29,6 +35,7 @@ function AddFormPage({ formType, setData }: FormPageProp) {
     <FormAddBox>
       <div className="formWrapper">
         <form onSubmit={handleSubmit(onSubmit)}>
+          {/**Victim Bio */}
           <div className="boxname">
             <div>
               <FormField label="First Name">
@@ -107,6 +114,8 @@ function AddFormPage({ formType, setData }: FormPageProp) {
               </FormField>
             </div>
           </div>
+
+          {/**Victim Address */}
           <div className="person_ad_box">
             <div>
               <FormField label="Person Address">
@@ -117,12 +126,37 @@ function AddFormPage({ formType, setData }: FormPageProp) {
           <div className="person_st_box">
             <div>
               <FormField label="State">
-                <Input {...register("personSt", { required: true })} />
+                <Select
+                  placeholder="Select State"
+                  {...register("personSt", { required: true })}
+                >
+                  {givenState.map(({ state }) => (
+                    <option value={state} key={state}>
+                      {state}
+                    </option>
+                  ))}
+                </Select>
               </FormField>
             </div>
             <div>
               <FormField label="Local Government">
-                <Input {...register("personLga", { required: true })} />
+                <Select
+                  placeholder="Local govt area"
+                  {...register("personLga", { required: true })}
+                  disabled={!stateLGA}
+                >
+                  {stateLGA &&
+                    stateLGA.lgas
+                      .sort((a, b) => (a > b ? 1 : -1))
+                      .map(lga => (
+                        <option
+                          value={lga.toLowerCase()}
+                          key={lga.toLowerCase()}
+                        >
+                          {lga}
+                        </option>
+                      ))}
+                </Select>
               </FormField>
             </div>
           </div>
@@ -151,6 +185,7 @@ function AddFormPage({ formType, setData }: FormPageProp) {
             </div>
           </div>
 
+          {/**Missing or Found Details */}
           <div>
             {formType === "found" ? (
               <h1>Found Details</h1>
@@ -163,38 +198,43 @@ function AddFormPage({ formType, setData }: FormPageProp) {
                 <FormField label="Date">
                   <Input
                     type="date"
-                    {...register("date", { required: true })}
+                    {...register("issueDate", { required: true })}
                   />
                 </FormField>
               </div>
               <div>
                 <FormField label="State">
-                  <Select placeholder="Select State" {...register("state")}>
-                    {dataNig.map(({ state }) => (
+                  <Select
+                    placeholder="Select State"
+                    {...register("issueState")}
+                  >
+                    {givenState.map(({ state }) => (
                       <option value={state} key={state}>
                         {state}
                       </option>
                     ))}
-                  </Select>{" "}
+                  </Select>
                 </FormField>
               </div>
               <div>
                 <FormField label="Local Government">
                   <Select
                     placeholder="Local govt area"
-                    {...register("lga", { required: true })}
+                    {...register("issueLga", { required: true })}
                     disabled={!stateLGA}
                   >
                     {stateLGA &&
-                      stateLGA.lgas.map(lga => (
-                        <option
-                          value={lga.toLowerCase()}
-                          key={lga.toLowerCase()}
-                        >
-                          {lga}
-                        </option>
-                      ))}
-                  </Select>{" "}
+                      stateLGA.lgas
+                        .sort((a, b) => (a > b ? 1 : -1))
+                        .map(lga => (
+                          <option
+                            value={lga.toLowerCase()}
+                            key={lga.toLowerCase()}
+                          >
+                            {lga}
+                          </option>
+                        ))}
+                  </Select>
                 </FormField>
               </div>
             </div>
@@ -206,23 +246,50 @@ function AddFormPage({ formType, setData }: FormPageProp) {
               </div>
             </div>
           </div>
+
+          {/**Police */}
           <div>
             <h1>Police Officer-in-charge</h1>
           </div>
           <div className="policebox">
             <div>
-              <FormField label="Police Officer Name">
+              <FormField label="Police Officer Full Name">
                 <Input {...register("poName", { required: true })} />
               </FormField>
             </div>
             <div>
               <FormField label="State of Police Station">
-                <Input {...register("poState", { required: true })} />
+                <Select
+                  placeholder="Select State"
+                  {...register("poState", { required: true })}
+                >
+                  {givenState.map(({ state }) => (
+                    <option value={state} key={state}>
+                      {state}
+                    </option>
+                  ))}
+                </Select>
               </FormField>
             </div>
             <div>
               <FormField label="LGA of Police Station">
-                <Input {...register("poLga", { required: true })} />
+                <Select
+                  placeholder="Local govt area"
+                  {...register("poLga", { required: true })}
+                  disabled={!stateLGA}
+                >
+                  {stateLGA &&
+                    stateLGA.lgas
+                      .sort((a, b) => (a > b ? 1 : -1))
+                      .map(lga => (
+                        <option
+                          value={lga.toLowerCase()}
+                          key={lga.toLowerCase()}
+                        >
+                          {lga}
+                        </option>
+                      ))}
+                </Select>
               </FormField>
             </div>
           </div>
@@ -233,6 +300,64 @@ function AddFormPage({ formType, setData }: FormPageProp) {
               </FormField>
             </div>
           </div>
+          <div className="police_nos">
+            <div>
+              <FormField label="Case Number">
+                <Input {...register("caseNumber", { required: true })} />
+              </FormField>
+            </div>
+            <div>
+              <FormField label="Officer's Phone Number">
+                <Input {...register("poNumber", { required: true })} />
+              </FormField>
+            </div>
+            <div>
+              <FormField label="Station's Phone Number">
+                <Input {...register("stationNumber", { required: true })} />
+              </FormField>
+            </div>
+          </div>
+          <div className="police_ad_box">
+            <div>
+              <FormField label="Date Reported">
+                <Input {...register("dateReport", { required: true })} />
+              </FormField>
+            </div>
+          </div>
+
+          {/**Posted By */}
+          <div>
+            <h1>Posted By</h1>
+          </div>
+          <div className="boxname">
+            <div>
+              <FormField label="First Name">
+                <Input
+                  {...register("posterFirstName", { required: true })}
+                  value={authUser?.user.firstName || "Akinsanmi"}
+                  readOnly
+                />
+              </FormField>
+            </div>
+            <div>
+              <FormField label="Last Name">
+                <Input
+                  {...register("posterLastName", { required: true })}
+                  value={authUser?.user.lastName || "Akintunde"}
+                  readOnly
+                />
+              </FormField>
+            </div>
+            <div>
+              <FormField label="Relationship">
+                <Input
+                  {...register("posterRelationship", { required: true })}
+                />
+              </FormField>
+            </div>
+          </div>
+
+          {/**Payment*/}
           {formType === "missing" ? (
             <div className="payment">
               <p>

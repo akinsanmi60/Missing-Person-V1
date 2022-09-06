@@ -20,7 +20,10 @@ function SearchBar({ view, people, setData }: SearchPprop) {
   const formData = watch();
 
   // LGA
-  const stateLGA = dataNig.find(s => s.state === formData.state);
+  const stateLGA = dataNig.find(s => s.state === formData.personSt);
+
+  // sort dataNig
+  const givenState = dataNig.sort((a, b) => (a.state > b.state ? 1 : -1));
 
   // age calculation for dropdown
   const getAge = people.map(person => person.age);
@@ -89,12 +92,14 @@ function SearchBar({ view, people, setData }: SearchPprop) {
             </div>
             <div>
               <FormField label="State">
-                <Select placeholder="Select State" {...register("state")}>
-                  {dataNig.map(({ state }) => (
-                    <option value={state} key={state}>
-                      {state}
-                    </option>
-                  ))}
+                <Select placeholder="Select State" {...register("personSt")}>
+                  {givenState
+                    .map(({ state }) => (
+                      <option value={state} key={state}>
+                        {state}
+                      </option>
+                    ))
+                    .sort()}
                 </Select>
               </FormField>
             </div>
@@ -102,15 +107,20 @@ function SearchBar({ view, people, setData }: SearchPprop) {
               <FormField label="LGA">
                 <Select
                   placeholder="Local govt area"
-                  {...register("lga", { required: true })}
+                  {...register("personLga", { required: true })}
                   disabled={!stateLGA}
                 >
                   {stateLGA &&
-                    stateLGA.lgas.map(lga => (
-                      <option value={lga.toLowerCase()} key={lga.toLowerCase()}>
-                        {lga}
-                      </option>
-                    ))}
+                    stateLGA.lgas
+                      .sort((a, b) => (a > b ? 1 : -1))
+                      .map(lga => (
+                        <option
+                          value={lga.toLowerCase()}
+                          key={lga.toLowerCase()}
+                        >
+                          {lga}
+                        </option>
+                      ))}
                 </Select>
               </FormField>
             </div>

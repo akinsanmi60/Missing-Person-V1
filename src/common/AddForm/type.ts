@@ -83,16 +83,23 @@ export type FasProp = {
   personLga: string;
   father: string;
   mother: string;
-  date: string;
   sibling: string;
   parentAd: string;
-  state: string;
-  lga: string;
+  issueDate: string;
+  issueState: string;
+  issueLga: string;
   issueAd: string;
   poName: string;
   poState: string;
   poLga: string;
   poAd: string;
+  poNumber: string;
+  caseNumber: string;
+  stationNumber: string;
+  dateReport: string;
+  posterFirstName: string;
+  posterLastName: string;
+  posterRelationship: string;
 };
 
 export type FormPageProp = {

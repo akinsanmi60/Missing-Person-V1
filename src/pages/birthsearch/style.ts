@@ -10,7 +10,7 @@ const BirthWrapper = styled.div`
   }
   @media screen and (max-width: 375px) {
     .wallpaper {
-      padding: 40px;
+      padding: 20px;
     }
   }
 `;

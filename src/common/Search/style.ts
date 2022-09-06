@@ -19,7 +19,6 @@ const SearchBox = styled.div`
     margin-bottom: 20px;
     @media screen and (max-width: 425px) {
       grid-template-columns: 1fr;
-
       margin-bottom: 10px;
     }
   }
