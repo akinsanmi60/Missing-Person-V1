@@ -3,6 +3,7 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   .container {
     display: flex;
+    margin-top: 15px;
     border: 1px solid var(--dark-primary);
     gap: 20px;
     margin-bottom: 50px;

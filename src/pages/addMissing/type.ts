@@ -1,4 +1,5 @@
 export type FasProp = {
+  foundPersonType: string;
   firstName: string;
   lastName: string;
   middleName: string;
@@ -30,4 +31,6 @@ export type FasProp = {
   posterFirstName: string;
   posterLastName: string;
   posterRelationship: string;
+  posterNumber: string;
+  posterOTP: string;
 };

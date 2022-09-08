@@ -11,7 +11,7 @@ import SectionWrapper, { ButtonStyled } from "./style";
 
 const styles = {
   logo: {
-    width: "100%",
+    width: "70%",
   },
 };
 

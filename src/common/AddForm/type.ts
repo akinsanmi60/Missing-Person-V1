@@ -34,6 +34,8 @@ export const skinColor = ["Dark", "Fair", "Very dark", "Very fair"].sort(
   (a, b) => (a > b ? 1 : -1),
 );
 
+export const foundInputValue = ["Found Dead Body", "Found Missing Person"];
+
 // hair-type sorting
 export const hairType = [
   "Side burns",
@@ -69,6 +71,7 @@ export type PropTran = {
 };
 
 export type FasProp = {
+  foundPersonType: string;
   firstName: string;
   lastName: string;
   middleName: string;
@@ -100,6 +103,8 @@ export type FasProp = {
   posterFirstName: string;
   posterLastName: string;
   posterRelationship: string;
+  posterNumber: string;
+  posterOTP: string;
 };
 
 export type FormPageProp = {

@@ -16,21 +16,19 @@ const NavigationStyled = styled.nav`
     display: flex;
     gap: 30px;
     padding: 7px 13px;
+  }
 
-    .Link {
-      color: #3e3e3e;
-      font-weight: 700;
-      font-size: 16px;
-      margin-top: 5px;
-      /* padding: 7px 13px; */
-      text-decoration: none;
-      line-height: 1em;
-      cursor: pointer;
-      &.active {
-        border-top: 2px;
-        color: yellow;
-        font-weight: 900;
-      }
+  .link {
+    color: #0e2038;
+    font-weight: 700;
+    font-size: 16px;
+    margin-top: 5px;
+    text-decoration: none;
+    line-height: 1em;
+    cursor: pointer;
+    &.active {
+      color: #15cdfc;
+      border-bottom: 1px solid red;
     }
   }
 
@@ -53,7 +51,7 @@ const NavigationStyled = styled.nav`
 export default NavigationStyled;
 
 export const NavLink = styled(Link)`
-  color: #16194f;
+  color: #0e2038;
   display: flex;
   font-size: 25px;
   align-items: center;

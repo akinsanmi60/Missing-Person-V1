@@ -5,6 +5,7 @@ const FormAddBox = styled.div`
   .inputbox {
     display: flex;
   }
+
   .boxname,
   .personbox,
   .dropbox,
@@ -34,7 +35,8 @@ const FormAddBox = styled.div`
   .person_ad_box,
   .parent_ad_box,
   .person_st_box,
-  .police_ad_box {
+  .police_ad_box,
+  .person_type {
     margin-bottom: 20px;
   }
 
@@ -52,6 +54,13 @@ const FormAddBox = styled.div`
     &:hover {
       border: 1px solid var(--dark-primary);
     }
+  }
+
+  Input[type="submit"] {
+    margin-top: 25px;
+    background-color: var(--dark-primary);
+    color: var(--neutral-light);
+    width: 7vw;
   }
 
   Select option {
@@ -94,6 +103,13 @@ const FormAddBox = styled.div`
       grid-template-columns: 1fr;
       margin-bottom: 17px;
     }
+
+    Input[type="submit"] {
+      margin-top: -12px;
+      background-color: var(--dark-primary);
+      color: var(--neutral-light);
+      width: 23vw;
+    }
   }
 `;
 export default FormAddBox;
@@ -119,6 +135,7 @@ export const ButtonStyled = styled.button`
   letter-spacing: 0.02857em;
   text-transform: uppercase;
   min-width: 64px;
+  margin-top: 20px;
   &:disabled {
     background-color: #cccccc;
   }

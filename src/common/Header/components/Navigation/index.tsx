@@ -18,25 +18,25 @@ function HeaderNavigation() {
         </div>
       </div>
       <div className="navitemsbox">
-        <Link to="/missing_person" className="Link">
+        <Link to="/missing_person" className="link">
           Missing Person
         </Link>
-        <Link to="/identified_person" className="Link">
+        <Link to="/identified_person" className="link">
           Identified Person
         </Link>
-        <Link to="/dead_bodies" className="Link">
+        <Link to="/dead_bodies" className="link">
           Dead Bodies
         </Link>
-        <Link to="/birth" className="Link">
+        <Link to="/birth" className="link">
           Birth
         </Link>
-        <Link to="/about" className="Link">
+        <Link to="/about" className="link">
           About
         </Link>
-        <Link to="/contact" className="Link">
+        <Link to="/contact" className="link">
           Contact Us
         </Link>
-        <Link to="/question" className="Link">
+        <Link to="/question" className="link">
           FAQ
         </Link>
       </div>

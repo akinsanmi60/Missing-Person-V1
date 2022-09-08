@@ -4,7 +4,14 @@ import { Input, Select, useDisclosure } from "@chakra-ui/react";
 import FormField from "common/FormField";
 import { SubmitHandler, useForm } from "react-hook-form";
 import FormAddBox, { ButtonStyled } from "./style";
-import { bodyType, FasProp, FormPageProp, hairType, skinColor } from "./type";
+import {
+  bodyType,
+  FasProp,
+  FormPageProp,
+  hairType,
+  skinColor,
+  foundInputValue,
+} from "./type";
 import PaymentModal from "./component";
 import AuthContext from "contexts/AuthProvider";
 import dataNig from "../../utils/states_and_lgas.json";
@@ -16,6 +23,13 @@ function AddFormPage({ formType, setData }: FormPageProp) {
 
   // the watch() is used to observe value change in state select
   const formData = watch();
+
+  // conditions for button disable
+  const btnCondition =
+    !formData.poName &&
+    !formData.poAd &&
+    !formData.poName &&
+    !formData.posterOTP;
 
   // LGA
   const stateLGA = dataNig.find(
@@ -35,6 +49,24 @@ function AddFormPage({ formType, setData }: FormPageProp) {
     <FormAddBox>
       <div className="formWrapper">
         <form onSubmit={handleSubmit(onSubmit)}>
+          {/**Payment*/}
+          {formType === "found" ? (
+            <div className="person_type">
+              <FormField label="Found Person Type">
+                <Select
+                  placeholder="Please Select"
+                  {...register("foundPersonType", { required: true })}
+                >
+                  {foundInputValue.map(inputValue => (
+                    <option value={inputValue} key={inputValue}>
+                      {inputValue}
+                    </option>
+                  ))}
+                </Select>
+              </FormField>
+            </div>
+          ) : null}
+
           {/**Victim Bio */}
           <div className="boxname">
             <div>
@@ -356,6 +388,24 @@ function AddFormPage({ formType, setData }: FormPageProp) {
               </FormField>
             </div>
           </div>
+          <div className="boxname">
+            <div>
+              <FormField label="E-mail">
+                <Input
+                  {...register("posterNumber", { required: true })}
+                  value={authUser?.user.email || "2348164279799"}
+                />
+              </FormField>
+            </div>
+            <div>
+              <FormField label="OTP Number">
+                <Input {...register("posterOTP", { required: true })} />
+              </FormField>
+            </div>
+            <div>
+              <Input type="submit" value="Send OTP" />
+            </div>
+          </div>
 
           {/**Payment*/}
           {formType === "missing" ? (
@@ -373,17 +423,20 @@ function AddFormPage({ formType, setData }: FormPageProp) {
             </div>
           ) : null}
 
+          {/**Button*/}
           <div className="btn">
             {formType === "missing" ? (
               <ButtonStyled
                 disabled={
-                  authUser?.transaction?.status !== "success" ? true : false
+                  authUser?.transaction?.status !== "success"
+                    ? true
+                    : false && btnCondition
                 }
               >
                 Submit
               </ButtonStyled>
             ) : (
-              <ButtonStyled>Submit</ButtonStyled>
+              <ButtonStyled disabled={btnCondition}>Submit</ButtonStyled>
             )}
           </div>
         </form>

@@ -49,13 +49,17 @@ const SectionWrapper = styled.section`
       }
     }
 
+    label {
+      margin-bottom: 0px;
+    }
+
     Input {
       outline: none;
       width: 100%;
       padding: 10px;
       border-radius: 6px;
       border: 1px solid var(--dark-primary);
-      margin: 10px 0;
+      margin: 5px;
       font-size: 14px;
       color: var(--dark-primary);
       &:hover {

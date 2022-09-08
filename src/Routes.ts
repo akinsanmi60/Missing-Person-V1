@@ -7,7 +7,7 @@ const MissingPage = React.lazy(() => import("pages/missingPerson/missing"));
 const IdentifiedPage = React.lazy(() => import("pages/foundPerson/index"));
 const Question = React.lazy(() => import("pages/faq"));
 const ContactPage = React.lazy(() => import("pages/contact/"));
-const AboutPage = React.lazy(() => import("pages/about"));
+const AboutPage = React.lazy(() => import("pages/about/index"));
 
 // App Routes
 const AddFoundPage = React.lazy(() => import("pages/addFound"));
