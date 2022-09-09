@@ -8,3 +8,9 @@ export const FORGET_PASSWORD = "http://localhost:3500/user/forgotpassword";
 export const RESET_PASSWORD = "http://localhost:3500/user/resetpassword";
 export const CHANGE_PASSWORD = "http://localhost:3500/user/changepassword";
 export const UPDATE_USER = "http://localhost:3500/user/updateuser";
+
+// Newsletter Subscription
+export const NEWSLETTER = "http://localhost:3500/newsletter/subscribe_mail";
+
+// OTP Routes
+export const OTP_ROUTE = "http://localhost:3500/user/otp_number";

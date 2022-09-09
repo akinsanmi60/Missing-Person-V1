@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useContext } from "react";
-import { Input, Select, useDisclosure } from "@chakra-ui/react";
+import { Input, Select, Spinner, useDisclosure } from "@chakra-ui/react";
 import FormField from "common/FormField";
 import { SubmitHandler, useForm } from "react-hook-form";
 import FormAddBox, { ButtonStyled } from "./style";
@@ -15,6 +15,11 @@ import {
 import PaymentModal from "./component";
 import AuthContext from "contexts/AuthProvider";
 import dataNig from "../../utils/states_and_lgas.json";
+import { toast } from "react-toastify";
+import toastOptions from "hooks/toast";
+import { postRequest } from "utils/apiCall";
+import { useMutation } from "@tanstack/react-query";
+import { OTP_ROUTE } from "utils/Api-Routes";
 
 function AddFormPage({ formType, setData }: FormPageProp) {
   const { authUser } = useContext(AuthContext);
@@ -40,9 +45,28 @@ function AddFormPage({ formType, setData }: FormPageProp) {
   // sort dataNig
   const givenState = dataNig.sort((a, b) => (a.state > b.state ? 1 : -1));
 
+  const { mutate, isLoading } = useMutation(postRequest, {
+    onSuccess(res) {
+      toast.success(res?.message, toastOptions);
+    },
+    onError(err: any) {
+      toast.error(err?.message, toastOptions);
+    },
+  });
+
   const onSubmit: SubmitHandler<FasProp> = data => {
-    console.log(data);
     setData(data);
+  };
+
+  const handleOTP = () => {
+    const phoneNumber = formData.posterNumber;
+    if (phoneNumber === "") {
+      return toast.error(
+        "Please enter your registerd phone number",
+        toastOptions,
+      );
+    }
+    mutate({ data: { phoneNumber: phoneNumber }, url: OTP_ROUTE });
   };
 
   return (
@@ -71,44 +95,41 @@ function AddFormPage({ formType, setData }: FormPageProp) {
           <div className="boxname">
             <div>
               <FormField label="First Name">
-                <Input {...register("firstName", { required: true })} />
+                <Input {...register("firstName")} />
               </FormField>
             </div>
             <div>
               <FormField label="Middle Name">
-                <Input {...register("middleName", { required: true })} />
+                <Input {...register("middleName")} />
               </FormField>
             </div>
             <div>
               <FormField label="Last Name">
-                <Input {...register("lastName", { required: true })} />
+                <Input {...register("lastName")} />
               </FormField>
             </div>
           </div>
           <div className="personbox">
             <div>
               <FormField label="Gender">
-                <Input {...register("gender", { required: true })} />
+                <Input {...register("gender")} />
               </FormField>
             </div>
             <div>
               <FormField label="Height">
-                <Input {...register("height", { required: true })} />
+                <Input {...register("height")} />
               </FormField>
             </div>
             <div>
               <FormField label="Weight">
-                <Input {...register("weight", { required: true })} />
+                <Input {...register("weight")} />
               </FormField>
             </div>
           </div>
           <div className="dropbox">
             <div>
               <FormField label="Complexion">
-                <Select
-                  placeholder="Please Select"
-                  {...register("skin", { required: true })}
-                >
+                <Select placeholder="Please Select" {...register("skin")}>
                   {skinColor.map(color => (
                     <option value={color} key={color}>
                       {color}
@@ -119,10 +140,7 @@ function AddFormPage({ formType, setData }: FormPageProp) {
             </div>
             <div>
               <FormField label="Hair">
-                <Select
-                  placeholder="Please Select"
-                  {...register("hair", { required: true })}
-                >
+                <Select placeholder="Please Select" {...register("hair")}>
                   {hairType.map(ht => (
                     <option value={ht} key={ht}>
                       {ht}
@@ -133,10 +151,7 @@ function AddFormPage({ formType, setData }: FormPageProp) {
             </div>
             <div>
               <FormField label="Build">
-                <Select
-                  placeholder="Please Select"
-                  {...register("body", { required: true })}
-                >
+                <Select placeholder="Please Select" {...register("body")}>
                   {bodyType.map(gh => (
                     <option value={gh} key={gh}>
                       {gh}
@@ -151,17 +166,14 @@ function AddFormPage({ formType, setData }: FormPageProp) {
           <div className="person_ad_box">
             <div>
               <FormField label="Person Address">
-                <Input {...register("personAd", { required: true })} />
+                <Input {...register("personAd")} />
               </FormField>
             </div>
           </div>
           <div className="person_st_box">
             <div>
               <FormField label="State">
-                <Select
-                  placeholder="Select State"
-                  {...register("personSt", { required: true })}
-                >
+                <Select placeholder="Select State" {...register("personSt")}>
                   {givenState.map(({ state }) => (
                     <option value={state} key={state}>
                       {state}
@@ -174,7 +186,7 @@ function AddFormPage({ formType, setData }: FormPageProp) {
               <FormField label="Local Government">
                 <Select
                   placeholder="Local govt area"
-                  {...register("personLga", { required: true })}
+                  {...register("personLga")}
                   disabled={!stateLGA}
                 >
                   {stateLGA &&
@@ -195,24 +207,24 @@ function AddFormPage({ formType, setData }: FormPageProp) {
           <div className="parentbox">
             <div>
               <FormField label="Father's Name">
-                <Input {...register("father", { required: true })} />
+                <Input {...register("father")} />
               </FormField>
             </div>
             <div>
               <FormField label="Mother's Name">
-                <Input {...register("mother", { required: true })} />
+                <Input {...register("mother")} />
               </FormField>
             </div>
             <div>
               <FormField label="Sibling's Name">
-                <Input {...register("sibling", { required: true })} />
+                <Input {...register("sibling")} />
               </FormField>
             </div>
           </div>
           <div className="parent_ad_box">
             <div>
               <FormField label="Parent Address">
-                <Input {...register("parentAd", { required: true })} />
+                <Input {...register("parentAd")} />
               </FormField>
             </div>
           </div>
@@ -228,10 +240,7 @@ function AddFormPage({ formType, setData }: FormPageProp) {
             <div className="issue_ad">
               <div>
                 <FormField label="Date">
-                  <Input
-                    type="date"
-                    {...register("issueDate", { required: true })}
-                  />
+                  <Input type="date" {...register("issueDate")} />
                 </FormField>
               </div>
               <div>
@@ -286,15 +295,12 @@ function AddFormPage({ formType, setData }: FormPageProp) {
           <div className="policebox">
             <div>
               <FormField label="Police Officer Full Name">
-                <Input {...register("poName", { required: true })} />
+                <Input {...register("poName")} />
               </FormField>
             </div>
             <div>
               <FormField label="State of Police Station">
-                <Select
-                  placeholder="Select State"
-                  {...register("poState", { required: true })}
-                >
+                <Select placeholder="Select State" {...register("poState")}>
                   {givenState.map(({ state }) => (
                     <option value={state} key={state}>
                       {state}
@@ -307,7 +313,7 @@ function AddFormPage({ formType, setData }: FormPageProp) {
               <FormField label="LGA of Police Station">
                 <Select
                   placeholder="Local govt area"
-                  {...register("poLga", { required: true })}
+                  {...register("poLga")}
                   disabled={!stateLGA}
                 >
                   {stateLGA &&
@@ -328,7 +334,7 @@ function AddFormPage({ formType, setData }: FormPageProp) {
           <div className="police_ad_box">
             <div>
               <FormField label="Police Station Address">
-                <Input {...register("poAd", { required: true })} />
+                <Input {...register("poAd")} />
               </FormField>
             </div>
           </div>
@@ -340,19 +346,19 @@ function AddFormPage({ formType, setData }: FormPageProp) {
             </div>
             <div>
               <FormField label="Officer's Phone Number">
-                <Input {...register("poNumber", { required: true })} />
+                <Input {...register("poNumber")} />
               </FormField>
             </div>
             <div>
               <FormField label="Station's Phone Number">
-                <Input {...register("stationNumber", { required: true })} />
+                <Input {...register("stationNumber")} />
               </FormField>
             </div>
           </div>
           <div className="police_ad_box">
             <div>
               <FormField label="Date Reported">
-                <Input {...register("dateReport", { required: true })} />
+                <Input {...register("dateReport")} />
               </FormField>
             </div>
           </div>
@@ -365,7 +371,7 @@ function AddFormPage({ formType, setData }: FormPageProp) {
             <div>
               <FormField label="First Name">
                 <Input
-                  {...register("posterFirstName", { required: true })}
+                  {...register("posterFirstName")}
                   value={authUser?.user.firstName || "Akinsanmi"}
                   readOnly
                 />
@@ -374,7 +380,7 @@ function AddFormPage({ formType, setData }: FormPageProp) {
             <div>
               <FormField label="Last Name">
                 <Input
-                  {...register("posterLastName", { required: true })}
+                  {...register("posterLastName")}
                   value={authUser?.user.lastName || "Akintunde"}
                   readOnly
                 />
@@ -382,9 +388,7 @@ function AddFormPage({ formType, setData }: FormPageProp) {
             </div>
             <div>
               <FormField label="Relationship">
-                <Input
-                  {...register("posterRelationship", { required: true })}
-                />
+                <Input {...register("posterRelationship")} />
               </FormField>
             </div>
           </div>
@@ -393,7 +397,7 @@ function AddFormPage({ formType, setData }: FormPageProp) {
               <FormField label="E-mail">
                 <Input
                   {...register("posterNumber", { required: true })}
-                  value={authUser?.user.email || "2348164279799"}
+                  // value={authUser?.user.email || "2348164279799"}
                 />
               </FormField>
             </div>
@@ -403,7 +407,10 @@ function AddFormPage({ formType, setData }: FormPageProp) {
               </FormField>
             </div>
             <div>
-              <Input type="submit" value="Send OTP" />
+              <button type="submit" className="btn-otp" onClick={handleOTP}>
+                {isLoading ? "Sending.." : "Send OTP"}
+              </button>
+              <span>{isLoading ? <Spinner size="sm" /> : null}</span>
             </div>
           </div>
 

@@ -23,11 +23,13 @@ const LetterWrapper = styled.div`
   }
 
   .formfield {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 20px;
   }
 
   Input {
+    width: 100%;
     border: 1px solid var(--dark-primary);
     font-size: 13px;
     color: var(--dark-primary);
@@ -57,6 +59,11 @@ const LetterWrapper = styled.div`
       background-color: #cccccc;
     }
   }
+
+  span {
+    margin-top: 15px;
+    margin-left: 10px;
+  }
   @media screen and (max-width: 425px) {
     .container {
       flex-direction: column-reverse;
@@ -75,14 +82,14 @@ const LetterWrapper = styled.div`
     }
 
     .formfield {
-      flex-direction: column;
+      grid-template-columns: 1fr;
       gap: 0;
     }
 
     .btn {
       padding: 0.5rem 1rem;
       font-size: 0.8rem;
-      max-width: 28vw;
+      max-width: 46%;
     }
   }
 `;

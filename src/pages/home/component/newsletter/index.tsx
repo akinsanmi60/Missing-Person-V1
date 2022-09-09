@@ -1,19 +1,53 @@
 import React from "react";
 import FormField from "common/FormField";
 import { SubmitHandler, useForm } from "react-hook-form";
-import LetterWrapper from "./style";
-import { Input } from "@chakra-ui/react";
+import { Input, Spinner } from "@chakra-ui/react";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { useMutation } from "@tanstack/react-query";
+import { postRequest } from "utils/apiCall";
 import letterImg from "../../../../assets/Mailbox-bro.svg";
+import { toast } from "react-toastify";
+import toastOptions from "hooks/toast";
+import LetterWrapper from "./style";
+import { NEWSLETTER } from "utils/Api-Routes";
 
 type FasProp = {
-  example: string;
-  exampleRequired: string;
+  firstName: string;
+  lastName: string;
+  email: string;
 };
 
-function NewsLetterPage() {
-  const { register, handleSubmit } = useForm<FasProp>();
+const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 
-  const onSubmit: SubmitHandler<FasProp> = data => console.log(data);
+const schema = yup
+  .object({
+    firstName: yup.string().required(),
+    lastName: yup.string().required(),
+    email: yup.string().required(),
+  })
+  .required();
+
+function NewsLetterPage() {
+  const { register, handleSubmit } = useForm<FasProp>({
+    resolver: yupResolver(schema),
+  });
+
+  const { mutate, isLoading } = useMutation(postRequest, {
+    onSuccess(res) {
+      toast.success(res?.message, toastOptions);
+    },
+    onError(err: any) {
+      toast.error(err?.message, toastOptions);
+    },
+  });
+
+  const onSubmit: SubmitHandler<FasProp> = data => {
+    if (!data.email.match(EMAIL_REGEX)) {
+      return toast.error("Please enter a valid email format", toastOptions);
+    }
+    mutate({ data: data, url: NEWSLETTER });
+  };
 
   return (
     <LetterWrapper>
@@ -26,13 +60,27 @@ function NewsLetterPage() {
           </p>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="formfield">
+              <div>
+                <FormField>
+                  <Input defaultValue="First Name" {...register("firstName")} />
+                </FormField>
+              </div>
+              <div>
+                <FormField>
+                  <Input defaultValue="Last Name" {...register("lastName")} />
+                </FormField>
+              </div>
+            </div>
+            <div>
               <FormField>
-                <Input defaultValue="test" {...register("example")} />
+                <Input defaultValue="test" {...register("email")} />
               </FormField>
-
+            </div>
+            <div className="btn_box">
               <button type="submit" className="btn">
-                Subscribe
+                {isLoading ? "Sending..." : "Subscribe"}
               </button>
+              <span>{isLoading ? <Spinner size="sm" /> : null}</span>
             </div>
           </form>
         </div>

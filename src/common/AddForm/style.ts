@@ -56,11 +56,18 @@ const FormAddBox = styled.div`
     }
   }
 
-  Input[type="submit"] {
-    margin-top: 25px;
+  .btn-otp {
+    padding: 9px;
+    margin-top: 26px;
+    font-size: 13px;
     background-color: var(--dark-primary);
     color: var(--neutral-light);
-    width: 7vw;
+    border-radius: 6px;
+  }
+
+  span {
+    margin-left: 9px;
+    margin-top: 21px;
   }
 
   Select option {

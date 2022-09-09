@@ -86,8 +86,14 @@ const FootWrapper = styled.footer`
       }
     }
     @media screen and (max-width: 425px) {
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr 1fr;
       padding: 20px;
+    }
+    .marbox {
+      margin-top: 0px;
+    }
+    @media screen and (max-width: 320px) {
+      grid-template-columns: 1fr;
     }
   }
 
