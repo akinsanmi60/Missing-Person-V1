@@ -1,10 +1,8 @@
 import styled from "styled-components";
 
-const LoginWrapper = styled.div`
-  .layer {
-    background-color: var(--neutral-light);
-    min-height: 100vh;
-  }
+const RegisterWrapper = styled.div`
+  background-color: var(--neutral-light);
+  min-height: 100vh;
 
   .boxform {
     display: flex;
@@ -18,20 +16,8 @@ const LoginWrapper = styled.div`
     margin-bottom: 6px;
   }
 
-  .forgot p {
-    margin-top: 8px;
-    font-size: 12px;
-    font-style: italic;
-  }
-
-  .forgot span {
-    text-decoration: underline;
-    color: blue;
-    cursor: pointer;
-  }
-
   .formContainer {
-    min-width: 400px;
+    min-width: 600px;
     margin-top: 50px;
     position: relative;
     z-index: 999;
@@ -41,6 +27,12 @@ const LoginWrapper = styled.div`
     -moz-box-shadow: -1px 4px 28px 0px rgba(0, 0, 0, 0.25);
     box-shadow: -1px 4px 28px 0px rgb(0 0 0 / 25%);
     margin-bottom: -20px;
+  }
+
+  .form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
   }
 
   Input {
@@ -77,12 +69,13 @@ const LoginWrapper = styled.div`
   .btn {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 30px;
     span {
       margin-left: 8px;
       margin-top: 8px;
     }
   }
+
   .text {
     text-align: center;
     margin-top: 40px;
@@ -93,11 +86,24 @@ const LoginWrapper = styled.div`
     }
   }
 
+  @media screen and (max-width: 768px) {
+    .formContainer {
+      margin-bottom: 40px;
+      min-width: 300px;
+    }
+  }
   @media screen and (max-width: 425px) {
+    .form {
+      grid-template-columns: 1fr;
+      gap: 0px;
+    }
+
+    label {
+      margin-top: 15px;
+    }
     .formContainer {
       margin-top: 30px;
       margin-bottom: 40px;
-      min-width: 300px;
     }
     .btn {
       display: flex;
@@ -106,7 +112,7 @@ const LoginWrapper = styled.div`
     }
   }
 `;
-export default LoginWrapper;
+export default RegisterWrapper;
 
 export const ButtonStyled = styled.button`
   background-color: var(--dark-primary);
@@ -123,7 +129,7 @@ export const ButtonStyled = styled.button`
   line-height: 1.75;
   letter-spacing: 0.02857em;
   text-transform: uppercase;
-  /* min-width: 64px; */
+  min-width: 64px;
   &:disabled {
     background-color: #cccccc;
   }

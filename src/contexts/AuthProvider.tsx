@@ -7,7 +7,7 @@ type AuthUserType = {
     email: string;
     firstName: string;
     lastName: string;
-    accountType: string;
+    phoneNumber: string;
     _id: string;
     userIdNos: string;
   };

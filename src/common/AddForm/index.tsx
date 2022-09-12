@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Input, Select, Spinner, useDisclosure } from "@chakra-ui/react";
 import FormField from "common/FormField";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -25,6 +25,7 @@ function AddFormPage({ formType, setData }: FormPageProp) {
   const { authUser } = useContext(AuthContext);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { register, handleSubmit, watch } = useForm<FasProp>();
+  const [arrivedOTP, setArrivedOTP] = useState("");
 
   // the watch() is used to observe value change in state select
   const formData = watch();
@@ -48,6 +49,8 @@ function AddFormPage({ formType, setData }: FormPageProp) {
   const { mutate, isLoading } = useMutation(postRequest, {
     onSuccess(res) {
       toast.success(res?.message, toastOptions);
+      setArrivedOTP(res?.allowOTPCode);
+      console.log(res);
     },
     onError(err: any) {
       toast.error(err?.message, toastOptions);
@@ -59,14 +62,11 @@ function AddFormPage({ formType, setData }: FormPageProp) {
   };
 
   const handleOTP = () => {
-    const phoneNumber = formData.posterNumber;
-    if (phoneNumber === "") {
-      return toast.error(
-        "Please enter your registerd phone number",
-        toastOptions,
-      );
+    const phoneEmail = formData.posterEmail;
+    if (phoneEmail === "") {
+      return toast.error("Please enter your registerd email", toastOptions);
     }
-    mutate({ data: { phoneNumber: phoneNumber }, url: OTP_ROUTE });
+    mutate({ data: { phoneEmail: phoneEmail }, url: OTP_ROUTE });
   };
 
   return (
@@ -396,39 +396,51 @@ function AddFormPage({ formType, setData }: FormPageProp) {
             <div>
               <FormField label="E-mail">
                 <Input
-                  {...register("posterNumber", { required: true })}
-                  // value={authUser?.user.email || "2348164279799"}
+                  {...register("posterEmail", { required: true })}
+                  // value={authUser?.user.email || ""}
                 />
               </FormField>
             </div>
             <div>
               <FormField label="OTP Number">
-                <Input {...register("posterOTP", { required: true })} />
+                <Input
+                  {...register("posterOTP", { required: true })}
+                  // value={arrivedOTP}
+                />
               </FormField>
             </div>
             <div>
               <button type="submit" className="btn-otp" onClick={handleOTP}>
                 {isLoading ? "Sending.." : "Send OTP"}
               </button>
-              <span>{isLoading ? <Spinner size="sm" /> : null}</span>
+              <span className="numbaOTP">
+                {isLoading ? <Spinner size="sm" /> : `${arrivedOTP}`}
+              </span>
             </div>
           </div>
 
           {/**Payment*/}
-          {formType === "missing" ? (
-            <div className="payment">
+          <div className="payment">
+            {formType === "missing" ? (
               <p>
-                Kindly make payment to enable submission of form.{" "}
+                Kindly make payment to enable submission of form.
                 <span
                   onClick={() => {
                     onOpen();
                   }}
                 >
-                  Click to make payment
-                </span>
+                  Click to make payment.
+                </span>{" "}
+                The OTP button won't be clickable once you've otp generated
+                except the page is refreshed then it becomes clickable.
               </p>
-            </div>
-          ) : null}
+            ) : formType === "found" ? (
+              <p className="warningotp">
+                The OTP button won't be clickable once you've otp generated
+                except the page is refreshed then it becomes clickable.
+              </p>
+            ) : null}
+          </div>
 
           {/**Button*/}
           <div className="btn">

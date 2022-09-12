@@ -75,7 +75,7 @@ function LoginPage() {
       if (isEmailVerified === true) {
         navigate("/auth_profile");
       } else {
-        navigate("/verificationpage");
+        navigate("/verify_account");
       }
     },
     onError(err: any) {
@@ -151,8 +151,9 @@ function LoginPage() {
                 </div>
                 <div className="btn">
                   <ButtonStyled>
-                    {isLoading ? <Spinner size="sm" /> : "Login"}
+                    {isLoading ? "Loading..." : "Login"}
                   </ButtonStyled>
+                  <span>{isLoading ? <Spinner size="sm" /> : null}</span>
                 </div>
                 <div className="text">
                   <p>

@@ -4,6 +4,9 @@ import LayoutWrapper from "utils/WebpageWrap";
 import ROUTESWITHLAYER, { APPROUTES } from "Routes";
 import AppLayout from "pages/appLayout";
 import LoginPage from "pages/loginPage";
+import RegisterPage from "pages/registerPage";
+import VerifyPage from "pages/verifyPage";
+
 // import PrivateRoute from "hooks/privateRoute";
 const Unauthorized = React.lazy(() => import("pages/error/unauthorized"));
 const ErrorPage = React.lazy(() => import("pages/error/error"));
@@ -29,6 +32,8 @@ function App() {
           <Route path="/*" element={<ErrorPage />} />
           <Route path="/reset_password" element={<ResetFormPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/verify_account" element={<VerifyPage />} />
 
           {Object.entries(ROUTESWITHLAYER).map(itemRoute => {
             const [key, value] = itemRoute;

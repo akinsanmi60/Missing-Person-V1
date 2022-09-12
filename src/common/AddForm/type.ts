@@ -103,7 +103,7 @@ export type FasProp = {
   posterFirstName: string;
   posterLastName: string;
   posterRelationship: string;
-  posterNumber: string;
+  posterEmail: string;
   posterOTP: string;
 };
 

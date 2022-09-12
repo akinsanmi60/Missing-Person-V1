@@ -70,11 +70,17 @@ const FormAddBox = styled.div`
     margin-top: 21px;
   }
 
+  .numbaOTP {
+    margin-top: 150px;
+    color: green;
+  }
+
   Select option {
     padding: 0px 5px;
     background-color: var(--neutral-light);
   }
 
+  .warningotp,
   .payment p {
     margin-top: 4px;
     font-size: 12px;
@@ -116,6 +122,10 @@ const FormAddBox = styled.div`
       background-color: var(--dark-primary);
       color: var(--neutral-light);
       width: 23vw;
+    }
+
+    .btn-otp {
+      margin-top: 0px;
     }
   }
 `;
