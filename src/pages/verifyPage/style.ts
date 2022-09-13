@@ -40,15 +40,18 @@ const VerifyWrapper = styled.div`
     color: #16194f;
     span {
       font-size: 12px;
+      color: green;
     }
   }
   .action-text {
-    font-size: 15px;
+    font-size: 14px;
     margin-top: 20px;
     color: #16194f;
     span {
       font-size: 12px;
       color: blue;
+      text-decoration: underline;
+      cursor: pointer;
     }
   }
 

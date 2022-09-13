@@ -16,7 +16,7 @@ const navigation = [
   },
   {
     id: "3",
-    path: "setting",
+    path: "profile_settings",
     title: "Setting",
   },
 ];

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useContext, useState } from "react";
 import { Input, Spinner } from "@chakra-ui/react";
 import VerifyWrapper, { ButtonStyled } from "./style";
@@ -6,7 +7,9 @@ import axios from "axios";
 import AuthContext from "contexts/AuthProvider";
 import toastOptions from "hooks/toast";
 import { useNavigate } from "react-router-dom";
-import { VERIFY_EMAIL } from "utils/Api-Routes";
+import { RESEND_OTP_ROUTE, VERIFY_EMAIL } from "utils/Api-Routes";
+import { useMutation } from "@tanstack/react-query";
+import { postRequest } from "utils/apiCall";
 
 function VerifyPage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -43,13 +46,28 @@ function VerifyPage() {
         withCredentials: true,
       });
       toast.success(`${res?.data.message}`, toastOptions);
-      navigate("/auth_profile");
+      navigate("/login");
 
       window.location.reload();
     } catch (err: any) {
       toast.error(`${err.message}`, toastOptions);
     }
     setIsLoading(false);
+  };
+
+  const { mutate } = useMutation(postRequest, {
+    onSuccess(res) {
+      toast.success(res?.message, toastOptions);
+      console.log(res);
+    },
+    onError(err: any) {
+      toast.error(err?.message, toastOptions);
+    },
+  });
+
+  const handleOTP = () => {
+    const email = authUser?.user.email;
+    mutate({ data: { phoneEmail: email }, url: RESEND_OTP_ROUTE });
   };
 
   return (
@@ -86,7 +104,7 @@ function VerifyPage() {
               <div className="action-text">
                 <p>
                   It may take a minute to receive your code. Haven't received
-                  it? <span>Resend a new code.</span>
+                  it? Resend a new<span onClick={handleOTP}> code.</span>
                 </p>
               </div>
             </form>

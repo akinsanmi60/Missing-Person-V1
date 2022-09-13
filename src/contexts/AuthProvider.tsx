@@ -8,6 +8,9 @@ type AuthUserType = {
     firstName: string;
     lastName: string;
     phoneNumber: string;
+    userAddress: string;
+    state: string;
+    useLga: string;
     _id: string;
     userIdNos: string;
   };

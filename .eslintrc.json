@@ -21,6 +21,7 @@
     "sourceType": "module"
   },
   "rules": {
+    "jsx-a11y/rule-name": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "no-nested-ternary": "off",
     "react/no-unescaped-entities": [0, {}],

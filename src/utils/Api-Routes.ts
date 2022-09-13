@@ -14,3 +14,6 @@ export const NEWSLETTER = "http://localhost:3500/newsletter/subscribe_mail";
 
 // OTP Routes
 export const OTP_ROUTE = "http://localhost:3500/user/otp_number";
+
+// RESEND-OTP Routes
+export const RESEND_OTP_ROUTE = "http://localhost:3500/user/resend_otp_number";

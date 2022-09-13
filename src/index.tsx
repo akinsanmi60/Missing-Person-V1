@@ -8,6 +8,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import GlobalStyle from "global";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { AuthProvider } from "contexts/AuthProvider";
 
 const queryClient = new QueryClient();
 
@@ -18,12 +19,14 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <ChakraProvider>
-        <QueryClientProvider client={queryClient}>
-          <GlobalStyle />
-          <App />
-          <ToastContainer />
-          <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
-        </QueryClientProvider>
+        <AuthProvider>
+          <QueryClientProvider client={queryClient}>
+            <GlobalStyle />
+            <App />
+            <ToastContainer />
+            <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
+          </QueryClientProvider>
+        </AuthProvider>
       </ChakraProvider>
     </BrowserRouter>
   </React.StrictMode>,

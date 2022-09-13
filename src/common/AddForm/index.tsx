@@ -39,8 +39,10 @@ function AddFormPage({ formType, setData }: FormPageProp) {
 
   // LGA
   const stateLGA = dataNig.find(
-    s =>
-      s.state === formData.issueState || formData.personSt || formData.poState,
+    select =>
+      select.state === formData.issueState ||
+      formData.personSt ||
+      formData.poState,
   );
 
   // sort dataNig
@@ -57,16 +59,16 @@ function AddFormPage({ formType, setData }: FormPageProp) {
     },
   });
 
-  const onSubmit: SubmitHandler<FasProp> = data => {
-    setData(data);
-  };
-
   const handleOTP = () => {
     const phoneEmail = formData.posterEmail;
     if (phoneEmail === "") {
       return toast.error("Please enter your registerd email", toastOptions);
     }
     mutate({ data: { phoneEmail: phoneEmail }, url: OTP_ROUTE });
+  };
+
+  const onSubmit: SubmitHandler<FasProp> = data => {
+    setData(data);
   };
 
   return (
@@ -372,7 +374,7 @@ function AddFormPage({ formType, setData }: FormPageProp) {
               <FormField label="First Name">
                 <Input
                   {...register("posterFirstName")}
-                  value={authUser?.user.firstName || "Akinsanmi"}
+                  value={authUser?.user.firstName}
                   readOnly
                 />
               </FormField>
@@ -381,7 +383,7 @@ function AddFormPage({ formType, setData }: FormPageProp) {
               <FormField label="Last Name">
                 <Input
                   {...register("posterLastName")}
-                  value={authUser?.user.lastName || "Akintunde"}
+                  value={authUser?.user.lastName}
                   readOnly
                 />
               </FormField>
@@ -397,7 +399,8 @@ function AddFormPage({ formType, setData }: FormPageProp) {
               <FormField label="E-mail">
                 <Input
                   {...register("posterEmail", { required: true })}
-                  // value={authUser?.user.email || ""}
+                  value={authUser?.user.email}
+                  readOnly
                 />
               </FormField>
             </div>
@@ -447,9 +450,9 @@ function AddFormPage({ formType, setData }: FormPageProp) {
             {formType === "missing" ? (
               <ButtonStyled
                 disabled={
-                  authUser?.transaction?.status !== "success"
+                  btnCondition && authUser?.transaction?.status !== "success"
                     ? true
-                    : false && btnCondition
+                    : false
                 }
               >
                 Submit

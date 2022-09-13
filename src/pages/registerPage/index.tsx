@@ -21,9 +21,9 @@ import RegisterWrapper, { ButtonStyled } from "./style";
 import AppHeader, { AppFooter } from "common/AppWrapper";
 import { toast } from "react-toastify";
 import { useMutation } from "@tanstack/react-query";
-import AuthContext from "contexts/AuthProvider";
 import { postRequest } from "utils/apiCall";
 import { USER_REGISTER } from "utils/Api-Routes";
+import AuthContext from "contexts/AuthProvider";
 
 interface RegisterFormInputs {
   firstName: string;
@@ -40,7 +40,7 @@ const schema = yup
     lastName: yup.string().required(),
     email: yup.string().required(),
     password: yup.string().min(5).max(20).required(),
-    accountType: yup.string().default("student"),
+    phoneNumber: yup.string().default("student"),
   })
   .required();
 
@@ -64,14 +64,17 @@ function RegisterPage() {
       toast.success(res?.message, toastOptions);
       const user = res?.user;
       setAuthUser({ user });
-      navigate("/verificationpage");
+      navigate("/verify_account");
     },
     onError(err: any) {
       toast.error(err?.message, toastOptions);
     },
   });
 
-  const onSubmit = (valueInput: any) => {
+  const onSubmit = (valueInput: RegisterFormInputs) => {
+    if (valueInput.phoneNumber === "") {
+      return toast.error("Please enter your phone number", toastOptions);
+    }
     if (valueInput.password !== valueInput.confirmPassword) {
       return toast.error("passwords do not match", toastOptions);
     }
