@@ -1,7 +1,9 @@
+import React, { useContext } from "react";
 import AppHeader, { AppFooter } from "common/AppWrapper";
-import React from "react";
 import { Link, Outlet } from "react-router-dom";
+import OnlineStatusContext from "contexts/OnlineProvider";
 import Wrapper from "./style";
+import AuthContext from "contexts/AuthProvider";
 
 const navigation = [
   {
@@ -22,6 +24,8 @@ const navigation = [
 ];
 
 function AppLayout() {
+  const { authUser } = useContext(AuthContext);
+  const { onlineStatus } = useContext(OnlineStatusContext);
   return (
     <>
       <AppHeader />
@@ -32,7 +36,8 @@ function AppLayout() {
           </div>
           <div className="userbox">
             <div className="head">
-              <h1>Hi user</h1>
+              <h1>Hi {authUser?.user.firstName}</h1>
+              <p>{onlineStatus ? "🟢online" : "🔴disconnected"}</p>
             </div>
             <div className="navbox">
               {navigation.map(item => (

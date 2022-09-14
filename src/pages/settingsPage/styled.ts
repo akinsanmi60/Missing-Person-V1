@@ -23,15 +23,6 @@ const SettingsWrapper = styled.div`
       border-top-left-radius: 13px;
     }
   }
-  Input,
-  Select {
-    border: 1px solid var(--dark-primary);
-    font-size: 13px;
-    color: var(--dark-primary);
-    &:hover {
-      border: 1px solid var(--dark-primary);
-    }
-  }
 
   .simple-info {
     display: flex;
@@ -79,6 +70,7 @@ const SettingsWrapper = styled.div`
       margin-top: 15px;
       label {
         margin-bottom: 2px;
+        font-size: 15px;
       }
     }
     .passbtn {
@@ -90,13 +82,66 @@ const SettingsWrapper = styled.div`
       }
       button {
         background-color: green;
-        padding: 0.7rem 1rem;
+        padding: 5px;
         color: white;
         box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%),
           0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
         border-radius: 4px;
-        font-size: 12px;
+        font-size: 9px;
       }
+    }
+  }
+
+  .btned,
+  .actionBtn {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 6px;
+  }
+
+  .editbtn,
+  .cancelbtn {
+    background-color: var(--dark-primary);
+    padding: 3px 13px;
+    color: white;
+    box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%),
+      0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+    border-radius: 4px;
+    font-size: 12px;
+  }
+
+  .cancelbtn {
+    background-color: #b71111;
+  }
+
+  .headbox {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  Input,
+  Select {
+    width: 100%;
+    height: 40px;
+    font-weight: 300;
+    padding: 5px;
+    outline: none;
+    border: 1px solid var(--dark-primary);
+    font-size: 13px;
+    &:hover {
+      border: 1px solid var(--dark-primary);
+    }
+  }
+
+  Select option {
+    color: var(--neutral-light);
+    background-color: var(--dark-primary);
+  }
+
+  .savebtn {
+    span {
+      margin-left: 9px;
+      margin-top: 35px;
     }
   }
 
@@ -151,6 +196,7 @@ const SettingsWrapper = styled.div`
       .lays {
         gap: 8px;
         grid-template-columns: 1fr;
+        margin-top: 10px;
       }
 
       .passbtn {
@@ -183,6 +229,7 @@ const SettingsWrapper = styled.div`
       }
     }
   }
+
   @media screen and (max-width: 320px) {
     .simple-info {
       padding: 0 10px 30px 10px;
@@ -255,5 +302,52 @@ export const ModalWrapper = styled.div`
     font-weight: bold;
     font-size: 14px;
     cursor: pointer;
+  }
+`;
+
+export const ButtonStyled = styled.button`
+  background-color: #0e2038;
+  padding: 5px 15px;
+  color: white;
+  box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%),
+    0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+  border-radius: 4px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 1.75;
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
+  min-width: 64px;
+  margin-top: 15px;
+  @media screen and (max-width: 425px) {
+    padding: 5px 13px;
+    font-size: 0.8rem;
+  }
+`;
+
+export const ImageWrapper = styled.div`
+  .bg {
+    width: 100%;
+    border-top-right-radius: 13px;
+    border-top-left-radius: 13px;
+  }
+
+  @media screen and (max-width: 375px) {
+    .bg {
+      width: 100%;
+      border-top-right-radius: 10px;
+      border-top-left-radius: 10px;
+    }
+  }
+
+  @media screen and (max-width: 320px) {
+    .bg {
+      width: 100%;
+      border-top-right-radius: 10px;
+      border-top-left-radius: 10px;
+    }
   }
 `;

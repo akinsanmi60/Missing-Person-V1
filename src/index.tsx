@@ -9,6 +9,7 @@ import GlobalStyle from "global";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthProvider } from "contexts/AuthProvider";
+import { OnlineStatusProvider } from "contexts/OnlineProvider";
 
 const queryClient = new QueryClient();
 
@@ -19,14 +20,19 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <ChakraProvider>
-        <AuthProvider>
-          <QueryClientProvider client={queryClient}>
-            <GlobalStyle />
-            <App />
-            <ToastContainer />
-            <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
-          </QueryClientProvider>
-        </AuthProvider>
+        <OnlineStatusProvider>
+          <AuthProvider>
+            <QueryClientProvider client={queryClient}>
+              <GlobalStyle />
+              <App />
+              <ToastContainer />
+              <ReactQueryDevtools
+                initialIsOpen={false}
+                position="bottom-right"
+              />
+            </QueryClientProvider>
+          </AuthProvider>
+        </OnlineStatusProvider>
       </ChakraProvider>
     </BrowserRouter>
   </React.StrictMode>,

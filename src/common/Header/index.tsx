@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import Navigation from "./components/Navigation";
 import HeaderBox from "./style";
 import moment from "moment";
+import { Link } from "react-router-dom";
 
 function Header() {
   const { authUser } = useContext(AuthContext);
@@ -20,7 +21,9 @@ function Header() {
         </div>
         {authUser?.user ? (
           <div className="span">
-            <p>Dashbord</p>
+            <p>
+              <Link to="/auth_profile">Dashbord</Link>
+            </p>
           </div>
         ) : null}
       </div>

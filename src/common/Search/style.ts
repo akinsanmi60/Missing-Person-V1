@@ -26,7 +26,6 @@ const SearchBox = styled.div`
   Select {
     width: 100%;
     height: 40px;
-    /* background: none; */
     color: var(--neutral-light);
     border: none;
     border: 1px solid;

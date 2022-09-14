@@ -1,12 +1,20 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useContext, useState } from "react";
 import bgColor from "../../assets/bgblue.jpeg";
 import { Avatar, Input, useDisclosure, Wrap, WrapItem } from "@chakra-ui/react";
-import SettingsWrapper from "./styled";
+import SettingsWrapper, { ImageWrapper } from "./styled";
 import AuthContext from "contexts/AuthProvider";
 import FormField from "common/FormField";
-import ChangePasswordModal from "./component";
+import ChangePasswordModal from "./componentModal/modalChange";
+import EditProfile from "./componentModal/editProfile";
+
+const ImageComponent = () => {
+  return (
+    <ImageWrapper>
+      <img src={bgColor} alt="bg" className="bg" />
+    </ImageWrapper>
+  );
+};
 
 function SettingPage() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -20,13 +28,11 @@ function SettingPage() {
   return (
     <SettingsWrapper>
       <div className="head">
-        <h1> User Profile</h1>
+        <h1> Use Id-Nos: {authUser?.user.userIdNos}</h1>
       </div>
       <div className="boxsetting">
         <div className="hero">
-          <img src={bgColor} alt="bg" className="bg" />
-          {/* <ProfileBackground className="bg" /> */}
-
+          <ImageComponent />
           <div className="simple-info">
             <div className="dp">
               <Wrap>
@@ -62,14 +68,18 @@ function SettingPage() {
       {!editMode ? (
         <div className="displaysetting">
           <div className="userdetail">
-            <span onClick={handleEdit}>Edit</span>
+            <div className="btned">
+              <button onClick={handleEdit} className="editbtn">
+                Edit
+              </button>
+            </div>
             <div className="displayform">
               <div className="lays">
                 <div>
                   <FormField label="Phone Number">
                     <Input
                       readOnly
-                      value={authUser?.user.phoneNumber || "N/A"}
+                      defaultValue={authUser?.user.phoneNumber || "N/A"}
                     />
                   </FormField>
                 </div>
@@ -77,7 +87,7 @@ function SettingPage() {
                   <FormField label="Address">
                     <Input
                       readOnly
-                      value={authUser?.user.userAddress || "N/A"}
+                      defaultValue={authUser?.user.address || "N/A"}
                     />
                   </FormField>
                 </div>
@@ -85,12 +95,18 @@ function SettingPage() {
               <div className="lays">
                 <div>
                   <FormField label="Local Government Area">
-                    <Input readOnly value={authUser?.user.useLga || "N/A"} />
+                    <Input
+                      readOnly
+                      defaultValue={authUser?.user.lga || "N/A"}
+                    />
                   </FormField>
                 </div>
                 <div>
                   <FormField label="State">
-                    <Input readOnly value={authUser?.user.state || "N/A"} />
+                    <Input
+                      readOnly
+                      defaultValue={authUser?.user.state || "N/A"}
+                    />
                   </FormField>
                 </div>
               </div>
@@ -109,7 +125,7 @@ function SettingPage() {
           </div>
         </div>
       ) : (
-        "Edit Mode"
+        <EditProfile setEditMode={setEditMode} />
       )}
       <ChangePasswordModal onClose={onClose} isOpen={isOpen} />
     </SettingsWrapper>

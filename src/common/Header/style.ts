@@ -35,6 +35,7 @@ const HeaderBox = styled.div`
 
     p {
       margin-top: 5px;
+      cursor: pointer;
     }
 
     @media screen and (max-width: 768px) {
