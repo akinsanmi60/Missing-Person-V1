@@ -68,10 +68,13 @@ function SettingPage() {
       {!editMode ? (
         <div className="displaysetting">
           <div className="userdetail">
-            <div className="btned">
-              <button onClick={handleEdit} className="editbtn">
-                Edit
-              </button>
+            <div className="casedbtn">
+              <h1>Other Information</h1>
+              <div className="btned">
+                <button onClick={handleEdit} className="editbtn">
+                  Edit
+                </button>
+              </div>
             </div>
             <div className="displayform">
               <div className="lays">

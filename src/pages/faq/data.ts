@@ -1,52 +1,39 @@
 const questionsA = [
   {
     id: 1,
-    title: "Can I take out a loan/Am I eligible for a loan?",
+    title: "Helpline",
     description:
-      "We specialise in fair and flexible private loans for students and must be a postgraduate or an international student looking to study in the UK. If you are an international student, we ask that You are over 18 years of age You are a resident in the UK and enrolled in an accredited UK university or eligible institution You can provide a UK-based guarantor for your loan (if required)",
+      "Our free and confidential helpline is available 7 days a week, from 9am-11pm. It’s here for both people who want to or have gone missing, as well as families and friends who are worrying about someone. You can contact us by text, email or phone, for free and in confidence.",
   },
   {
     id: 2,
-    title: "When can I apply?",
+    title: "What is missing?",
     description:
-      "Our loans range from £2,000 to £60,000 and can be repaid over a period of up to 10 years post graduation. Note: The maximum cost of living amount that can be applied for per academic year is £7,000",
+      "Police forces use the definition: “Anyone whose whereabouts cannot be established will be considered as missing until located and their wellbeing or otherwise confirmed. This means that if you are expected to be at home and aren’t there, or haven’t arrived at somewhere you’re supposed to be, you may be reported missing.”",
   },
   {
     id: 3,
-    title:
-      "Are interest rates the same for all loans or will I have a unique interest rate?",
+    title: "Who reported me missing?",
     description:
-      "We do not have uniform interest rates, instead every borrower is charged a different rate commensurate to the specifics of their application. However, rates for loans in our platform tend to range between 7%-12% on average.",
+      "It could be someone at home; a family member or carer. It could be someone who was expecting to see you or hear from you, like an employer, colleague, friend or relative. Or, it could be a professional who has been helping you, like a keyworker, social worker or mental health worker.",
   },
   {
     id: 4,
-    title: "How is my interest rate calculated??",
+    title: "How do I stop being missing?",
     description:
-      "Interest rates quoted are a combination of three components namely term (duration) of the required loan, the general level of interest rates in the UK economy and the credit risk factor as this is determined by the scorecard result. As a general rule, shorter term loans with a low risk factor (i.e. high scorecard result) will be associated with lower interest rates.",
+      "To stop looking for you as a missing person, the police need to see you in person to do a ‘Safe and Well Check’. Once this is done they will close the investigation. This check can be done by any police officer – it doesn’t need to be in the place you went missing from. So if you are in a different town or city, you can go to a local police station or approach an officer if you see one in public.",
   },
   {
     id: 5,
-    title: "What is an APR?",
+    title: "I’m not missing, so why are they looking for me?",
     description:
-      "APR (Annual Percentage Rate) is an index which shows the annual % cost of a loan, in other words what it will cost you per year if you settle the loan as per the agreed repayment schedule. It takes into account any upfront fees paid by the borrower as well as the timing of repayments. It does not consider late payment fees. APR is a helpful tool as it allows you to compare the cost of similar products on a like to like basis.",
+      "The police will be looking for you because nobody knows where you are, so they need to check that you are okay. Sometimes, there may have been a mis-understanding that led to someone reporting you missing. We can help you to sort things out with the police.",
   },
   {
     id: 6,
-    title: "How will I know the interest rate on my loan?",
+    title: "When to report missing person?",
     description:
-      "Once your application successfully passes the underwriting stage we will notify you by email. We will also send you our provisional loan offer with the details of the prospective loan including interest rate and APR information for your review and acceptance.",
-  },
-  {
-    id: 7,
-    title: "Will the interest rate on my loan change over time?",
-    description:
-      "No, our interest rates are fixed. In this way you can easily budget your cash flows with regard to repayment over the term of the loan and expect no surprises following a sudden increase in the general level of interest rates in the economy.",
-  },
-  {
-    id: 8,
-    title: "When do I pay interest?",
-    description:
-      "Interest is included in the monthly instalment as per the agreed loan schedule which you will get together with the loan agreement. Provided you pay your instalments according to plan you can expect interest to reduce gradually as time passes.",
+      "Section 90 of the Nigeria Police Act, 2020 mandates that when someone goes missing, a report should be filed WITHIN 24 hours at the nearest police station when their whereabouts are unknown. This should preferably be done by someone close to the person who is missing. This is because they would be in the best position to respond and provide all the information required by the police to carry out an investigation. ",
   },
 ];
 

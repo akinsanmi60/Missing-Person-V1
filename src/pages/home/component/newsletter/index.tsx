@@ -1,6 +1,6 @@
 import React from "react";
 import FormField from "common/FormField";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { Input, Spinner } from "@chakra-ui/react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -42,7 +42,7 @@ function NewsLetterPage() {
     },
   });
 
-  const onSubmit: SubmitHandler<FasProp> = data => {
+  const onSubmit = (data: FasProp) => {
     if (!data.email.match(EMAIL_REGEX)) {
       return toast.error("Please enter a valid email format", toastOptions);
     }

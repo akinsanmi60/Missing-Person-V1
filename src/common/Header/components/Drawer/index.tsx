@@ -10,12 +10,9 @@ import {
 } from "@chakra-ui/react";
 import {
   FaBars,
-  FaBriefcase,
   FaBuilding,
   FaCar,
-  FaCoins,
   FaFacebookSquare,
-  FaLaptopHouse,
   FaLinkedin,
   FaNewspaper,
   FaQuestion,
@@ -72,13 +69,10 @@ function DrawerExample() {
               const gradIcon = routeLink.icon === "stud";
               const bizIcon = routeLink.icon === "biz";
               const motoIcon = routeLink.icon === "moto";
-              const mortIcon = routeLink.icon === "mort";
               const remtIcon = routeLink.icon === "remt";
-              const cryptoIcon = routeLink.icon === "crypto";
               const pressIcon = routeLink.icon === "press";
-              const qusetIcon = routeLink.icon === "ques";
-              const caseIcon = routeLink.icon === "career";
               const chatIcon = routeLink.icon === "chat";
+              const qusetIcon = routeLink.icon === "ques";
               return (
                 <Box key={routeLink.title}>
                   <Link to={routeLink.path} onClick={onClose}>
@@ -90,18 +84,12 @@ function DrawerExample() {
                           <FaBuilding className="iconstyle" />
                         ) : motoIcon ? (
                           <FaCar />
-                        ) : mortIcon ? (
-                          <FaLaptopHouse />
                         ) : remtIcon ? (
                           <FaReceipt />
-                        ) : cryptoIcon ? (
-                          <FaCoins />
                         ) : pressIcon ? (
                           <FaNewspaper />
                         ) : qusetIcon ? (
                           <FaQuestion />
-                        ) : caseIcon ? (
-                          <FaBriefcase />
                         ) : chatIcon ? (
                           <FaRocketchat />
                         ) : null}
@@ -115,11 +103,11 @@ function DrawerExample() {
             <div>
               <ButtonBox>
                 <DrawerButton type="submit">
-                  <Link to="/studentlogin">Login</Link>
+                  <Link to="/login">Login</Link>
                 </DrawerButton>
 
                 <DrawerButton type="submit">
-                  <Link to="/studentregister">Sign up</Link>
+                  <Link to="/register">Sign up</Link>
                 </DrawerButton>
               </ButtonBox>
 

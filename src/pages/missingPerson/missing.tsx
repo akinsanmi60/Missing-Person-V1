@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
@@ -6,6 +7,7 @@ import OuterLayout from "styles/layout";
 // import ListView from "common/ListView";
 import CardPerson from "common/Card";
 import MissingWrapper from "./style";
+import { useNavigate } from "react-router-dom";
 
 const ListView = React.lazy(() => import("common/ListView"));
 
@@ -38,6 +40,7 @@ function MissingPage() {
   const viewPage = "Missing Person";
   const [dataMissing, setData] = useState<DataProp[]>([]);
   const [pageNumber, setPageNumber] = useState(0);
+  const navigate = useNavigate();
 
   const { isLoading, isError, isRefetching } = useQuery(
     ["user"],
@@ -62,7 +65,7 @@ function MissingPage() {
   const displayPeople = dataMissing
     ?.slice(pagesVisited, pagesVisited + personPerPage)
     .map(person => (
-      <div key={person.id}>
+      <div onClick={() => navigate(`/users/${person.id}`)} key={person.id}>
         <CardPerson person={person} />
       </div>
     ));

@@ -27,6 +27,11 @@ const Wrapper = styled.div`
         font-size: 9px;
         margin-top: 9px;
       }
+      h1 {
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--dark-primary);
+      }
     }
 
     .navbox {

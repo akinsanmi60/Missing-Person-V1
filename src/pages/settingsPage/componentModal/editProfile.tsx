@@ -10,10 +10,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { ButtonStyled } from "../styled";
 import AuthContext from "contexts/AuthProvider";
 import { UPDATE_USER } from "utils/Api-Routes";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { patchRequest } from "utils/apiCall";
 import { toast } from "react-toastify";
 import toastOptions from "hooks/toast";
+import { queryKeys } from "utils/queryKey";
 
 type EditProp = {
   setEditMode: React.Dispatch<React.SetStateAction<boolean>>;
@@ -42,6 +43,7 @@ function EditProfile({ setEditMode }: EditProp) {
   const { register, handleSubmit, watch } = useForm<EditFormInputs>({
     resolver: yupResolver(schema),
   });
+  const queryClient = useQueryClient();
 
   const formData = watch();
   const fullName = `${authUser?.user.lastName} - ${authUser?.user.firstName}`;
@@ -55,6 +57,8 @@ function EditProfile({ setEditMode }: EditProp) {
 
   const { isLoading, mutate } = useMutation(patchRequest, {
     onSuccess(res) {
+      setEditMode(false);
+      queryClient.invalidateQueries([queryKeys.getUserProfile]);
       toast.success(res?.message, toastOptions);
     },
     onError(err: any) {
@@ -150,7 +154,6 @@ function EditProfile({ setEditMode }: EditProp) {
                   </FormField>
                 </div>
               </div>
-
               <div className="savebtn">
                 <ButtonStyled>{isLoading ? "Saving..." : "Save"}</ButtonStyled>
                 <span>{isLoading ? <Spinner size="sm" /> : null}</span>

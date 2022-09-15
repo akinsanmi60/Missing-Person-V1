@@ -5,6 +5,11 @@ const SettingsWrapper = styled.div`
     padding: 8px;
     box-shadow: 0 0.05em 0.05em 0 rgba(0, 0, 0, 0.25),
       0 0.4em 1em 0 rgba(0, 0, 0, 0.15) !important;
+    h1 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--dark-primary);
+    }
   }
 
   .boxsetting {
@@ -92,6 +97,16 @@ const SettingsWrapper = styled.div`
     }
   }
 
+  .casedbtn {
+    display: flex;
+    justify-content: space-between;
+    h1 {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--dark-primary);
+    }
+  }
+
   .btned,
   .actionBtn {
     display: flex;
@@ -117,6 +132,11 @@ const SettingsWrapper = styled.div`
   .headbox {
     display: flex;
     justify-content: space-between;
+    h1 {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--dark-primary);
+    }
   }
 
   Input,
@@ -273,7 +293,8 @@ export const ModalWrapper = styled.div`
   }
 
   label {
-    margin-bottom: 2px;
+    margin-bottom: 1px;
+    font-size: 15px;
   }
 
   .btn {

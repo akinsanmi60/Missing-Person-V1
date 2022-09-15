@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 function Header() {
   const { authUser } = useContext(AuthContext);
   const userLocation = Intl.DateTimeFormat().resolvedOptions().timeZone;
-
   const userTime = moment().format("dddd, MMMM Do YYYY");
 
   return (

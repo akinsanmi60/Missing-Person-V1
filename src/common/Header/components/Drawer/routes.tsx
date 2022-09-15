@@ -15,11 +15,6 @@ const routesLinks = [
     icon: "moto",
   },
   {
-    title: "Birth",
-    path: "/birth",
-    icon: "mort",
-  },
-  {
     title: "About",
     path: "/about",
     icon: "remt",

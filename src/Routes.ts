@@ -2,13 +2,13 @@ import React from "react";
 import HomePage from "pages/home";
 
 const DeathPage = React.lazy(() => import("pages/deathsearch"));
-const BirthPage = React.lazy(() => import("pages/birthsearch/birth"));
 const MissingPage = React.lazy(() => import("pages/missingPerson/missing"));
 const IdentifiedPage = React.lazy(() => import("pages/foundPerson/index"));
 const Question = React.lazy(() => import("pages/faq"));
 const ContactPage = React.lazy(() => import("pages/contact/"));
 const AboutPage = React.lazy(() => import("pages/about/index"));
 const SettingPage = React.lazy(() => import("pages/settingsPage/index"));
+const PersonPage = React.lazy(() => import("pages/personPage"));
 
 // App Routes
 const AddFoundPage = React.lazy(() => import("pages/addFound"));
@@ -31,11 +31,7 @@ const ROUTESWITHLAYER = {
     element: MissingPage,
     path: "/missing_person",
   },
-  BirthPage: {
-    id: "4",
-    element: BirthPage,
-    path: "/birth",
-  },
+
   IdentifiedPage: {
     id: "5",
     element: IdentifiedPage,
@@ -48,7 +44,7 @@ const ROUTESWITHLAYER = {
   },
   PressPage: {
     id: "7",
-    element: BirthPage,
+    element: ContactPage,
     path: "/press",
   },
   AboutPage: {
@@ -60,6 +56,11 @@ const ROUTESWITHLAYER = {
     id: "9",
     element: Question,
     path: "/question",
+  },
+  PersonPage: {
+    id: "9",
+    element: PersonPage,
+    path: "/users/:id",
   },
 };
 

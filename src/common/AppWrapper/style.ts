@@ -22,6 +22,9 @@ const HeaderWrapper = styled.div`
   .box {
     display: flex;
     flex-direction: column;
+    p {
+      font-size: 12px;
+    }
   }
   @media screen and (max-width: 425px) {
     padding: 18px 20px;

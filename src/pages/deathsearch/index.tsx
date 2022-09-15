@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import SearchBar from "common/Search";
@@ -6,6 +7,7 @@ import OuterLayout from "styles/layout";
 import DeathWrapper from "./style";
 import ListView from "common/ListView";
 import CardPerson from "common/Card";
+import { useNavigate } from "react-router-dom";
 
 type DataProp = {
   id: number;
@@ -34,6 +36,7 @@ type DataProp = {
 
 function DeathPage() {
   const viewPage = "Dead Body";
+  const navigate = useNavigate();
   const [dataDead, setData] = useState<DataProp[]>([]);
   const [pageNumber, setPageNumber] = useState(0);
 
@@ -60,7 +63,7 @@ function DeathPage() {
   const displayPeople = dataDead
     ?.slice(pagesVisited, pagesVisited + personPerPage)
     .map(person => (
-      <div key={person.id}>
+      <div onClick={() => navigate(`/users/${person.id}`)} key={person.id}>
         <CardPerson person={person} />
       </div>
     ));

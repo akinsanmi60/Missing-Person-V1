@@ -27,9 +27,6 @@ function HeaderNavigation() {
         <Link to="/dead_bodies" className="link">
           Dead Bodies
         </Link>
-        <Link to="/birth" className="link">
-          Birth
-        </Link>
         <Link to="/about" className="link">
           About
         </Link>

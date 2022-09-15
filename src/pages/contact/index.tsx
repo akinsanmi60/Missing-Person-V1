@@ -15,38 +15,52 @@ import {
   FaTwitterSquare,
   FaWhatsappSquare,
 } from "react-icons/fa";
+import { useMutation } from "@tanstack/react-query";
+import { postRequest } from "utils/apiCall";
+import { toast } from "react-toastify";
+import toastOptions from "hooks/toast";
+import { CONTACT_ROUTE } from "utils/Api-Routes";
 
 type FormData = {
-  email: string;
-  phone: string;
-  name: string;
-  subject: string;
-  comment: string;
+  contactEmail: string;
+  contactPhone: string;
+  contactName: string;
+  contactSubject: string;
+  contactComment: string;
 };
 
 const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 
 const schema = yup
   .object({
-    email: yup
+    contactEmail: yup
       .string()
       .matches(EMAIL_REGEX, "Please enter a valid email address")
       .required(),
-    phone: yup.string().required(),
-    name: yup.string().required(),
-    subject: yup.string().required(),
-    comment: yup.string().required(),
+    contactPhone: yup.string().required(),
+    contactName: yup.string().required(),
+    contactSubject: yup.string().required(),
+    contactComment: yup.string().required(),
   })
   .required();
 
 function Contact() {
+  const navigate = useNavigate();
   const { register, handleSubmit } = useForm<FormData>({
     resolver: yupResolver(schema),
   });
-  const navigate = useNavigate();
 
-  const submit = async (data: any) => {
-    console.log(data);
+  const { mutate, isLoading } = useMutation(postRequest, {
+    onSuccess(res) {
+      toast.success(res?.message, toastOptions);
+    },
+    onError(err: any) {
+      toast.error(err?.message, toastOptions);
+    },
+  });
+
+  const submit = async (valueInput: FormData) => {
+    mutate({ data: valueInput, url: CONTACT_ROUTE });
   };
 
   return (
@@ -113,7 +127,7 @@ function Contact() {
                 <FormField label="Name">
                   <Input
                     focusBorderColor="none"
-                    {...register("name")}
+                    {...register("contactName")}
                     type="text"
                   />
                 </FormField>
@@ -122,7 +136,7 @@ function Contact() {
                 <FormField label="Email">
                   <Input
                     focusBorderColor="none"
-                    {...register("email")}
+                    {...register("contactEmail")}
                     type="email"
                   />
                 </FormField>
@@ -131,7 +145,7 @@ function Contact() {
                 <FormField label="Phone">
                   <Input
                     focusBorderColor="none"
-                    {...register("phone")}
+                    {...register("contactPhone")}
                     type="text"
                   />
                 </FormField>
@@ -140,7 +154,7 @@ function Contact() {
                 <FormField label="Subject">
                   <Input
                     focusBorderColor="none"
-                    {...register("subject")}
+                    {...register("contactSubject")}
                     type="text"
                   />
                 </FormField>
@@ -148,11 +162,13 @@ function Contact() {
             </div>
             <div className="area">
               <FormField label="Comment/ detailed question">
-                <TextArea {...register("comment")} />
+                <TextArea {...register("contactComment")} />
               </FormField>
             </div>
             <div className="feedbtn">
-              <ButtonStyled type="submit">Send</ButtonStyled>
+              <ButtonStyled type="submit">
+                {isLoading ? "Sending..." : "Send"}
+              </ButtonStyled>
             </div>
           </form>
         </div>
