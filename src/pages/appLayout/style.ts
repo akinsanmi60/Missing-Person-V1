@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   .container {
     display: flex;
-    margin-top: 15px;
+    margin-top: 10px;
     border: 1px solid var(--dark-primary);
     gap: 20px;
     margin-bottom: 50px;
@@ -14,7 +14,6 @@ const Wrapper = styled.div`
     }
     .userbox {
       flex: 3;
-      /* background-color: greenyellow; */
     }
 
     .head {
