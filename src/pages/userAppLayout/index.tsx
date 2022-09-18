@@ -4,24 +4,7 @@ import { Link, Outlet } from "react-router-dom";
 import OnlineStatusContext from "contexts/OnlineProvider";
 import Wrapper from "./style";
 import AuthContext from "contexts/AuthProvider";
-
-const navigation = [
-  {
-    id: "1",
-    path: "add_missing_person",
-    title: "Add Missing Person",
-  },
-  {
-    id: "2",
-    path: "add_found_person",
-    title: "Add Found Person",
-  },
-  {
-    id: "3",
-    path: "profile_settings",
-    title: "Setting",
-  },
-];
+import { userNavigation } from "utils/navRoutes";
 
 function AppLayout() {
   const { authUser } = useContext(AuthContext);
@@ -40,7 +23,7 @@ function AppLayout() {
               <p>{onlineStatus ? "🟢online" : "🔴disconnected"}</p>
             </div>
             <div className="navbox">
-              {navigation.map(item => (
+              {userNavigation.map(item => (
                 <div key={item.id} className="pbox">
                   <Link to={item.path}>
                     <p>{item.title}</p>

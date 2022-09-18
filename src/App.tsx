@@ -2,7 +2,7 @@ import React, { useLayoutEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import LayoutWrapper from "utils/WebpageWrap";
 import ROUTESWITHLAYER, { APPROUTES } from "Routes";
-import AppLayout from "pages/appLayout";
+import AppLayout from "pages/userAppLayout";
 import LoginPage from "pages/loginPage";
 import RegisterPage from "pages/registerPage";
 import VerifyPage from "pages/verifyPage";

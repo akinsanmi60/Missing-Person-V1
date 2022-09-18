@@ -1,4 +1,4 @@
-import NewsIndex from "common/newsIndex";
+import NewsIndex from "common/NewsIndex";
 import React from "react";
 import { Link } from "react-router-dom";
 import HeaderWrapper, { FooterBox } from "./style";

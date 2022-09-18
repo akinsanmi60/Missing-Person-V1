@@ -1,16 +1,20 @@
 import React from "react";
 import HomePage from "pages/home";
 
-const DeathPage = React.lazy(() => import("pages/deathsearch"));
-const MissingPage = React.lazy(() => import("pages/missingPerson/missing"));
-const IdentifiedPage = React.lazy(() => import("pages/foundPerson/index"));
+const DeathPage = React.lazy(() => import("pages/searchDeadPerson"));
+const MissingPage = React.lazy(
+  () => import("pages/searchMissingPerson/missing"),
+);
+const IdentifiedPage = React.lazy(
+  () => import("pages/searchFoundPerson/index"),
+);
 const Question = React.lazy(() => import("pages/faq"));
 const ContactPage = React.lazy(() => import("pages/contact/"));
 const AboutPage = React.lazy(() => import("pages/about/index"));
 const SettingPage = React.lazy(() => import("pages/settingsPage/index"));
 const PersonPage = React.lazy(() => import("pages/personPage"));
 
-// App Routes
+// User-App Routes
 const AddFoundPage = React.lazy(() => import("pages/addFound"));
 const AddMissingPage = React.lazy(() => import("pages/addMissing"));
 
@@ -78,7 +82,7 @@ export const APPROUTES = {
     path: "add_found_person",
   },
   SettingPage: {
-    id: "2",
+    id: "3",
     element: SettingPage,
     path: "profile_settings",
   },

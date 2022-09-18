@@ -14,6 +14,7 @@ type AuthUserType = {
     gender: string;
     _id: string;
     userIdNos: string;
+    accountType: string;
   };
   token?: string;
   transaction?: {

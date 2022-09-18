@@ -33,7 +33,10 @@ const LetterWrapper = styled.div`
     border: 1px solid var(--dark-primary);
     font-size: 13px;
     color: var(--dark-primary);
-    &:hover {
+    &:hover,
+    &:focus,
+    &:active {
+      outline: none;
       border: 1px solid var(--dark-primary);
     }
   }
