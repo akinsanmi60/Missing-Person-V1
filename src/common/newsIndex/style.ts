@@ -15,8 +15,10 @@ export const BreakingNews = styled.div`
   padding: 2px;
   overflow: hidden;
   p {
+    margin-bottom: 9px;
     font-size: 13px;
     color: var(--dark-primary);
+    line-height: 1;
   }
   z-index: 99999;
   &:active {

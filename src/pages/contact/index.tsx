@@ -162,7 +162,7 @@ function Contact() {
             </div>
             <div className="area">
               <FormField label="Comment/ detailed question">
-                <TextArea {...register("contactComment")} />
+                <TextArea {...register("contactComment")} maxLength={1000} />
               </FormField>
             </div>
             <div className="feedbtn">

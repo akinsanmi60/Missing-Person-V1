@@ -61,6 +61,11 @@ function index() {
                 Identified Person
               </Link>
             </div>
+            <div>
+              <Link to="/tip_form" className="link">
+                Tip Form
+              </Link>
+            </div>
           </div>
           <div className="detail">
             <h4>Resources</h4>

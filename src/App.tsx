@@ -12,6 +12,7 @@ const Unauthorized = React.lazy(() => import("pages/error/unauthorized"));
 const ErrorPage = React.lazy(() => import("pages/error/error"));
 const ResetFormPage = React.lazy(() => import("pages/resetPassword"));
 const AddMissingPage = React.lazy(() => import("pages/addMissing"));
+const PersonPage = React.lazy(() => import("pages/personPage"));
 
 function Wrapper() {
   const location = useLocation();
@@ -34,6 +35,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/verify_account" element={<VerifyPage />} />
+          <Route path="users/:id" element={<PersonPage />} />
 
           {Object.entries(ROUTESWITHLAYER).map(itemRoute => {
             const [key, value] = itemRoute;

@@ -12,7 +12,7 @@ const Question = React.lazy(() => import("pages/faq"));
 const ContactPage = React.lazy(() => import("pages/contact/"));
 const AboutPage = React.lazy(() => import("pages/about/index"));
 const SettingPage = React.lazy(() => import("pages/settingsPage/index"));
-const PersonPage = React.lazy(() => import("pages/personPage"));
+const TipPage = React.lazy(() => import("pages/tipForm"));
 
 // User-App Routes
 const AddFoundPage = React.lazy(() => import("pages/addFound"));
@@ -29,7 +29,6 @@ const ROUTESWITHLAYER = {
     element: DeathPage,
     path: "/dead_bodies",
   },
-
   MissingPage: {
     id: "3",
     element: MissingPage,
@@ -61,10 +60,10 @@ const ROUTESWITHLAYER = {
     element: Question,
     path: "/question",
   },
-  PersonPage: {
+  TipPage: {
     id: "9",
-    element: PersonPage,
-    path: "/users/:id",
+    element: TipPage,
+    path: "/tip_form",
   },
 };
 
