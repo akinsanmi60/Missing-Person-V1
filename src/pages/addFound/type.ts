@@ -1,5 +1,5 @@
 export type FasProp = {
-  foundPersonType: string;
+  foundPersonType?: string;
   firstName: string;
   lastName: string;
   middleName: string;
