@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from "react";
+import React from "react";
 import AddFormPage from "common/AddForm";
 import { SubmitHandler, useForm } from "react-hook-form";
 import MissingWrapper from "./style";
@@ -7,7 +6,7 @@ import { FasProp } from "./type";
 
 function AddMissingPage() {
   const formType = "missing";
-  const { register, handleSubmit, watch, reset } = useForm<FasProp>();
+  const { register, handleSubmit, watch, reset, setValue } = useForm<FasProp>();
 
   // the watch() is used to observe value change in state select
   const formData = watch();
@@ -27,6 +26,7 @@ function AddMissingPage() {
           formType={formType}
           formData={formData}
           register={register}
+          setValue={setValue}
         />
       </form>
     </MissingWrapper>

@@ -1,6 +1,6 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { SinglePerson } from "utils/Api-Routes";
 import { getRequest } from "utils/apiCall";
 import { queryKeys } from "utils/queryKey";
@@ -50,7 +50,6 @@ function PersonPage() {
   );
 
   const personData = data as DataProp;
-  console.log(personData);
 
   const fullName = `${personData?.firstName} - "${personData?.maidenName}" - ${personData?.lastName}`;
   const userTime = moment().format("dddd, MMMM Do YYYY");
@@ -156,7 +155,14 @@ function PersonPage() {
                 Anyone with information related to the disappearance of{" "}
                 <span>{fullName}</span> is asked to call the Police
                 Officer-in-Charge Line at <span>614-461-8477</span> (TIPS). You
-                may also contact our Tip Line at <span>+234816472797</span>
+                may also contact our Tip Line at <span>+234816472797</span> or
+                fill our{" "}
+                <span>
+                  <Link to="/tip_form" className="Link">
+                    tip form
+                  </Link>
+                </span>
+                .
               </p>
             </div>
           </div>

@@ -2,8 +2,8 @@ import React from "react";
 import ErrorPng from "../../assets/error.png";
 import loadingPng from "../../assets/Ripple-1s-200px.svg";
 import refecthPng from "../../assets/Ellipsis-1s-200px.svg";
-import ReactPaginate from "react-paginate";
 import ListWrapper from "./styled";
+import Pagination from "common/Pagination";
 type ListProp = {
   isLoading: boolean;
   isError: boolean;
@@ -49,17 +49,7 @@ function ListView({
         <>
           <div className="box_people">{displayPeople}</div>
           <div className="select-btn">
-            <ReactPaginate
-              previousLabel="<<<"
-              nextLabel=">>>"
-              pageCount={pageCount}
-              onPageChange={changePage}
-              containerClassName="paginationBttns"
-              previousLinkClassName="previousBttn"
-              nextLinkClassName="nextBttn"
-              disabledClassName="paginationDisabled"
-              activeClassName="paginationActive"
-            />
+            <Pagination pageCount={pageCount} changePage={changePage} />
           </div>
         </>
       )}

@@ -75,12 +75,18 @@ const PersonWrapper = styled.div`
     h3 {
       font-weight: 600;
     }
+
     p {
       font-size: 15px;
       margin-bottom: 10px;
     }
+
     span {
       font-weight: 600;
+    }
+
+    .Link {
+      text-decoration: underline;
     }
   }
 `;

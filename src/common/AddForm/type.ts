@@ -1,4 +1,4 @@
-import { UseFormRegister } from "react-hook-form";
+import { UseFormRegister, UseFormSetValue } from "react-hook-form";
 import * as yup from "yup";
 
 export const schema = yup
@@ -72,6 +72,7 @@ export type PropTran = {
 };
 
 export type FasProp = {
+  imageA: string;
   foundPersonType?: string;
   firstName: string;
   lastName: string;
@@ -112,4 +113,5 @@ export type FormPageProp = {
   formType: string;
   formData: FasProp;
   register: UseFormRegister<FasProp>;
+  setValue: UseFormSetValue<FasProp>;
 };

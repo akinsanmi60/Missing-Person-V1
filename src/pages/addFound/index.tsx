@@ -1,13 +1,13 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+import React from "react";
 import AddFormPage from "common/AddForm";
-import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import FoundWrapper from "./style";
 import { FasProp } from "./type";
 
 function AddFoundPage() {
   const formType = "found";
-  const { register, handleSubmit, watch, reset } = useForm<FasProp>();
+  const { register, handleSubmit, watch, reset, setValue } = useForm<FasProp>();
+
   // the watch() is used to observe value change in state select
   const formData = watch();
 
@@ -26,6 +26,7 @@ function AddFoundPage() {
           formType={formType}
           formData={formData}
           register={register}
+          setValue={setValue}
         />
       </form>
     </FoundWrapper>

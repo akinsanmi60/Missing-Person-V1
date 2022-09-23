@@ -56,6 +56,12 @@ const FormAddBox = styled.div`
     }
   }
 
+  input[type="file"] {
+    font-size: 9px;
+    width: 25%;
+    border: none;
+  }
+
   .btn-otp {
     padding: 9px;
     margin-top: 26px;

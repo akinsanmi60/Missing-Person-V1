@@ -18,11 +18,13 @@ import toastOptions from "hooks/toast";
 import { postRequest } from "utils/apiCall";
 import { useMutation } from "@tanstack/react-query";
 import { OTP_ROUTE } from "utils/Api-Routes";
+import axios from "axios";
 
-function AddFormPage({ formType, formData, register }: FormPageProp) {
+function AddFormPage({ formType, formData, register, setValue }: FormPageProp) {
   const { authUser } = useContext(AuthContext);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [arrivedOTP, setArrivedOTP] = useState("");
+  const [isUploading, setIsUploading] = useState<boolean>(false);
 
   // conditions for button disable
   const btnCondition =
@@ -41,6 +43,28 @@ function AddFormPage({ formType, formData, register }: FormPageProp) {
 
   // sort dataNig
   const givenState = dataNig.sort((a, b) => (a.state > b.state ? 1 : -1));
+
+  const onSubmitFile = async () => {
+    setIsUploading(true);
+    const inputFile = document.getElementById("fileInput") as HTMLInputElement;
+
+    const formDataFile = new FormData();
+    formDataFile.append("file", inputFile?.files?.item(0) as File);
+
+    const res = await axios.post<{ url: string }>(
+      `/media/upload`,
+      formDataFile,
+      {
+        withCredentials: false,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      },
+    );
+
+    setValue("imageA", res.data.url);
+    setIsUploading(false);
+  };
 
   const { mutate, isLoading } = useMutation(postRequest, {
     onSuccess(res) {
@@ -402,6 +426,18 @@ function AddFormPage({ formType, formData, register }: FormPageProp) {
           </div>
         </div>
 
+        <div className="img">
+          <div>
+            <FormField label="Image">
+              <Input id="fileInput" type="file" onChange={onSubmitFile} />
+            </FormField>
+          </div>
+          <div>
+            <Input type="hidden" {...register("imageA")} />
+          </div>
+        </div>
+        {isUploading ? "Uploading" : null}
+
         {/**Payment*/}
         <div className="payment">
           {formType === "missing" ? (
@@ -430,9 +466,7 @@ function AddFormPage({ formType, formData, register }: FormPageProp) {
           {formType === "missing" ? (
             <ButtonStyled
               disabled={
-                btnCondition && authUser?.transaction?.status !== "success"
-                  ? true
-                  : false
+                btnCondition || authUser?.transaction?.status !== "success"
               }
             >
               Submit
