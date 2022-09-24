@@ -18,6 +18,23 @@ const IdentifiedWrapper = styled.div`
       display: flex;
       justify-content: center;
     }
+
+    .statehandle {
+      min-height: 50vh;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      margin-top: 90px;
+      .err_img {
+        position: center;
+        width: 100%;
+        height: 250px;
+      }
+      p {
+        text-align: center;
+        font-size: 20px;
+      }
+    }
   }
   @media screen and (min-width: 1186px) {
     padding: 0.5rem 8rem;

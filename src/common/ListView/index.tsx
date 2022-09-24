@@ -1,9 +1,10 @@
 import React from "react";
-import ErrorPng from "../../assets/error.png";
-import loadingPng from "../../assets/Ripple-1s-200px.svg";
-import refecthPng from "../../assets/Ellipsis-1s-200px.svg";
+import refecthPng from "../../assets/Spinner.svg";
+import loadPng from "../../assets/Disk.svg";
+import ErrorPng from "../../assets/Ball.svg";
 import ListWrapper from "./styled";
 import Pagination from "common/Pagination";
+
 type ListProp = {
   isLoading: boolean;
   isError: boolean;
@@ -26,9 +27,8 @@ function ListView({
       {isLoading ? (
         <div className="statehandle">
           <div className="handlepage">
-            <img src={loadingPng} alt="loading" className="err_img" />
-            <p>Loading...</p>
-            <p>Please wait</p>
+            <img src={loadPng} alt="loading" className="err_img" />
+            <p>Loading... Please wait</p>
           </div>
         </div>
       ) : isRefetching ? (

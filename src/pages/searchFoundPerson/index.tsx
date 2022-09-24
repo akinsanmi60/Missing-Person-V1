@@ -3,6 +3,9 @@ import IdentifiedWrapper from "./style";
 import { getRequest } from "utils/apiCall";
 import { useQuery } from "@tanstack/react-query";
 import { queryKeys } from "utils/queryKey";
+import refecthPng from "../../assets/Spinner.svg";
+import loadPng from "../../assets/Disk.svg";
+import ErrorPng from "../../assets/Ball.svg";
 import CardPersonFound from "common/CardFound";
 import Pagination from "common/Pagination";
 
@@ -62,32 +65,29 @@ function IdentifiedPage() {
       </div>
     ));
 
-  const totalNumber = personData?.length;
-
   return (
     <IdentifiedWrapper>
       <div className="container">
-        <h1>{totalNumber} Identified Persons</h1>
+        <h1>Identified Persons</h1>
         <div className="head">
           {isLoading ? (
             <div className="statehandle">
               <div className="handlepage">
-                {/* <img src={loadingPng} alt="loading" className="err_img" /> */}
-                <p>Loading...</p>
-                <p>Please wait</p>
+                <img src={loadPng} alt="loading" className="err_img" />
+                <p>Loading... Please wait</p>
               </div>
             </div>
           ) : isRefetching ? (
             <div className="statehandle">
               <div className="handlepage">
-                {/* <img src={refecthPng} alt="Error" className="err_img" /> */}
+                <img src={refecthPng} alt="Refecth" className="err_img" />
                 <p>Please wait while it refetch...</p>
               </div>
             </div>
           ) : isError ? (
             <div className="statehandle">
               <div className="handlepage">
-                {/* <img src={ErrorPng} alt="Error" className="err_img" /> */}
+                <img src={ErrorPng} alt="Error" className="err_img" />
                 <p>Error while loading...</p>
               </div>
             </div>
