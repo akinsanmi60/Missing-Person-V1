@@ -31,7 +31,7 @@ const SearchBox = styled.div`
     border: 1px solid;
     line-height: 1em;
     font-weight: 300;
-    padding: 0.125em 0.25em;
+    padding: 5px 15px;
     outline: none;
   }
 

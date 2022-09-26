@@ -6,27 +6,39 @@ const ListWrapper = styled.div`
     grid-template-columns: 1fr 1fr 1fr 1fr;
     column-gap: 8px;
   }
+
   .statehandle {
     min-height: 70vh;
     display: flex;
     justify-content: center;
     align-content: center;
     margin-top: 80px;
+
     .err_img {
       width: 100%;
       height: 250px;
     }
+
     p {
+      margin-top: 15px;
       text-align: center;
       font-size: 20px;
       font-weight: bolder;
     }
+
+    .span {
+      text-align: center;
+      margin-top: 15px;
+      font-style: italic;
+      cursor: pointer;
+      text-decoration: underline;
+    }
   }
+
   .card {
     margin: 0px 0px 10px 0px;
     padding: 10px 0px 20px 0px;
     border: 1px solid #eee;
-    /* height: 290px; */
     box-shadow: 0 0.05em 0.05em 0 rgba(0, 0, 0, 0.25),
       0 0.4em 1em 0 rgba(0, 0, 0, 0.15) !important;
 
@@ -49,6 +61,7 @@ const ListWrapper = styled.div`
       background-position: center;
     }
   }
+
   .paginationBttns {
     width: 80%;
     height: 40px;
@@ -62,6 +75,7 @@ const ListWrapper = styled.div`
     display: flex;
     justify-content: center;
   }
+
   .paginationBttns a {
     padding: 6px;
     margin: 5px;

@@ -4,11 +4,9 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import SearchBar from "common/Search";
 import OuterLayout from "styles/layout";
-// import ListView from "common/ListView";
 import CardPerson from "common/Card";
 import MissingWrapper from "./style";
 import { useNavigate } from "react-router-dom";
-
 const ListView = React.lazy(() => import("common/ListView"));
 
 type DataProp = {
@@ -42,7 +40,7 @@ function MissingPage() {
   const [pageNumber, setPageNumber] = useState(0);
   const navigate = useNavigate();
 
-  const { isLoading, isError, isRefetching } = useQuery(
+  const { isLoading, isError, isRefetching, refetch } = useQuery(
     ["user"],
     () => axios.get(`https://dummyjson.com/users`),
     {
@@ -84,6 +82,7 @@ function MissingPage() {
             displayPeople={displayPeople}
             changePage={changePage}
             pageCount={pageCount}
+            refetch={refetch}
           />
         </div>
       </OuterLayout>

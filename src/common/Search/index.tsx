@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Input, Select } from "@chakra-ui/react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -6,12 +6,10 @@ import FormField from "common/FormField";
 import { SearchPprop, schema, FormDataProp } from "./type";
 import SearchBox, { ButtonStyled, inputStyles } from "./style";
 import { FaSearch } from "react-icons/fa";
-import { Spinner } from "@chakra-ui/react";
 import dataNig from "../../utils/states_and_lgas.json";
 
 function SearchBar({ view, people, setData }: SearchPprop) {
-  const [loading, setLoading] = useState(false);
-  const { register, handleSubmit, watch } = useForm<FormDataProp>({
+  const { register, handleSubmit, watch, reset } = useForm<FormDataProp>({
     resolver: yupResolver(schema),
   });
 
@@ -33,8 +31,6 @@ function SearchBar({ view, people, setData }: SearchPprop) {
     .sort((a, b) => Number(a) - Number(b));
 
   const submit = async (data: FormDataProp) => {
-    console.log(data);
-    setLoading(true);
     const lowerCaseFirstname = data?.firstName.toLowerCase();
     const lowerCaseLastname = data?.lastName.toLowerCase();
     const lowerCaseGender = data?.gender.toLowerCase();
@@ -45,15 +41,16 @@ function SearchBar({ view, people, setData }: SearchPprop) {
         .toString()
         .toLowerCase()
         .includes(
-          lowerCaseFirstname &&
-            lowerCaseLastname &&
-            lowerCaseGender &&
+          lowerCaseFirstname ||
+            lowerCaseLastname ||
+            lowerCaseGender ||
             lowerCaseAge,
         ),
     );
 
     setData(fiteredPerson);
-    setLoading(false);
+
+    reset();
   };
   return (
     <SearchBox>
@@ -126,13 +123,9 @@ function SearchBar({ view, people, setData }: SearchPprop) {
           </div>
           <div className="btnbox">
             <ButtonStyled>
-              {loading ? (
-                <Spinner />
-              ) : (
-                <p className="text">
-                  <FaSearch className="icon" /> Search
-                </p>
-              )}
+              <p className="text">
+                <FaSearch className="icon" /> Search
+              </p>
             </ButtonStyled>
           </div>
         </div>

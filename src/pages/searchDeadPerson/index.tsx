@@ -1,13 +1,14 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
+import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import SearchBar from "common/Search";
 import { useState } from "react";
 import OuterLayout from "styles/layout";
 import DeathWrapper from "./style";
-import ListView from "common/ListView";
 import CardPerson from "common/Card";
 import { useNavigate } from "react-router-dom";
+const ListView = React.lazy(() => import("common/ListView"));
 
 type DataProp = {
   id: number;
@@ -40,7 +41,7 @@ function DeathPage() {
   const [dataDead, setData] = useState<DataProp[]>([]);
   const [pageNumber, setPageNumber] = useState(0);
 
-  const { isLoading, isError, isRefetching } = useQuery(
+  const { isLoading, isError, isRefetching, refetch } = useQuery(
     ["user"],
     () => axios.get(`https://dummyjson.com/users`),
     {
@@ -83,6 +84,7 @@ function DeathPage() {
             displayPeople={displayPeople}
             changePage={changePage}
             pageCount={pageCount}
+            refetch={refetch}
           />
         </div>
       </OuterLayout>
