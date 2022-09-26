@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const LetterWrapper = styled.div`
-  padding: 20px;
   h1 {
     text-transform: uppercase;
     font-size: 23px;
@@ -9,11 +8,10 @@ const LetterWrapper = styled.div`
     margin-top: 40px;
   }
   p {
-    font-size: 15px;
-    margin-top: 30px;
+    font-size: 16px;
+    margin-top: 20px;
   }
   .container {
-    padding: 20px;
     display: flex;
     justify-content: center;
   }
@@ -56,7 +54,6 @@ const LetterWrapper = styled.div`
     line-height: 1.75;
     letter-spacing: 0.02857em;
     text-transform: uppercase;
-    /* min-width: 64px; */
     margin-top: 10px;
     &:disabled {
       background-color: #cccccc;
@@ -70,7 +67,7 @@ const LetterWrapper = styled.div`
   @media screen and (max-width: 425px) {
     .container {
       flex-direction: column-reverse;
-      padding: 20px;
+      padding: 10px;
     }
 
     h1 {

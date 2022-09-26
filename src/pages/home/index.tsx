@@ -1,12 +1,16 @@
 import React from "react";
+import FQA from "./component/faq";
 import NewsLetterPage from "./component/newsletter";
-import HomeWrapper from "./style";
+import HomeWrapper, { InnerWrapper } from "./style";
 
 function HomePage() {
   return (
     <HomeWrapper>
       HomePag e move
-      <NewsLetterPage />
+      <InnerWrapper>
+        <FQA />
+        <NewsLetterPage />
+      </InnerWrapper>
     </HomeWrapper>
   );
 }

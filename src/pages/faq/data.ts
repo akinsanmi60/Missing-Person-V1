@@ -35,6 +35,12 @@ const questionsA = [
     description:
       "Section 90 of the Nigeria Police Act, 2020 mandates that when someone goes missing, a report should be filed WITHIN 24 hours at the nearest police station when their whereabouts are unknown. This should preferably be done by someone close to the person who is missing. This is because they would be in the best position to respond and provide all the information required by the police to carry out an investigation. ",
   },
+  {
+    id: 7,
+    title: "Why people go missing?",
+    description:
+      "The reasons for going missing are many and varied and can include mental illness, miscommunication, misadventure, domestic violence, and being a victim of crime.",
+  },
 ];
 
 export default questionsA;
