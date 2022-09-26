@@ -47,7 +47,7 @@ function ConstructionPage() {
       <div className="con-container">
         <div className="logoimg">
           <div className="imgbox">
-            <img src={LogoImg} alt="chain" style={styles.logo} />
+            <img src={LogoImg} alt="chain" style={styles.logo} loading="lazy" />
           </div>
           <p className="text">
             We are currently working on this feature and will launch it soon.

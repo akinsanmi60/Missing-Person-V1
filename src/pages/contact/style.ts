@@ -95,6 +95,7 @@ const ContactWrapper = styled.div`
 
   @media screen and (max-width: 768px) {
     .boxcontact {
+      border-top-right-radius: 13px;
       flex-direction: column;
     }
     .covered {

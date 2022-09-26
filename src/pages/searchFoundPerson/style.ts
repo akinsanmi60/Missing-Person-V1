@@ -20,7 +20,7 @@ const IdentifiedWrapper = styled.div`
     }
 
     .statehandle {
-      min-height: 50vh;
+      min-height: 60vh;
       display: flex;
       justify-content: center;
       align-content: center;
@@ -33,6 +33,7 @@ const IdentifiedWrapper = styled.div`
       p {
         text-align: center;
         font-size: 20px;
+        font-weight: bolder;
       }
     }
   }

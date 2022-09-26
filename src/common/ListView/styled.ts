@@ -7,17 +7,19 @@ const ListWrapper = styled.div`
     column-gap: 8px;
   }
   .statehandle {
-    min-height: 40vh;
+    min-height: 70vh;
     display: flex;
     justify-content: center;
     align-content: center;
+    margin-top: 80px;
     .err_img {
       width: 100%;
       height: 250px;
     }
     p {
       text-align: center;
-      font-size: 35px;
+      font-size: 20px;
+      font-weight: bolder;
     }
   }
   .card {

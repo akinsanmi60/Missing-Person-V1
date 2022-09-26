@@ -7,6 +7,9 @@ const PersonWrapper = styled.div`
     padding: 10px;
   }
 
+  .btn_back {
+    cursor: pointer;
+  }
   .titleName h1 {
     font-size: 30px;
     font-weight: 900;
@@ -16,6 +19,24 @@ const PersonWrapper = styled.div`
     margin-bottom: 25px;
     .data {
       font-size: 12px;
+    }
+  }
+
+  .statehandle {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-top: 90px;
+    .err_img {
+      position: center;
+      width: 100%;
+      height: 250px;
+    }
+    p {
+      text-align: center;
+      font-size: 20px;
+      font-weight: bolder;
     }
   }
 

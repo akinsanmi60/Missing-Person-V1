@@ -42,7 +42,7 @@ function ListView({
         <div className="statehandle">
           <div className="handlepage">
             <img src={ErrorPng} alt="Error" className="err_img" />
-            <p>Please wait while it refetch...</p>
+            <p>Error occured while communicating with the server...</p>
           </div>
         </div>
       ) : (

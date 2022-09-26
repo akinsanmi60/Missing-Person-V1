@@ -37,7 +37,7 @@ function IdentifiedPage() {
   const [pageNumber, setPageNumber] = useState(0);
   const [personData, setData] = useState<DataProp[]>([]);
 
-  const { isLoading, isError, isRefetching } = useQuery(
+  const { isLoading, isError, isRefetching, isLoadingError } = useQuery(
     [queryKeys.getFoundPerson],
     () => getRequest({ url: `https://dummyjson.com/users` }),
     {
@@ -88,7 +88,14 @@ function IdentifiedPage() {
             <div className="statehandle">
               <div className="handlepage">
                 <img src={ErrorPng} alt="Error" className="err_img" />
-                <p>Error while loading...</p>
+                <p>Error occured while communicating with the server...</p>
+              </div>
+            </div>
+          ) : isLoadingError ? (
+            <div className="statehandle">
+              <div className="handlepage">
+                <img src={ErrorPng} alt="Error" className="err_img" />
+                <p>Error occured while loading...</p>
               </div>
             </div>
           ) : (
