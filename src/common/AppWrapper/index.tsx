@@ -1,8 +1,6 @@
 import React from "react";
-import NewsIndex from "common/NewsIndex";
 import { Link } from "react-router-dom";
 import HeaderWrapper, { FooterBox } from "./style";
-import { availableNews } from "./type";
 
 function AppHeader() {
   return (
@@ -18,7 +16,6 @@ function AppHeader() {
           </div>
         </div>
       </HeaderWrapper>
-      <NewsIndex availableNews={availableNews} />
     </>
   );
 }

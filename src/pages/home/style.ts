@@ -1,7 +1,53 @@
 import styled from "styled-components";
 
 const HomeWrapper = styled.div`
-  /* background: yellowgreen; */
+  .seen {
+    margin-bottom: 40px;
+    h1 {
+      font-size: 25px;
+      text-align: center;
+      margin-bottom: 12px;
+      font-weight: 900;
+    }
+  }
+
+  .display {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 8px;
+  }
+
+  @media screen and (min-width: 1025px) {
+    .display {
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .display {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+  @media screen and (max-width: 425px) {
+    .display {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .card {
+      padding: 10px;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 375px) {
+    .display {
+      padding: 0px 13px;
+      grid-template-columns: 1fr;
+    }
+  }
 `;
 export default HomeWrapper;
 export const InnerWrapper = styled.div`

@@ -39,9 +39,8 @@ function CardPerson({ person }: CardProp) {
             <p>ID: {person.id}</p>
             <p>Last-Name: {person.lastName}</p>
             <p>First-Name: {person.firstName}</p>
-            <p>
-              DOB: {person.birthDate} / {person.gender}
-            </p>
+            <p>Gender: {person.gender}</p>
+            <p>DOB: {person.birthDate}</p>
             <p>Eye-Color: {person.eyeColor}</p>
             <p>Blood-Group: {person.bloodGroup}</p>
           </div>

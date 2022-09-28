@@ -5,14 +5,17 @@ import OnlineStatusContext from "contexts/OnlineProvider";
 import Wrapper from "./style";
 import AuthContext from "contexts/AuthProvider";
 import { userNavigation } from "utils/navRoutes";
+import NewsIndex from "common/NewsIndex";
+import { availableNews } from "./type";
 
 function AppLayout() {
   const { authUser } = useContext(AuthContext);
   const { onlineStatus } = useContext(OnlineStatusContext);
   return (
-    <>
+    <div>
       <AppHeader />
       <Wrapper>
+        <NewsIndex availableNews={availableNews} />
         <div className="container">
           <div className="formbox">
             <Outlet />
@@ -35,7 +38,7 @@ function AppLayout() {
         </div>
       </Wrapper>
       <AppFooter />
-    </>
+    </div>
   );
 }
 

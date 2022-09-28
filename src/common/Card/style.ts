@@ -13,14 +13,17 @@ const CardWrapper = styled.div`
       border-bottom: 1px solid blue;
     }
 
-    .image,
-    .description {
+    .image {
       display: flex;
       justify-content: center;
     }
 
+    .description {
+      padding: 0px 20px;
+    }
+
     img {
-      width: 50%;
+      width: 80%;
       height: 150px;
       background-size: contain;
       margin-bottom: 20px;

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import {
   Input,
   Modal,
@@ -21,7 +21,7 @@ type ChangeProps = {
 
 function PaymentModal({ isOpen, onClose }: ChangeProps) {
   const { authUser } = useContext(AuthContext);
-  const [amount, setAmount] = useState("5000");
+  const amount = "20000";
 
   const lastName = authUser?.user.lastName || "Akinsanmi";
   const firstName = authUser?.user.firstName || "Akintunde";
@@ -88,8 +88,9 @@ function PaymentModal({ isOpen, onClose }: ChangeProps) {
                   <Input
                     type="text"
                     required
-                    onChange={e => setAmount(e.target.value)}
+                    value={amount}
                     outline="none"
+                    readOnly
                   />
                 </FormField>
               </div>

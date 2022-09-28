@@ -42,11 +42,6 @@ function index() {
           <div className="detail">
             <h4>Pages</h4>
             <div>
-              <Link to="/birth" className="link">
-                Birth
-              </Link>
-            </div>
-            <div>
               <Link to="/dead_bodies" className="link">
                 Dead Bodies
               </Link>

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const IdentifiedWrapper = styled.div`
+  background-color: white;
   padding: 0.5rem 4rem;
   .container {
     padding: 15px;

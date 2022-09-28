@@ -34,7 +34,7 @@ export const Wrapper = styled.div`
   }
   @media screen and (max-width: 425px) {
     .box {
-      gap: 20px;
+      gap: 8px;
       flex-direction: column;
       .que,
       .text {
