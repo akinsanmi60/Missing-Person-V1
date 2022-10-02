@@ -11,6 +11,7 @@ import { availableNews } from "./type";
 function AppLayout() {
   const { authUser } = useContext(AuthContext);
   const { onlineStatus } = useContext(OnlineStatusContext);
+
   return (
     <div>
       <AppHeader />
