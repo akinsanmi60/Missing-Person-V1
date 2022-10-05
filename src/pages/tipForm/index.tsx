@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from "react";
 import FormField from "common/FormField";
 import { useForm } from "react-hook-form";
 import dataNig from "../../utils/states_and_lgas.json";
-import { Input, Select } from "@chakra-ui/react";
+import { Input, Select, Spinner } from "@chakra-ui/react";
 import TipWrapper, { ButtonStyled, TextArea } from "./style";
 import {
   availableNews,
@@ -12,6 +11,11 @@ import {
   gender,
   TipProps,
 } from "./type";
+import { toast } from "react-toastify";
+import toastOptions from "hooks/toast";
+import { postRequest } from "utils/apiCall";
+import { useMutation } from "@tanstack/react-query";
+import { TIP_ROUTE } from "utils/Api-Routes";
 import NewsIndex from "common/NewsIndex";
 
 function TipFormPage() {
@@ -20,16 +24,28 @@ function TipFormPage() {
 
   // LGA
   const stateLGA = dataNig.find(
-    select => select.state === formData.state || formData.policestate,
+    select => select.state === formData.state || formData.policeState,
   );
 
   // sort dataNig
   const givenState = dataNig.sort((a, b) => (a.state > b.state ? 1 : -1));
 
+  const { mutate, isLoading } = useMutation(postRequest, {
+    onSuccess(res) {
+      toast.success(res?.message, toastOptions);
+      console.log(res);
+    },
+    onError(err: any) {
+      toast.error(err?.message, toastOptions);
+    },
+  });
+
   const submit = (inputValue: TipProps) => {
     console.log(inputValue);
+    mutate({ data: inputValue, url: TIP_ROUTE });
     reset();
   };
+
   return (
     <TipWrapper>
       <NewsIndex availableNews={availableNews} />
@@ -64,13 +80,16 @@ function TipFormPage() {
 
               <div>
                 <FormField label="Age">
-                  <Input type="text" {...register("age")} />
+                  <Input type="text" {...register("age")} min="15" max="60" />
                 </FormField>
               </div>
 
               <div>
                 <FormField label="Employment">
-                  <Select placeholder="Please Select" {...register("gender")}>
+                  <Select
+                    placeholder="Please Select"
+                    {...register("employment")}
+                  >
                     {empoly.map(item => (
                       <option value={item} key={item}>
                         {item}
@@ -88,7 +107,11 @@ function TipFormPage() {
               </div>
               <div>
                 <FormField label="Contact Number">
-                  <Input type="text" {...register("phoneNumber")} />
+                  <Input
+                    type="text"
+                    {...register("phoneNumber")}
+                    placeholder="08166998877"
+                  />
                 </FormField>
               </div>
             </div>
@@ -179,7 +202,10 @@ function TipFormPage() {
             <div className="mediacontact">
               <div>
                 <FormField label="State">
-                  <Select placeholder="Select State" {...register("state")}>
+                  <Select
+                    placeholder="Select State"
+                    {...register("policeState")}
+                  >
                     {givenState.map(({ state }) => (
                       <option value={state} key={state}>
                         {state}
@@ -212,14 +238,14 @@ function TipFormPage() {
             </div>
             <div className="area">
               <FormField label="Tip Details">
-                <TextArea {...register("tipComment")} maxLength={1000} />
+                <TextArea {...register("tipContent")} maxLength={1000} />
               </FormField>
             </div>
             <div className="feedbtn">
               <ButtonStyled type="submit">
-                Send
-                {/* {isLoading ? "Sending..." : "Send"} */}
+                {isLoading ? "Sending..." : "Send"}
               </ButtonStyled>
+              <span>{isLoading ? <Spinner size="sm" /> : null}</span>
             </div>
           </div>
         </form>

@@ -19,5 +19,12 @@ export const OTP_ROUTE = "http://localhost:3500/user/otp_number";
 // RESEND-OTP Routes
 export const RESEND_OTP_ROUTE = "http://localhost:3500/user/resend_otp_number";
 
+// ADD  TIP_ROUTE
+export const TIP_ROUTE = "http://localhost:3500/tip/tip_submission";
+
+// ADD  MISSINGPERSON_ROUTE
+export const ADDMISSINGPERSON_ROUTE =
+  "http://localhost:3500/missing/add_missing_person";
+
 export const SinglePerson = (personId: number | undefined) =>
   `https://dummyjson.com/users/${personId}`;

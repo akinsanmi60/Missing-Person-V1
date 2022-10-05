@@ -24,13 +24,11 @@ export type TipProps = {
   tipDate: string;
   tipTime: string;
   tipType: string;
-  tipContent: string;
-  nearestPolice: string;
   policeAdd: string;
-  policestate: string;
+  policeState: string;
   policeLga: string;
   policeStation: string;
-  tipComment: string;
+  tipContent: string;
 };
 
 export const availableNews = {

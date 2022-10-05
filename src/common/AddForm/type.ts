@@ -80,6 +80,7 @@ export type FasProp = {
   gender: string;
   height: string;
   weight: string;
+  age: string;
   skin: string;
   hair: string;
   body: string;
@@ -114,4 +115,6 @@ export type FormPageProp = {
   formData: FasProp;
   register: UseFormRegister<FasProp>;
   setValue: UseFormSetValue<FasProp>;
+  isLoading: boolean;
+  onOpen: () => void;
 };

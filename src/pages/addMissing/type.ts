@@ -7,6 +7,7 @@ export type FasProp = {
   gender: string;
   height: string;
   weight: string;
+  age: string;
   skin: string;
   hair: string;
   body: string;

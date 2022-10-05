@@ -3,9 +3,11 @@ import AddFormPage from "common/AddForm";
 import { useForm, SubmitHandler } from "react-hook-form";
 import FoundWrapper from "./style";
 import { FasProp } from "./type";
+import { useDisclosure } from "@chakra-ui/react";
 
 function AddFoundPage() {
   const formType = "found";
+  const { onOpen } = useDisclosure();
   const { register, handleSubmit, watch, reset, setValue } = useForm<FasProp>();
 
   // the watch() is used to observe value change in state select
@@ -27,6 +29,8 @@ function AddFoundPage() {
           formData={formData}
           register={register}
           setValue={setValue}
+          isLoading={false}
+          onOpen={onOpen}
         />
       </form>
     </FoundWrapper>

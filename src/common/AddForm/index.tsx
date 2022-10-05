@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useContext, useState } from "react";
-import { Input, Select, Spinner, useDisclosure } from "@chakra-ui/react";
+import { Input, Select, Spinner } from "@chakra-ui/react";
 import FormField from "common/FormField";
 import FormAddBox, { ButtonStyled } from "./style";
 import {
@@ -10,7 +10,6 @@ import {
   skinColor,
   foundInputValue,
 } from "./type";
-import PaymentModal from "./component";
 import AuthContext from "contexts/AuthProvider";
 import dataNig from "../../utils/states_and_lgas.json";
 import { toast } from "react-toastify";
@@ -20,9 +19,15 @@ import { useMutation } from "@tanstack/react-query";
 import { OTP_ROUTE } from "utils/Api-Routes";
 import axios from "axios";
 
-function AddFormPage({ formType, formData, register, setValue }: FormPageProp) {
+function AddFormPage({
+  formType,
+  formData,
+  register,
+  setValue,
+  isLoading: btnLoading,
+  onOpen,
+}: FormPageProp) {
   const { authUser } = useContext(AuthContext);
-  const { isOpen, onOpen, onClose } = useDisclosure();
   const [arrivedOTP, setArrivedOTP] = useState("");
   const [isUploading, setIsUploading] = useState<boolean>(false);
 
@@ -186,6 +191,11 @@ function AddFormPage({ formType, formData, register, setValue }: FormPageProp) {
           </div>
         </div>
         <div className="person_st_box">
+          <div>
+            <FormField label="Age">
+              <Input {...register("age")} />
+            </FormField>
+          </div>
           <div>
             <FormField label="State">
               <Select placeholder="Select State" {...register("personSt")}>
@@ -412,7 +422,7 @@ function AddFormPage({ formType, formData, register, setValue }: FormPageProp) {
             <FormField label="OTP Number">
               <Input
                 {...register("posterOTP", { required: true })}
-                // value={arrivedOTP}
+                maxLength={4}
               />
             </FormField>
           </div>
@@ -464,18 +474,25 @@ function AddFormPage({ formType, formData, register, setValue }: FormPageProp) {
         {/**Button*/}
         <div className="btn">
           {formType === "missing" ? (
-            <ButtonStyled
-              disabled={
-                btnCondition || authUser?.transaction?.status !== "success"
-              }
-            >
-              Submit
-            </ButtonStyled>
+            <>
+              <ButtonStyled
+                disabled={
+                  btnCondition || authUser?.transaction?.status !== "success"
+                }
+              >
+                {btnLoading ? "Submiting" : "Submit"}
+              </ButtonStyled>
+              <span>{btnLoading ? <Spinner size="sm" /> : null}</span>
+            </>
           ) : (
-            <ButtonStyled disabled={btnCondition}>Submit</ButtonStyled>
+            <>
+              <ButtonStyled disabled={btnCondition}>
+                {btnLoading ? "Submiting" : "Submit"}
+              </ButtonStyled>
+              <span>{btnLoading ? <Spinner size="sm" /> : null}</span>
+            </>
           )}
         </div>
-        <PaymentModal onClose={onClose} isOpen={isOpen} />
       </div>
     </FormAddBox>
   );

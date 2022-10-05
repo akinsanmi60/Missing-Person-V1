@@ -12,7 +12,9 @@ const FormAddBox = styled.div`
   .parentbox,
   .issue_ad,
   .policebox,
-  .police_nos {
+  .police_nos,
+  .personbox,
+  .person_st_box {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 20px;
@@ -36,14 +38,9 @@ const FormAddBox = styled.div`
   .parent_ad_box,
   .person_st_box,
   .police_ad_box,
-  .person_type {
-    margin-bottom: 20px;
-  }
-
+  .person_type,
   .person_st_box {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    margin-bottom: 20px;
   }
 
   Input,
@@ -103,6 +100,10 @@ const FormAddBox = styled.div`
     display: flex;
     justify-content: center;
     margin-top: 25px;
+    span {
+      margin-left: 9px;
+      margin-top: 16px;
+    }
   }
 
   @media screen and (max-width: 425px) {

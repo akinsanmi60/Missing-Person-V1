@@ -23,9 +23,9 @@ function PaymentModal({ isOpen, onClose }: ChangeProps) {
   const { authUser } = useContext(AuthContext);
   const amount = "20000";
 
-  const lastName = authUser?.user.lastName || "Akinsanmi";
-  const firstName = authUser?.user.firstName || "Akintunde";
-  const email = authUser?.user.email || "testmail@gamila.com";
+  const lastName = authUser?.user.lastName || "";
+  const firstName = authUser?.user.firstName || "";
+  const email = authUser?.user.email || "";
 
   const submitForm = (e: { preventDefault: () => void }) => {
     e.preventDefault();
