@@ -26,5 +26,9 @@ export const TIP_ROUTE = "http://localhost:3500/tip/tip_submission";
 export const ADDMISSINGPERSON_ROUTE =
   "http://localhost:3500/missing/add_missing_person";
 
+// ADD  FOUNDPERSON_ROUTE
+export const ADDFOUNDPERSON_ROUTE =
+  "http://localhost:3500/found/add_found_person";
+
 export const SinglePerson = (personId: number | undefined) =>
   `https://dummyjson.com/users/${personId}`;

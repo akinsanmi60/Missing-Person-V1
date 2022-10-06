@@ -1,9 +1,14 @@
 import React from "react";
 import AddFormPage from "common/AddForm";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useDisclosure } from "@chakra-ui/react";
+import { postRequest } from "utils/apiCall";
+import { ADDFOUNDPERSON_ROUTE } from "utils/Api-Routes";
+import { useMutation } from "@tanstack/react-query";
+import toastOptions from "hooks/toast";
+import { toast } from "react-toastify";
 import FoundWrapper from "./style";
 import { FasProp } from "./type";
-import { useDisclosure } from "@chakra-ui/react";
 
 function AddFoundPage() {
   const formType = "found";
@@ -13,8 +18,19 @@ function AddFoundPage() {
   // the watch() is used to observe value change in state select
   const formData = watch();
 
+  const { mutate, isLoading } = useMutation(postRequest, {
+    onSuccess(res) {
+      toast.success(res?.message, toastOptions);
+      console.log(res);
+    },
+    onError(err: any) {
+      toast.error(err?.message, toastOptions);
+    },
+  });
+
   const onSubmit: SubmitHandler<FasProp> = data => {
     console.log(data);
+    mutate({ data: data, url: ADDFOUNDPERSON_ROUTE });
     reset();
   };
 
@@ -29,7 +45,7 @@ function AddFoundPage() {
           formData={formData}
           register={register}
           setValue={setValue}
-          isLoading={false}
+          isLoading={isLoading}
           onOpen={onOpen}
         />
       </form>

@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 const PaginationBox = styled.div`
+  display: flex;
+  justify-content: center;
   .paginationBttns {
     width: 80%;
     height: 40px;

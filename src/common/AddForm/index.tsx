@@ -32,11 +32,7 @@ function AddFormPage({
   const [isUploading, setIsUploading] = useState<boolean>(false);
 
   // conditions for button disable
-  const btnCondition =
-    !formData.poName &&
-    !formData.poAd &&
-    !formData.poName &&
-    !formData.posterOTP;
+  const btnCondition = !formData.posterOTP;
 
   // LGA
   const stateLGA = dataNig.find(
@@ -83,7 +79,7 @@ function AddFormPage({
   });
 
   const handleOTP = () => {
-    const phoneEmail = formData.posterEmail;
+    const phoneEmail = authUser?.user?.email;
     if (phoneEmail === "") {
       return toast.error("Please enter your registerd email", toastOptions);
     }
@@ -413,7 +409,7 @@ function AddFormPage({
             <FormField label="E-mail">
               <Input
                 {...register("posterEmail", { required: true })}
-                value={authUser?.user.email}
+                value={authUser?.user?.email}
                 readOnly
               />
             </FormField>
