@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Input } from "@chakra-ui/react";
+import { Box, Input, Spinner } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -46,7 +46,7 @@ const schema = yup
 
 function Contact() {
   const navigate = useNavigate();
-  const { register, handleSubmit } = useForm<FormData>({
+  const { register, handleSubmit, reset } = useForm<FormData>({
     resolver: yupResolver(schema),
   });
 
@@ -61,6 +61,7 @@ function Contact() {
 
   const submit = async (valueInput: FormData) => {
     mutate({ data: valueInput, url: CONTACT_ROUTE });
+    reset();
   };
 
   return (
@@ -169,6 +170,7 @@ function Contact() {
               <ButtonStyled type="submit">
                 {isLoading ? "Sending..." : "Send"}
               </ButtonStyled>
+              <span>{isLoading ? <Spinner size="sm" /> : null}</span>
             </div>
           </form>
         </div>

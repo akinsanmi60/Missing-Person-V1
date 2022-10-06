@@ -91,6 +91,10 @@ const ContactWrapper = styled.div`
   .feedbtn {
     display: flex;
     justify-content: center;
+    span {
+      margin-left: 9px;
+      margin-top: 16px;
+    }
   }
 
   @media screen and (max-width: 768px) {
@@ -186,7 +190,7 @@ export const TextArea = styled.textarea`
 
 export const ButtonStyled = styled.button`
   background-color: var(--dark-primary);
-  padding: 0.7rem 2rem;
+  padding: 0.4rem 2rem;
   color: white;
   box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%),
     0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);

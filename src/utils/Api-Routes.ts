@@ -30,5 +30,8 @@ export const ADDMISSINGPERSON_ROUTE =
 export const ADDFOUNDPERSON_ROUTE =
   "http://localhost:3500/found/add_found_person";
 
+// ADD  FOUNDPERSON_ROUTE
+export const ADDDEADPERSON_ROUTE = "http://localhost:3500/dead/add_dead_person";
+
 export const SinglePerson = (personId: number | undefined) =>
   `https://dummyjson.com/users/${personId}`;
