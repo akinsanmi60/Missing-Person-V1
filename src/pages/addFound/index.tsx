@@ -26,7 +26,6 @@ function AddFoundPage() {
   const { mutate, isLoading } = useMutation(postRequest, {
     onSuccess(res) {
       toast.success(res?.message, toastOptions);
-      console.log(res);
     },
     onError(err: any) {
       toast.error(err?.message, toastOptions);
@@ -34,7 +33,6 @@ function AddFoundPage() {
   });
 
   const onSubmit: SubmitHandler<FasProp> = data => {
-    console.log(data);
     mutate({ data: data, url: uri });
     reset();
   };

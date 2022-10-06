@@ -71,7 +71,6 @@ function AddFormPage({
     onSuccess(res) {
       toast.success(res?.message, toastOptions);
       setArrivedOTP(res?.allowOTPCode);
-      console.log(res);
     },
     onError(err: any) {
       toast.error(err?.message, toastOptions);
