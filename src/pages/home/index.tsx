@@ -8,6 +8,9 @@ import { queryKeys } from "utils/queryKey";
 import FQA from "./component/faq";
 import HomeButton from "./component/homeNavigation";
 import NewsLetterPage from "./component/newsletter";
+import refecthPng from "../../assets/Spinner.svg";
+import loadPng from "../../assets/Disk.svg";
+import ErrorPng from "../../assets/Ball.svg";
 import HomeWrapper, { InnerWrapper } from "./style";
 
 type DataProp = {
@@ -39,7 +42,7 @@ function HomePage() {
   const navigate = useNavigate();
   const [personData, setData] = useState<DataProp[]>([]);
 
-  useQuery(
+  const { isLoading, isRefetching, isError } = useQuery(
     [queryKeys.getFoundPerson],
     () => getRequest({ url: `https://dummyjson.com/users` }),
     {
@@ -65,10 +68,34 @@ function HomePage() {
   return (
     <HomeWrapper>
       <InnerWrapper>
-        <div className="seen">
-          <h1>Have You Seen Me?</h1>
-          <div className="display">{seenPerson}</div>
-        </div>
+        {isLoading ? (
+          <div className="statehandle">
+            <div className="handlepage">
+              <img src={loadPng} alt="loading" className="err_img" />
+              <p>Loading... Please wait</p>
+            </div>
+          </div>
+        ) : isRefetching ? (
+          <div className="statehandle">
+            <div className="handlepage">
+              <img src={refecthPng} alt="Error" className="err_img" />
+              <p>Please wait while it refetch...</p>
+            </div>
+          </div>
+        ) : isError ? (
+          <div className="statehandle">
+            <div className="handlepage">
+              <img src={ErrorPng} alt="Error" className="err_img" />
+              <p>Error occured while communicating with the server...</p>
+            </div>
+          </div>
+        ) : seenPerson ? (
+          <div className="seen">
+            <h1>Have You Seen Me?</h1>
+            <div className="display">{seenPerson}</div>
+          </div>
+        ) : null}
+
         <HomeButton />
         <FQA />
         <NewsLetterPage />

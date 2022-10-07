@@ -17,6 +17,35 @@ const HomeWrapper = styled.div`
     column-gap: 8px;
   }
 
+  .statehandle {
+    min-height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-top: 80px;
+    margin-bottom: 70px;
+
+    .err_img {
+      width: 100%;
+      height: 250px;
+    }
+
+    p {
+      margin-top: 15px;
+      text-align: center;
+      font-size: 20px;
+      font-weight: bolder;
+    }
+
+    .span {
+      text-align: center;
+      margin-top: 15px;
+      font-style: italic;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+
   @media screen and (min-width: 1025px) {
     .display {
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
