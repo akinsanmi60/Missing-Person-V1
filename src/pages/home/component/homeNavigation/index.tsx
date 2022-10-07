@@ -1,24 +1,33 @@
-import React from "react";
+import React, { useContext } from "react";
+import AuthContext from "contexts/AuthProvider";
 import { Link } from "react-router-dom";
 import ButtonSection from "./style";
 
 function HomeButton() {
+  const { authUser } = useContext(AuthContext);
+
+  const accounts = ["user", "admin", "staff"];
+  const accountType = authUser?.user?.accountType;
+  const user = authUser?.user && accounts.includes(accountType!);
+
+  const pathURL = user ? "/auth_profile" : "/login";
+
   return (
     <ButtonSection>
       <div className="box">
         <div className="boxA">
           <div className="pbox">
-            <Link to="/login">
+            <Link to={pathURL}>
               <p>Add Missing Person</p>
             </Link>
           </div>
           <div className="pbox">
-            <Link to="/login">
+            <Link to={pathURL}>
               <p>Add Found Person</p>
             </Link>
           </div>
           <div className="pbox">
-            <Link to="/login">
+            <Link to={pathURL}>
               <p>Add Dead Person</p>
             </Link>
           </div>

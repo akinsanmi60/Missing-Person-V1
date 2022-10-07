@@ -102,7 +102,7 @@ const FormAddBox = styled.div`
     margin-top: 25px;
     span {
       margin-left: 9px;
-      margin-top: 16px;
+      margin-top: 13px;
     }
   }
 

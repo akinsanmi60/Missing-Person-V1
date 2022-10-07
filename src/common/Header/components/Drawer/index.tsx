@@ -8,8 +8,11 @@ import {
   Text,
   DrawerCloseButton,
 } from "@chakra-ui/react";
+import AuthContext from "contexts/AuthProvider";
+import { useContext } from "react";
 import {
   FaBars,
+  FaBoxes,
   FaBuilding,
   FaCar,
   FaFacebookSquare,
@@ -27,7 +30,12 @@ import routesLinks from "./routes";
 import ButtonBox, { DrawerButton, IconBox } from "./style";
 
 function DrawerExample() {
+  const { authUser } = useContext(AuthContext);
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const accounts = ["user", "admin", "staff"];
+  const accountType = authUser?.user?.accountType;
+  const user = authUser?.user && accounts.includes(accountType!);
 
   return (
     <>
@@ -48,7 +56,7 @@ function DrawerExample() {
         <DrawerOverlay />
         <DrawerContent color="#0E2038">
           <DrawerCloseButton
-            color="white"
+            color="#0E2038"
             fontWeight="900"
             fontSize="13"
             outline="none"
@@ -65,6 +73,21 @@ function DrawerExample() {
             </Text>
           </Box>
           <DrawerBody>
+            <Box
+              style={{
+                display: user ? "block" : "none",
+              }}
+            >
+              <Link onClick={onClose} to="/auth_profile">
+                <Box display="flex" borderBottomWidth="1px" padding="2">
+                  <Text paddingRight="3" marginTop="1">
+                    <FaBoxes />
+                  </Text>
+                  <Text>DashBoard</Text>
+                </Box>
+              </Link>
+            </Box>
+
             {routesLinks.map(routeLink => {
               const gradIcon = routeLink.icon === "stud";
               const bizIcon = routeLink.icon === "biz";
@@ -100,7 +123,13 @@ function DrawerExample() {
                 </Box>
               );
             })}
-            <div>
+
+            <div
+              style={{
+                display: user ? "none" : "block",
+                fontWeight: 500,
+              }}
+            >
               <ButtonBox>
                 <DrawerButton type="submit">
                   <Link to="/login">Login</Link>

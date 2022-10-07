@@ -3,7 +3,6 @@ import AddFormPage from "common/AddForm";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { useDisclosure } from "@chakra-ui/react";
-
 import toastOptions from "hooks/toast";
 import { postRequest } from "utils/apiCall";
 import { useMutation } from "@tanstack/react-query";
@@ -30,7 +29,6 @@ function AddMissingPage() {
   });
 
   const onSubmit: SubmitHandler<FasProp> = data => {
-    console.log(data);
     mutate({ data: data, url: ADDMISSINGPERSON_ROUTE });
     reset();
   };

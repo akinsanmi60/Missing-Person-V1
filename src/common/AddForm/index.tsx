@@ -32,7 +32,10 @@ function AddFormPage({
   // const [isUploading, setIsUploading] = useState<boolean>(false);
 
   // conditions for button disable
-  const btnCondition = !formData.posterOTP;
+  const btnCondition =
+    !formData.posterOTP && authUser?.transaction?.status !== "success";
+
+  const btnConditionB = !formData.posterOTP;
 
   // LGA
   const stateLGA = dataNig.find(
@@ -423,7 +426,7 @@ function AddFormPage({
           </div>
           <div>
             <button type="submit" className="btn-otp" onClick={handleOTP}>
-              {isLoading ? "Sending.." : "Send OTP"}
+              {isLoading ? "Sending OTP..." : "Send OTP"}
             </button>
             <span className="numbaOTP">
               {isLoading ? <Spinner size="sm" /> : `${arrivedOTP}`}
@@ -470,18 +473,14 @@ function AddFormPage({
         <div className="btn">
           {formType === "missing" ? (
             <>
-              <ButtonStyled
-                disabled={
-                  btnCondition || authUser?.transaction?.status !== "success"
-                }
-              >
+              <ButtonStyled disabled={btnCondition}>
                 {btnLoading ? "Submiting" : "Submit"}
               </ButtonStyled>
               <span>{btnLoading ? <Spinner size="sm" /> : null}</span>
             </>
           ) : (
             <>
-              <ButtonStyled disabled={btnCondition}>
+              <ButtonStyled disabled={btnConditionB}>
                 {btnLoading ? "Submiting" : "Submit"}
               </ButtonStyled>
               <span>{btnLoading ? <Spinner size="sm" /> : null}</span>

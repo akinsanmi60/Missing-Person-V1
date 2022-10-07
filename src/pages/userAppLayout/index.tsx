@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useContext } from "react";
 import AppHeader, { AppFooter } from "common/AppWrapper";
 import { Link, Outlet } from "react-router-dom";
@@ -9,7 +10,7 @@ import NewsIndex from "common/NewsIndex";
 import { availableNews } from "./type";
 
 function AppLayout() {
-  const { authUser } = useContext(AuthContext);
+  const { authUser, logout } = useContext(AuthContext);
   const { onlineStatus } = useContext(OnlineStatusContext);
 
   return (
@@ -34,6 +35,10 @@ function AppLayout() {
                   </Link>
                 </div>
               ))}
+
+              <div className="pbox" onClick={logout}>
+                Logout
+              </div>
             </div>
           </div>
         </div>

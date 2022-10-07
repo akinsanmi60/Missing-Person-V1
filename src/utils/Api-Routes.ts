@@ -12,6 +12,7 @@ export const UPDATE_USER = "http://localhost:3500/user/updateuser";
 // Newsletter Subscription
 export const NEWSLETTER = "http://localhost:3500/mailcontacts/subscribe_mail";
 export const CONTACT_ROUTE = "http://localhost:3500/mailcontacts/contact_mail";
+export const NOTIFY_ROUTE = "http://localhost:3500/mailcontacts/notify_mail";
 
 // OTP Routes
 export const OTP_ROUTE = "http://localhost:3500/user/otp_number";

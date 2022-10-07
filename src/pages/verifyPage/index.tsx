@@ -81,7 +81,7 @@ function VerifyPage() {
               Your account has been created successfully. To complete your
               process, we have sent code to your email:{" "}
               <span>
-                <b>{authUser?.user.email || "akintunde60@gmail.com"}</b>
+                <b>{authUser?.user.email}</b>
               </span>
             </p>
             <form onSubmit={handleSubmit}>
