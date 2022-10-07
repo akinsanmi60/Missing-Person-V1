@@ -1,17 +1,12 @@
 import React from "react";
-import HashLoader from "react-spinners/HashLoader";
+import CircleLoader from "react-spinners/CircleLoader";
 import LoaderWrapper from "./style";
 
-function LoaderLayout({ loading }: { loading: true }) {
+function LoaderLayout() {
   return (
     <LoaderWrapper>
       <div>
-        <HashLoader
-          color="#0E2038"
-          size={70}
-          loading={loading}
-          speedMultiplier={2}
-        />
+        <CircleLoader color="#0E2038" size={80} speedMultiplier={2} />
         <h1>People</h1>
       </div>
     </LoaderWrapper>

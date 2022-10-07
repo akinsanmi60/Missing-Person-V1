@@ -9,7 +9,6 @@ import VerifyPage from "pages/verifyPage";
 import PrivateRoute from "hooks/privateRoute";
 import LoaderLayout from "common/LoaderLayout";
 
-// import PrivateRoute from "hooks/privateRoute";
 const Unauthorized = React.lazy(() => import("pages/error/unauthorized"));
 const ErrorPage = React.lazy(() => import("pages/error/error"));
 const ResetFormPage = React.lazy(() => import("pages/resetPassword"));
@@ -34,7 +33,7 @@ function App() {
   return (
     <div>
       <Wrapper />
-      <React.Suspense fallback={<LoaderLayout loading={true} />}>
+      <React.Suspense fallback={<LoaderLayout />}>
         <Routes>
           {/** Permission denied route */}
           <Route path="/unauthorized" element={<Unauthorized />} />

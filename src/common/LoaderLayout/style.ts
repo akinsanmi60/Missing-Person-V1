@@ -7,8 +7,11 @@ const LoaderWrapper = styled.div`
   width: 100%;
   height: 100vh;
   h1 {
-    color: #16194f;
+    text-align: center;
+    margin-top: 13px;
+    color: #0e2038;
     font-size: 50px;
+    font-weight: 800;
   }
 `;
 export default LoaderWrapper;
