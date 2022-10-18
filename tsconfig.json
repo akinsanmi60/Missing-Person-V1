@@ -27,5 +27,5 @@
     }
   },
 
-  "include": ["src", "custom.d.ts", "./cypress"]
+  "include": ["src", "custom.d.ts", "cypress.config.ts"]
 }
