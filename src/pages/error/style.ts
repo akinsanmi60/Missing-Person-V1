@@ -65,6 +65,9 @@ const SectionWrapper = styled.section`
       &:hover {
         border: 1px solid var(--dark-primary);
       }
+      @media screen and (max-width: 425px) {
+        margin: 0px;
+      }
     }
   }
 `;
@@ -72,7 +75,7 @@ export default SectionWrapper;
 
 export const ButtonStyled = styled.button`
   background-color: var(--dark-primary);
-  padding: 0.7rem 2rem;
+  padding: 0.4rem 2rem;
   color: white;
   box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%),
     0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
@@ -82,15 +85,14 @@ export const ButtonStyled = styled.button`
   cursor: pointer;
   font-weight: 500;
   margin-top: 10px;
-  font-size: 0.9375rem;
+  font-size: 13px;
   line-height: 1.75;
   letter-spacing: 0.02857em;
   text-transform: uppercase;
   min-width: 64px;
   @media screen and (max-width: 425px) {
-    margin-top: 5px;
-    width: 50%;
-    padding: 0.3rem 0rem;
-    font-size: 0.8rem;
+    margin-top: 11px;
+    padding: 0.3rem 1rem;
+    font-size: 13px;
   }
 `;

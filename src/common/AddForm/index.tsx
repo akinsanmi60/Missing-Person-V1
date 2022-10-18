@@ -360,12 +360,18 @@ function AddFormPage({
           </div>
           <div>
             <FormField label="Officer's Phone Number">
-              <Input {...register("poNumber")} />
+              <Input
+                placeholder="081xxxxxxxx"
+                {...register("poNumber", { maxLength: 11 })}
+              />
             </FormField>
           </div>
           <div>
             <FormField label="Station's Phone Number">
-              <Input {...register("stationNumber")} />
+              <Input
+                placeholder="081xxxxxxxx"
+                {...register("stationNumber", { maxLength: 11 })}
+              />
             </FormField>
           </div>
         </div>

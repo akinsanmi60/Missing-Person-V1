@@ -23,6 +23,7 @@
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "axios": "^0.27.2",
+    "cypress": "^10.10.0",
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -50,12 +51,14 @@
     "commit": "git-cz",
     "check-types": "tsc --pretty --noEmit",
     "check-format": "prettier --check .",
-    "check-lint": "eslint . --ext ts --ext tsx --ext js"
+    "check-lint": "eslint . --ext ts --ext tsx --ext js",
+    "cypress": "cypress open"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
+      "react-app/jest",
+      "plugin:cypress/recommended"
     ]
   },
   "browserslist": {
@@ -80,6 +83,7 @@
     "eslint": "^8.21.0",
     "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",

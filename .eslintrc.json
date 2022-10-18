@@ -2,10 +2,17 @@
   "env": {
     "browser": true,
     "es2021": true,
-    "jest": true
+    "jest": true,
+    "cypress/globals": true
   },
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "prettier", "import", "react-hooks"],
+  "plugins": [
+    "@typescript-eslint",
+    "prettier",
+    "import",
+    "react-hooks",
+    "cypress"
+  ],
   "extends": [
     "react-app",
     "airbnb-typescript",
@@ -13,7 +20,8 @@
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
-    "plugin:import/typescript"
+    "plugin:import/typescript",
+    "plugin:cypress/recommended"
   ],
   "parserOptions": {
     "ecmaVersion": "latest",
@@ -21,6 +29,7 @@
     "sourceType": "module"
   },
   "rules": {
+    "@typescript-eslint/no-namespace": "error",
     "@typescript-eslint/no-non-null-assertion": "off",
     "jsx-a11y/rule-name": "off",
     "@typescript-eslint/no-explicit-any": "off",

@@ -17,6 +17,8 @@ export const schema = yup
   })
   .required();
 
+export const telRegex = /^([0]{1})[0-9]{10}$/;
+
 export type FormAddProp = {
   firstName: string;
   lastName: string;
