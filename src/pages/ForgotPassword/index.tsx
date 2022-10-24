@@ -66,7 +66,7 @@ function ResetPasswordModal({ isOpen, onClose, overlay }: ResetProps) {
       {overlay}
       <ModalContent>
         <ModalBody>
-          <ModalWrapper>
+          <ModalWrapper id="modalBox">
             <h1>Forgot your password?</h1>
             <p>
               It happens to the best of us. The good news is you can change it
@@ -85,7 +85,7 @@ function ResetPasswordModal({ isOpen, onClose, overlay }: ResetProps) {
               </div>
 
               <div className="btn">
-                <button type="submit" className="reset_btn">
+                <button type="submit" className="reset_btn" id="forgetBtn">
                   {isLoading ? <Spinner size="sm" /> : "Send"}
                 </button>
               </div>

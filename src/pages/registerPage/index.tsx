@@ -106,24 +106,44 @@ function RegisterPage() {
               <div className="form">
                 <div>
                   <FormField label="First Name">
-                    <Input {...register("firstName")} type="text" required />
+                    <Input
+                      id="firstname"
+                      {...register("firstName")}
+                      type="text"
+                      required
+                    />
                   </FormField>
                 </div>
                 <div>
                   <FormField label="Last Name">
-                    <Input {...register("lastName")} type="text" required />
+                    <Input
+                      id="lastname"
+                      {...register("lastName")}
+                      type="text"
+                      required
+                    />
                   </FormField>
                 </div>
               </div>
               <div className="form">
                 <div>
                   <FormField label="Email">
-                    <Input {...register("email")} type="email" required />
+                    <Input
+                      id="email"
+                      {...register("email")}
+                      type="email"
+                      required
+                    />
                   </FormField>
                 </div>
                 <div>
                   <FormField label="Phone Number">
-                    <Input {...register("phoneNumber")} type="text" required />
+                    <Input
+                      id="tel"
+                      {...register("phoneNumber")}
+                      type="text"
+                      required
+                    />
                   </FormField>
                 </div>
               </div>
@@ -132,11 +152,16 @@ function RegisterPage() {
                   <FormField label="Password">
                     <InputGroup>
                       <Input
+                        id="password"
                         {...register("password")}
                         type={pshow ? "text" : "password"}
                       />
                       <InputRightElement>
-                        <p className="btn-icon" onClick={handleClickP}>
+                        <p
+                          id="showIcon"
+                          className="btn-icon"
+                          onClick={handleClickP}
+                        >
                           {pshow ? (
                             <ViewIcon color="#0E2038" />
                           ) : (
@@ -151,11 +176,16 @@ function RegisterPage() {
                   <FormField label="Confirm Password">
                     <InputGroup>
                       <Input
+                        id="Cpassword"
                         {...register("confirmPassword")}
                         type={show ? "text" : "password"}
                       />
                       <InputRightElement>
-                        <p className="btn-icon" onClick={handleClick}>
+                        <p
+                          id="showIconB"
+                          className="btn-icon"
+                          onClick={handleClick}
+                        >
                           {show ? (
                             <ViewIcon color=" #16194F" />
                           ) : (

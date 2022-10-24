@@ -114,18 +114,28 @@ function LoginPage() {
                 </div>
                 <div className="form">
                   <FormField label="Email">
-                    <Input {...register("email")} type="email" required />
+                    <Input
+                      id="emailInput"
+                      {...register("email")}
+                      type="email"
+                      required
+                    />
                   </FormField>
                 </div>
                 <div className="form">
                   <FormField label="Password">
                     <InputGroup>
                       <Input
+                        id="passwordInput"
                         {...register("password")}
                         type={pshow ? "text" : "password"}
                       />
                       <InputRightElement>
-                        <p className="btn-icon" onClick={handleClickP}>
+                        <p
+                          className="btn-icon"
+                          onClick={handleClickP}
+                          id="showIcon"
+                        >
                           {pshow ? (
                             <ViewIcon color="#0E2038" />
                           ) : (
@@ -140,6 +150,7 @@ function LoginPage() {
                   <p>
                     Forget password?{" "}
                     <span
+                      id="forgetOverlay"
                       onClick={() => {
                         setOverlay(<OverlayTwo />);
                         onOpen();
@@ -150,7 +161,7 @@ function LoginPage() {
                   </p>
                 </div>
                 <div className="btn">
-                  <ButtonStyled>
+                  <ButtonStyled id="btnLogin">
                     {isLoading ? "Loading..." : "Login"}
                   </ButtonStyled>
                   <span>{isLoading ? <Spinner size="sm" /> : null}</span>
@@ -158,7 +169,7 @@ function LoginPage() {
                 <div className="text">
                   <p>
                     Don't have an account?{" "}
-                    <Link to="/register">
+                    <Link to="/register" id="regLink">
                       <span>Register</span>
                     </Link>
                   </p>

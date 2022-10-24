@@ -63,8 +63,10 @@ function MissingPage() {
   const displayPeople = dataMissing
     ?.slice(pagesVisited, pagesVisited + personPerPage)
     .map(person => (
-      <div onClick={() => navigate(`/users/${person.id}`)} key={person.id}>
-        <CardPerson person={person} />
+      <div key={person.id}>
+        <div onClick={() => navigate(`/users/${person.id}`)}>
+          <CardPerson person={person} />
+        </div>
       </div>
     ));
 

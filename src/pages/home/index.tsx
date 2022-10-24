@@ -56,11 +56,10 @@ function HomePage() {
   const seenPerson =
     personData.length > 0
       ? personData.slice(0, 10).map(person => (
-          <div
-            key={person.id.toString()}
-            onClick={() => navigate(`/users/${person.id}`)}
-          >
-            <CardPerson person={person} />
+          <div key={person.id.toString()}>
+            <div onClick={() => navigate(`/users/${person.id}`)}>
+              <CardPerson person={person} />
+            </div>
           </div>
         ))
       : null;
