@@ -1,7 +1,7 @@
 import React from "react";
-import Imga from "../../../../assets/edmund-lou.jpg";
+// import Imga from "../../../../assets/edmund-lou.jpg";
 // import Imgb from "../../../../assets/edited.jpg";
-// import Imgc from "../../../../assets/margaret.jpg";
+import Imgc from "../../../../assets/margaret.jpg";
 // import "slick-carousel/slick/slick.css";
 // import "slick-carousel/slick/slick-theme.css";
 import { DivWrapper } from "./style";
@@ -26,7 +26,7 @@ function HomeBackground() {
       <div className="box">
         <div className="sideA">
           <div>
-            <img src={Imga} alt="family" />
+            <img src={Imgc} alt="family" />
           </div>
           {/* <Carousel {...settings}>
             {boxImage.map(pic => (
