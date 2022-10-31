@@ -12,6 +12,7 @@ import refecthPng from "../../assets/Spinner.svg";
 import loadPng from "../../assets/Disk.svg";
 import ErrorPng from "../../assets/Ball.svg";
 import HomeWrapper, { InnerWrapper } from "./style";
+import HomeBackground from "./component/homeBackground";
 
 type DataProp = {
   id: number;
@@ -67,6 +68,7 @@ function HomePage() {
   return (
     <HomeWrapper>
       <InnerWrapper>
+        <HomeBackground />
         {isLoading ? (
           <div className="statehandle">
             <div className="handlepage">
