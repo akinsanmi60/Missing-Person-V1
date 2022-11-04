@@ -36,5 +36,5 @@ export const availableNews = {
   news2:
     "Your filled personal details wont be shared with anyone which in turn will lead to voilent act against you.",
   new3: `Before reporting any information, kindly get information of police station nearby you. So that the information you reported can be passed to the police station you filled out.`,
-  new4: `Kindly avoid long tip details. Make it very concise and clear`,
+  new4: `Kindly avoid long tip details. Make it very concise and clear.`,
 };

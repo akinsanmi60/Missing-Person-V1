@@ -61,7 +61,7 @@ const ROUTESWITHLAYER = {
     path: "/question",
   },
   TipPage: {
-    id: "9",
+    id: "10",
     element: TipPage,
     path: "/tip_form",
   },

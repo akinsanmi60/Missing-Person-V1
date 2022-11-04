@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import FormField from "common/FormField";
 import { useForm } from "react-hook-form";
 import dataNig from "../../utils/states_and_lgas.json";
-import { Input, Select, Spinner } from "@chakra-ui/react";
+import {
+  Input,
+  Select,
+  Spinner,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+  Text,
+} from "@chakra-ui/react";
 import TipWrapper, { ButtonStyled, TextArea } from "./style";
 import {
   availableNews,
@@ -19,8 +31,14 @@ import { TIP_ROUTE } from "utils/Api-Routes";
 import NewsIndex from "common/NewsIndex";
 
 function TipFormPage() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const { register, handleSubmit, watch, reset } = useForm<TipProps>();
   const formData = watch();
+
+  useEffect(() => {
+    onOpen();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // LGA
   const stateLGA = dataNig.find(
@@ -250,6 +268,36 @@ function TipFormPage() {
           </div>
         </form>
       </div>
+      <>
+        <Modal
+          blockScrollOnMount={false}
+          isOpen={isOpen}
+          onClose={onClose}
+          isCentered
+        >
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader textAlign="center" mb={-5} color="#0E2038">
+              Rules of Engagment
+            </ModalHeader>
+            <ModalCloseButton outline="none" />
+            <ModalBody>
+              {Object.values(availableNews).map((item, i) => (
+                <div key={i.toString()}>
+                  <Text
+                    fontSize="md"
+                    mt={3}
+                    color="#0E2038"
+                    textAlign="justify"
+                  >
+                    👉{item}
+                  </Text>
+                </div>
+              ))}
+            </ModalBody>
+          </ModalContent>
+        </Modal>
+      </>
     </TipWrapper>
   );
 }

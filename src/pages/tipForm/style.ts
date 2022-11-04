@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 const TipWrapper = styled.div`
   padding: 0.5rem 4rem;
+  color: "#0E2038";
+
   .container {
     padding: 20px 90px;
     margin-top: 5px;
@@ -13,6 +15,12 @@ const TipWrapper = styled.div`
   h1 {
     text-align: center;
     margin-bottom: 9px;
+    font-weight: 900;
+    color: "#0E2038";
+  }
+
+  Text {
+    font-size: 13px;
   }
 
   .boxA {
