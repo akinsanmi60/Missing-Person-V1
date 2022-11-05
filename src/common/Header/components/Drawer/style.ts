@@ -10,6 +10,7 @@ export default ButtonBox;
 export const DrawerButton = styled.button`
   background-color: var(--dark-primary);
   padding: 0.7rem 1rem;
+  min-height: 45px;
   color: white;
   box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%),
     0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
