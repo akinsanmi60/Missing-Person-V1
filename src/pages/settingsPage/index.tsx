@@ -21,6 +21,8 @@ function SettingPage() {
   const { authUser } = useContext(AuthContext);
   const [editMode, setEditMode] = useState<boolean>(false);
 
+  const nameValue = authUser?.user?.firstName;
+
   const handleEdit = () => {
     setEditMode(!editMode);
   };
@@ -42,7 +44,7 @@ function SettingPage() {
                     position="absolute"
                     marginTop="-5"
                     size="2xl"
-                    name="Akintunde Akinsanmi"
+                    name={nameValue}
                     src="https://bit.ly/die"
                     bg="blue.500"
                   />
@@ -50,12 +52,12 @@ function SettingPage() {
               </Wrap>
             </div>
             <div className="basic-info">
-              <h1 className="guardian-name">Akintunde Akinsanmi</h1>
+              <h1 className="guardian-name">{`${authUser?.user.lastName}  ${authUser?.user.firstName}`}</h1>
               <div className="guardian-level value">
-                <span>akintunde60@gmail.com</span>
+                <span>{authUser?.user.email}</span>
               </div>
               <div className="guardian-level value">
-                <span>2348164279799</span>
+                <span>{authUser?.user.phoneNumber || "N/A"}</span>
               </div>
               <div className="guardian-level value">
                 Joined <span>April 2022 </span>
