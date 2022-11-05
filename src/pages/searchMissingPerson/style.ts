@@ -9,6 +9,11 @@ const MissingWrapper = styled.div`
     padding: 40px 60px;
   }
 
+  @media screen and (max-width: 425px) {
+    .wallpaper {
+      padding: 20px;
+    }
+  }
   @media screen and (max-width: 375px) {
     .wallpaper {
       padding: 20px;

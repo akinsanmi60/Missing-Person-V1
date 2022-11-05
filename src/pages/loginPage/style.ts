@@ -32,7 +32,7 @@ const LoginWrapper = styled.div`
 
   .formContainer {
     min-width: 400px;
-    margin-top: 50px;
+    margin-top: 100px;
     position: relative;
     z-index: 999;
     padding: 35px 30px;
@@ -40,7 +40,7 @@ const LoginWrapper = styled.div`
     -webkit-box-shadow: -1px 4px 28px 0px rgb(0 0 0 / 25%);
     -moz-box-shadow: -1px 4px 28px 0px rgba(0, 0, 0, 0.25);
     box-shadow: -1px 4px 28px 0px rgb(0 0 0 / 25%);
-    margin-bottom: -20px;
+    margin-bottom: 20px;
   }
 
   Input {
@@ -95,7 +95,7 @@ const LoginWrapper = styled.div`
 
   @media screen and (max-width: 425px) {
     .formContainer {
-      margin-top: 30px;
+      margin-top: 120px;
       margin-bottom: 40px;
       min-width: 300px;
     }
@@ -103,6 +103,13 @@ const LoginWrapper = styled.div`
       display: flex;
       justify-content: flex-start;
       margin-top: 15px;
+    }
+  }
+  @media screen and (max-width: 375px) {
+    .formContainer {
+      margin-top: 50px;
+      margin-bottom: 30px;
+      min-width: 300px;
     }
   }
 `;

@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
 const RegisterWrapper = styled.div`
-  background-color: var(--neutral-light);
-  min-height: 100vh;
+  .layer {
+    background-color: var(--neutral-light);
+    min-height: 100vh;
+  }
 
   .boxform {
     display: flex;
@@ -26,7 +28,7 @@ const RegisterWrapper = styled.div`
     -webkit-box-shadow: -1px 4px 28px 0px rgb(0 0 0 / 25%);
     -moz-box-shadow: -1px 4px 28px 0px rgba(0, 0, 0, 0.25);
     box-shadow: -1px 4px 28px 0px rgb(0 0 0 / 25%);
-    margin-bottom: -20px;
+    margin-bottom: 40px;
   }
 
   .form {
@@ -88,8 +90,9 @@ const RegisterWrapper = styled.div`
 
   @media screen and (max-width: 768px) {
     .formContainer {
+      margin-top: 90px;
       margin-bottom: 40px;
-      min-width: 300px;
+      min-width: 340px;
     }
   }
   @media screen and (max-width: 425px) {
@@ -104,11 +107,24 @@ const RegisterWrapper = styled.div`
     .formContainer {
       margin-top: 30px;
       margin-bottom: 40px;
+      min-width: 360px;
     }
     .btn {
       display: flex;
       justify-content: flex-start;
       margin-top: 15px;
+    }
+  }
+  @media screen and (max-width: 375px) {
+    .formContainer {
+      margin-bottom: 40px;
+      min-width: 320px;
+    }
+  }
+  @media screen and (max-width: 320px) {
+    .formContainer {
+      margin-bottom: 40px;
+      min-width: 270px;
     }
   }
 `;

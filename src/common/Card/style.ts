@@ -30,5 +30,19 @@ const CardWrapper = styled.div`
       background-position: center;
     }
   }
+  @media screen and (max-width: 820px) {
+    .card {
+      p {
+        font-size: 12px;
+      }
+    }
+  }
+  @media screen and (max-width: 425px) {
+    .card {
+      p {
+        font-size: 12px;
+      }
+    }
+  }
 `;
 export default CardWrapper;

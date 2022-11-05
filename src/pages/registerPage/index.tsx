@@ -84,135 +84,137 @@ function RegisterPage() {
     <>
       <AppHeader />
       <RegisterWrapper>
-        <div className="boxform">
-          <div className="formContainer">
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <h1 className="hero">Sign up to People</h1>
-              <div className="optlogin">
-                <span>
-                  <FaFacebookSquare />
-                </span>
-                <span>
-                  <FaTwitterSquare />
-                </span>
-                <span>
-                  <FaGooglePlusSquare />
-                </span>
-              </div>
+        <div className="layer">
+          <div className="boxform">
+            <div className="formContainer">
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <h1 className="hero">Sign up to People</h1>
+                <div className="optlogin">
+                  <span>
+                    <FaFacebookSquare />
+                  </span>
+                  <span>
+                    <FaTwitterSquare />
+                  </span>
+                  <span>
+                    <FaGooglePlusSquare />
+                  </span>
+                </div>
 
-              <div className="textopt">
-                <p>Or signup with</p>
-              </div>
-              <div className="form">
-                <div>
-                  <FormField label="First Name">
-                    <Input
-                      id="firstname"
-                      {...register("firstName")}
-                      type="text"
-                      required
-                    />
-                  </FormField>
+                <div className="textopt">
+                  <p>Or signup with</p>
                 </div>
-                <div>
-                  <FormField label="Last Name">
-                    <Input
-                      id="lastname"
-                      {...register("lastName")}
-                      type="text"
-                      required
-                    />
-                  </FormField>
-                </div>
-              </div>
-              <div className="form">
-                <div>
-                  <FormField label="Email">
-                    <Input
-                      id="email"
-                      {...register("email")}
-                      type="email"
-                      required
-                    />
-                  </FormField>
-                </div>
-                <div>
-                  <FormField label="Phone Number">
-                    <Input
-                      id="tel"
-                      {...register("phoneNumber")}
-                      type="text"
-                      required
-                    />
-                  </FormField>
-                </div>
-              </div>
-              <div className="form">
-                <div>
-                  <FormField label="Password">
-                    <InputGroup>
+                <div className="form">
+                  <div>
+                    <FormField label="First Name">
                       <Input
-                        id="password"
-                        {...register("password")}
-                        type={pshow ? "text" : "password"}
+                        id="firstname"
+                        {...register("firstName")}
+                        type="text"
+                        required
                       />
-                      <InputRightElement>
-                        <p
-                          id="showIcon"
-                          className="btn-icon"
-                          onClick={handleClickP}
-                        >
-                          {pshow ? (
-                            <ViewIcon color="#0E2038" />
-                          ) : (
-                            <ViewOffIcon color="#0E2038" />
-                          )}
-                        </p>
-                      </InputRightElement>
-                    </InputGroup>
-                  </FormField>
-                </div>
-                <div>
-                  <FormField label="Confirm Password">
-                    <InputGroup>
+                    </FormField>
+                  </div>
+                  <div>
+                    <FormField label="Last Name">
                       <Input
-                        id="Cpassword"
-                        {...register("confirmPassword")}
-                        type={show ? "text" : "password"}
+                        id="lastname"
+                        {...register("lastName")}
+                        type="text"
+                        required
                       />
-                      <InputRightElement>
-                        <p
-                          id="showIconB"
-                          className="btn-icon"
-                          onClick={handleClick}
-                        >
-                          {show ? (
-                            <ViewIcon color=" #16194F" />
-                          ) : (
-                            <ViewOffIcon color=" #16194F" />
-                          )}
-                        </p>
-                      </InputRightElement>
-                    </InputGroup>
-                  </FormField>
+                    </FormField>
+                  </div>
                 </div>
-              </div>
+                <div className="form">
+                  <div>
+                    <FormField label="Email">
+                      <Input
+                        id="email"
+                        {...register("email")}
+                        type="email"
+                        required
+                      />
+                    </FormField>
+                  </div>
+                  <div>
+                    <FormField label="Phone Number">
+                      <Input
+                        id="tel"
+                        {...register("phoneNumber")}
+                        type="text"
+                        required
+                      />
+                    </FormField>
+                  </div>
+                </div>
+                <div className="form">
+                  <div>
+                    <FormField label="Password">
+                      <InputGroup>
+                        <Input
+                          id="password"
+                          {...register("password")}
+                          type={pshow ? "text" : "password"}
+                        />
+                        <InputRightElement>
+                          <p
+                            id="showIcon"
+                            className="btn-icon"
+                            onClick={handleClickP}
+                          >
+                            {pshow ? (
+                              <ViewIcon color="#0E2038" />
+                            ) : (
+                              <ViewOffIcon color="#0E2038" />
+                            )}
+                          </p>
+                        </InputRightElement>
+                      </InputGroup>
+                    </FormField>
+                  </div>
+                  <div>
+                    <FormField label="Confirm Password">
+                      <InputGroup>
+                        <Input
+                          id="Cpassword"
+                          {...register("confirmPassword")}
+                          type={show ? "text" : "password"}
+                        />
+                        <InputRightElement>
+                          <p
+                            id="showIconB"
+                            className="btn-icon"
+                            onClick={handleClick}
+                          >
+                            {show ? (
+                              <ViewIcon color=" #16194F" />
+                            ) : (
+                              <ViewOffIcon color=" #16194F" />
+                            )}
+                          </p>
+                        </InputRightElement>
+                      </InputGroup>
+                    </FormField>
+                  </div>
+                </div>
 
-              <div className="btn">
-                <ButtonStyled>
-                  {isLoading ? "Loading..." : "Sign Up"}
-                </ButtonStyled>
-                <span>{isLoading ? <Spinner size="sm" /> : null}</span>
-              </div>
-              <div className="text">
-                <p>
-                  Already have an account?{" "}
-                  <Link to="/login">
-                    <span>Login</span>
-                  </Link>
-                </p>
-              </div>
-            </form>
+                <div className="btn">
+                  <ButtonStyled>
+                    {isLoading ? "Loading..." : "Sign Up"}
+                  </ButtonStyled>
+                  <span>{isLoading ? <Spinner size="sm" /> : null}</span>
+                </div>
+                <div className="text">
+                  <p>
+                    Already have an account?{" "}
+                    <Link to="/login">
+                      <span>Login</span>
+                    </Link>
+                  </p>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </RegisterWrapper>
