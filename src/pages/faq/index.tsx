@@ -6,8 +6,8 @@ import { Wrapper } from "./style";
 function Question() {
   return (
     <Wrapper>
-      <div className="img">
-        <img src={Faq} alt="" />
+      <div>
+        <img src={Faq} alt="" className="img" />
       </div>
       <div className="outletcontainer">
         <h1>Frequently Asked Questions</h1>
