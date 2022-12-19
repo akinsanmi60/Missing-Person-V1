@@ -26,6 +26,7 @@ import { USER_REGISTER } from "utils/Api-Routes";
 import AuthContext from "contexts/AuthProvider";
 
 interface RegisterFormInputs {
+  [index: string]: number | string;
   firstName: string;
   lastName: string;
   email: string;
@@ -40,7 +41,7 @@ const schema = yup
     lastName: yup.string().required(),
     email: yup.string().required(),
     password: yup.string().min(5).max(20).required(),
-    phoneNumber: yup.string().default("student"),
+    phoneNumber: yup.string().required(),
   })
   .required();
 

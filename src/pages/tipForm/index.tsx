@@ -59,7 +59,6 @@ function TipFormPage() {
   });
 
   const submit = (inputValue: TipProps) => {
-    console.log(inputValue);
     mutate({ data: inputValue, url: TIP_ROUTE });
     reset();
   };

@@ -23,9 +23,9 @@ function SearchBar({ view, people, setData }: SearchPprop) {
   const givenState = dataNig.sort((a, b) => (a.state > b.state ? 1 : -1));
 
   // age calculation for dropdown
-  const getAge = people.map(person => person.age);
+  const getAge = people?.map(person => person.age);
   const filterAge = getAge
-    .filter(function (age, index) {
+    ?.filter(function (age, index) {
       return getAge.indexOf(age) === index;
     })
     .sort((a, b) => Number(a) - Number(b));
@@ -71,7 +71,7 @@ function SearchBar({ view, people, setData }: SearchPprop) {
             <div>
               <FormField label="Age">
                 <Select placeholder="Please Select" {...register("age")}>
-                  {filterAge.map(yearAge => (
+                  {filterAge?.map(yearAge => (
                     <option value={yearAge} key={yearAge}>
                       {yearAge}
                     </option>

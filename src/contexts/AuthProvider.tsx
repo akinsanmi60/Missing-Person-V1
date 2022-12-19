@@ -43,7 +43,6 @@ export const pushToLocalStorage = (token: string, user?: any) => {
 };
 
 const getUser = () => {
-  // const userToken = localStorage.getItem("token");
   const userString = localStorage.getItem("user") as string;
   const userTransaction = localStorage.getItem("transaction") as string;
 

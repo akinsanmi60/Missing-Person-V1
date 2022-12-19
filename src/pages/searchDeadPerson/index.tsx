@@ -1,13 +1,13 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import SearchBar from "common/Search";
 import { useState } from "react";
 import OuterLayout from "styles/layout";
 import DeathWrapper from "./style";
 import CardPerson from "common/Card";
 import { useNavigate } from "react-router-dom";
+import { getRequest } from "utils/apiCall";
 const ListView = React.lazy(() => import("common/ListView"));
 
 type DataProp = {
@@ -43,10 +43,10 @@ function DeathPage() {
 
   const { isLoading, isError, isRefetching, refetch } = useQuery(
     ["user"],
-    () => axios.get(`https://dummyjson.com/users`),
+    () => getRequest({ url: `https://dummyjson.com/users` }),
     {
       onSuccess(e) {
-        setData(e?.data?.users);
+        setData(e?.users);
       },
       refetchOnWindowFocus: false,
     },

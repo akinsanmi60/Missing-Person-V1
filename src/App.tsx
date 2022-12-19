@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import LayoutWrapper from "utils/WebpageWrap";
 import ROUTESWITHLAYER, { APPROUTES } from "Routes";
@@ -30,6 +30,18 @@ function Wrapper() {
 }
 
 function App() {
+  useEffect(() => {
+    const { port, hostname } = window.location;
+
+    if (parseInt(port, 10) !== 3000 && hostname !== "localhost") {
+      const identity = prompt("Please the passcode");
+      if (identity !== "NigeriaData2022?") {
+        window.location.href = "https://google.com";
+        return;
+      }
+    }
+  }, []);
+
   return (
     <div>
       <Wrapper />

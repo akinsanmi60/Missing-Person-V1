@@ -22,3 +22,4 @@ declare module "*.jpeg" {
 declare module "@paystack/inline-js";
 declare module "@chakra-ui/icons";
 declare module "react-slick";
+module "crypto-js";

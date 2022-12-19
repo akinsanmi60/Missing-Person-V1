@@ -43,14 +43,14 @@ function ListView({
             <p>Error occured while communicating with the server...</p>
           </div>
         </div>
-      ) : displayPeople.length > 0 ? (
+      ) : displayPeople?.length > 0 ? (
         <>
           <div className="box_people">{displayPeople}</div>
           <div className="select-btn">
             <Pagination pageCount={pageCount} changePage={changePage} />
           </div>
         </>
-      ) : displayPeople.length === 0 ? (
+      ) : displayPeople?.length === 0 ? (
         <div className="statehandle">
           <div className="handlepage">
             <img src={SearchPng} alt="Error" className="err_img" />
