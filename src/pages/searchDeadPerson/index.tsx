@@ -6,8 +6,11 @@ import { useState } from "react";
 import OuterLayout from "styles/layout";
 import DeathWrapper from "./style";
 import CardPerson from "common/Card";
-import { useNavigate } from "react-router-dom";
 import { getRequest } from "utils/apiCall";
+import vid from "../../assets/deadbody.mp4";
+import { FaMinusCircle, FaPlusCircle } from "react-icons/fa";
+import { Link } from "react-router-dom";
+
 const ListView = React.lazy(() => import("common/ListView"));
 
 type DataProp = {
@@ -37,9 +40,13 @@ type DataProp = {
 
 function DeathPage() {
   const viewPage = "Dead Body";
-  const navigate = useNavigate();
   const [dataDead, setData] = useState<DataProp[]>([]);
   const [pageNumber, setPageNumber] = useState(0);
+  const [toggle, setToggle] = useState(false);
+
+  const btnToggler = () => {
+    setToggle(!toggle);
+  };
 
   const { isLoading, isError, isRefetching, refetch } = useQuery(
     ["user"],
@@ -65,19 +72,45 @@ function DeathPage() {
     ?.slice(pagesVisited, pagesVisited + personPerPage)
     .map(person => (
       <div key={person.id}>
-        <div onClick={() => navigate(`/users/${person.id}`)}>
-          <CardPerson person={person} />
+        <div>
+          <CardPerson person={person} view={viewPage} />
         </div>
       </div>
     ));
 
   return (
     <DeathWrapper>
-      <div className="box">
-        <SearchBar view={viewPage} people={dataDead} setData={setData} />
+      <div className="wallpaper">
+        <div className="sliderwrapper">
+          <div className="outline">
+            <div className="welcimage">
+              <video autoPlay muted loop src={vid} />
+            </div>
+            <div className="welcometext">
+              <h1>Dead Person?</h1>
+              <button className="btn">
+                <Link to="/signup">Get Started</Link>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
 
       <OuterLayout>
+        <div className="box">
+          <div className="click" onClick={btnToggler}>
+            <h4>Click to search</h4>
+            {toggle ? (
+              <FaMinusCircle className="icon" />
+            ) : (
+              <FaPlusCircle className="icon" />
+            )}
+          </div>
+          {toggle && (
+            <SearchBar view={viewPage} people={dataDead} setData={setData} />
+          )}
+        </div>
+
         <div>
           <ListView
             isLoading={isLoading}

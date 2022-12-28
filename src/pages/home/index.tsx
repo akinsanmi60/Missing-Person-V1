@@ -1,8 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import CardPerson from "common/Card";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { getRequest } from "utils/apiCall";
 import { queryKeys } from "utils/queryKey";
 import FQA from "./component/faq";
@@ -40,7 +39,6 @@ type DataProp = {
 };
 
 function HomePage() {
-  const navigate = useNavigate();
   const [personData, setData] = useState<DataProp[]>([]);
 
   const { isLoading, isRefetching, isError } = useQuery(
@@ -58,7 +56,7 @@ function HomePage() {
     personData.length > 0
       ? personData.slice(0, 10).map(person => (
           <div key={person.id.toString()}>
-            <div onClick={() => navigate(`/users/${person.id}`)}>
+            <div>
               <CardPerson person={person} />
             </div>
           </div>

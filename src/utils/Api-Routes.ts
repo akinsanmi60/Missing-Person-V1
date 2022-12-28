@@ -36,3 +36,6 @@ export const ADDDEADPERSON_ROUTE = "http://localhost:3500/dead/add_dead_person";
 
 export const SinglePerson = (personId: number | undefined) =>
   `https://dummyjson.com/users/${personId}`;
+
+export const VideoLink =
+  "https://vod-progressive.akamaized.net/exp=1672180380~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F123%2F26%2F650618257%2F2985455816.mp4~hmac=aa0ef73ccce7857a52653eafacd87ea2793b23b3579cb42f7b3ae035e4cb2f5c/vimeo-prod-skyfire-std-us/01/123/26/650618257/2985455816.mp4?download=1&filename=pexels-ron-lach-10367208.mp4";

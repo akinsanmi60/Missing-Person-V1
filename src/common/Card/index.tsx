@@ -1,5 +1,7 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from "react";
 import CardWrapper from "./style";
+import { useNavigate } from "react-router-dom";
 
 type CardProp = {
   person: {
@@ -26,15 +28,22 @@ type CardProp = {
     };
     eyeColor: string;
   };
+  view?: string;
 };
-function CardPerson({ person }: CardProp) {
+function CardPerson({ person, view }: CardProp) {
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate(`/users/${person.id}`);
+  };
+
   return (
     <CardWrapper>
       <div className="card">
         <div className="image">
           <img src={person.image} alt="person" />
         </div>
-        <div className="description">
+        <div className="description" onClick={handleNavigate}>
           <div>
             <p>ID: {person.id}</p>
             <p>Last-Name: {person.lastName}</p>
@@ -43,6 +52,23 @@ function CardPerson({ person }: CardProp) {
             <p>DOB: {person.birthDate}</p>
             <p>Eye-Color: {person.eyeColor}</p>
             <p>Blood-Group: {person.bloodGroup}</p>
+          </div>
+          <div
+            className="overlay"
+            style={{
+              backgroundColor:
+                view === "Missing Person"
+                  ? "rgb(56, 1, 56, 0.5)"
+                  : view === "Dead Body"
+                  ? "rgb(58, 97, 134, 0.5)"
+                  : "rgb(14, 32, 56, 0.5)",
+            }}
+          >
+            <div className="btnbox">
+              <button className="btn" onClick={handleNavigate}>
+                View
+              </button>
+            </div>
           </div>
         </div>
       </div>
