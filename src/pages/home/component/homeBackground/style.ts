@@ -1,18 +1,12 @@
 import styled from "styled-components";
-import Slider from "react-slick";
 
 export const DivWrapper = styled.div`
-  margin-top: 2px;
   margin-bottom: 20px;
-  border: 1px solid;
+
   .box {
     display: flex;
     .sideA {
       width: 70%;
-      img {
-        width: 100%;
-        height: 500px;
-      }
     }
     .sideB {
       width: 30%;
@@ -56,27 +50,5 @@ export const DivWrapper = styled.div`
         }
       }
     }
-  }
-`;
-
-export const Carousel = styled(Slider)`
-  .slick-list {
-    overflow: hidden;
-  }
-  width: 100%;
-  .slick-dots {
-    bottom: 25px;
-    text-align: right;
-    padding-right: 20px;
-  }
-  .slick-dots li button:before {
-    font-size: 10px;
-    color: #f2f6ff;
-  }
-  .slick-next:before {
-    display: none;
-  }
-  .slick-prev:before {
-    display: none;
   }
 `;

@@ -1,40 +1,15 @@
 import React from "react";
-// import Imga from "../../../../assets/edmund-lou.jpg";
-// import Imgb from "../../../../assets/edited.jpg";
-import Imgc from "../../../../assets/margaret.jpg";
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
 import { DivWrapper } from "./style";
+import HomeImageSlider from "../imageSlider";
 
 function HomeBackground() {
-  //   const settings = {
-  //     dots: true,
-  //     infinite: true,
-  //     slidesToShow: 1,
-  //     slidesToScroll: 1,
-  //     autoplay: true,
-  //     speed: 3000,
-  //     autoplaySpeed: 10000,
-  //     cssEase: "linear",
-  //     nextArrow: false,
-  //     prevArrow: false,
-  //   };
-  //   const boxImage = [Imga, Imgb, Imgc];
-
   return (
     <DivWrapper>
       <div className="box">
         <div className="sideA">
           <div>
-            <img src={Imgc} alt="family" />
+            <HomeImageSlider />
           </div>
-          {/* <Carousel {...settings}>
-            {boxImage.map(pic => (
-              <div>
-                <img src={pic} alt="family" />
-              </div>
-            ))}
-          </Carousel> */}
         </div>
         <div className="sideB">
           <h1>Missing Person</h1>
