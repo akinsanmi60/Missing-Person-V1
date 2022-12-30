@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AddFormPage from "common/AddForm";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
@@ -15,9 +15,22 @@ function AddMissingPage() {
   const formType = "missing";
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { register, handleSubmit, watch, reset, setValue } = useForm<FasProp>();
+  const [images, setImages] = useState<File[]>([]);
+  const [ImageURLs, setImageURLs] = useState<string[]>([]);
 
   // the watch() is used to observe value change in state select
   const formData = watch();
+
+  useEffect(() => {
+    if (images.length < 1) return;
+    const newImageUrls: string[] = [];
+    images.forEach(image => newImageUrls.push(URL.createObjectURL(image)));
+    setImageURLs(newImageUrls);
+  }, [images]);
+
+  function onImageChange(e: { target: { files: any } }) {
+    setImages([...e.target.files]);
+  }
 
   const { mutate, isLoading } = useMutation(postRequest, {
     onSuccess(res) {
@@ -29,6 +42,12 @@ function AddMissingPage() {
   });
 
   const onSubmit: SubmitHandler<FasProp> = data => {
+    console.log(data);
+    const imgData = new FormData();
+    if (images.length > 3) return;
+    Array.from(images).forEach(item => {
+      imgData.append("products", item);
+    });
     mutate({ data: data, url: ADDMISSINGPERSON_ROUTE });
     reset();
   };
@@ -46,6 +65,8 @@ function AddMissingPage() {
           setValue={setValue}
           isLoading={isLoading}
           onOpen={onOpen}
+          onImageChange={onImageChange}
+          ImageURLs={ImageURLs}
         />
       </form>
       <PaymentModal onClose={onClose} isOpen={isOpen} />

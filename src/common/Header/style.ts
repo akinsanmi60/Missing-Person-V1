@@ -25,6 +25,7 @@ const HeaderBox = styled.div`
     display: flex;
     justify-content: space-between;
     height: 30px;
+    font-weight: 700;
     font-size: 13px;
     color: var(--neutral-light);
     background: var(--dark-primary);

@@ -53,9 +53,13 @@ const FormAddBox = styled.div`
     }
   }
 
-  input[type="file"] {
-    font-size: 9px;
-    width: 25%;
+  .uploadFile {
+    font-size: 16px;
+    width: 95%;
+    border: 5px solid;
+  }
+
+  .uploadFile :hover {
     border: none;
   }
 

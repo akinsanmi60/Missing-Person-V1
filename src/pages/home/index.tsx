@@ -12,7 +12,7 @@ import loadPng from "../../assets/Disk.svg";
 import ErrorPng from "../../assets/Ball.svg";
 import HomeWrapper, { InnerWrapper } from "./style";
 import HomeBackground from "./component/homeBackground";
-import UploadImages, { CloudinaryUploadImages } from "./upload";
+import UploadImages from "./upload";
 
 type DataProp = {
   id: number;
@@ -100,7 +100,6 @@ function HomePage() {
         <FQA />
         <NewsLetterPage />
         <UploadImages />
-        <CloudinaryUploadImages />
       </InnerWrapper>
     </HomeWrapper>
   );

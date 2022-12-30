@@ -24,6 +24,8 @@ function AddFormPage({
   register,
   isLoading: btnLoading,
   onOpen,
+  onImageChange,
+  ImageURLs,
 }: FormPageProp) {
   const { authUser } = useContext(AuthContext);
   const [arrivedOTP, setArrivedOTP] = useState("");
@@ -273,10 +275,42 @@ function AddFormPage({
           </div>
           <div className="parent_ad_box">
             <div>
-              <FormField label="Address">
+              <FormField
+                label={
+                  formType === "missing" ? `Last Seen Address` : `Found Address`
+                }
+              >
                 <Input {...register("issueAd", { required: true })} />
               </FormField>
             </div>
+          </div>
+
+          <div className="imgBoxWrap">
+            <FormField label="Upload Images">
+              <Input
+                type="file"
+                multiple
+                accept="image/*"
+                onChange={onImageChange}
+                className="uploadFile"
+              />
+              <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+                {ImageURLs.map((itemSrc, index) => (
+                  <div key={index}>
+                    <img
+                      src={itemSrc}
+                      style={{
+                        display: "inline-block",
+                        border: "1px solid",
+                        width: "100%",
+                        height: "250px",
+                      }}
+                      alt=""
+                    />
+                  </div>
+                ))}
+              </div>
+            </FormField>
           </div>
         </div>
 
@@ -414,18 +448,6 @@ function AddFormPage({
             </span>
           </div>
         </div>
-
-        {/* <div className="img">
-          <div>
-            <FormField label="Image">
-              <Input id="fileInput" type="file" onChange={onSubmitFile} />
-            </FormField>
-          </div>
-          <div>
-            <Input type="hidden" {...register("imageA")} />
-          </div>
-        </div>
-        {isUploading ? "Uploading" : null} */}
 
         {/**Payment*/}
         <div className="payment">

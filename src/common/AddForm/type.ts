@@ -119,4 +119,10 @@ export type FormPageProp = {
   setValue: UseFormSetValue<FasProp>;
   isLoading: boolean;
   onOpen: () => void;
+  ImageURLs: string[];
+  onImageChange(e: {
+    target: {
+      files: any;
+    };
+  }): void;
 };

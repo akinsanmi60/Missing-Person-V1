@@ -38,6 +38,36 @@ const HeaderWrapper = styled.div`
 `;
 export default HeaderWrapper;
 
+export const SmallHeader = styled.div`
+  padding: 0 50px;
+  display: flex;
+  justify-content: center;
+  height: 30px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--neutral-light);
+  background: #606096;
+  .text {
+    display: flex;
+    gap: 35px;
+  }
+
+  p {
+    margin-top: 5px;
+    cursor: pointer;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 0 30px;
+  }
+  @media screen and (max-width: 425px) {
+    padding: 0 20px;
+    .mobile {
+      display: none;
+    }
+  }
+`;
+
 export const FooterBox = styled.div`
   font-size: 14px;
   background-color: var(--dark-primary);
