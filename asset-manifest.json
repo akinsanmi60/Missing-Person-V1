@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Nigeria/static/css/main.021abe3f.css",
-    "main.js": "/Nigeria/static/js/main.bfd10451.js",
+    "main.js": "/Nigeria/static/js/main.c803b0ec.js",
     "static/js/84.c4fa3a1b.chunk.js": "/Nigeria/static/js/84.c4fa3a1b.chunk.js",
     "static/js/831.e8e1a6ab.chunk.js": "/Nigeria/static/js/831.e8e1a6ab.chunk.js",
     "static/js/602.f0f95994.chunk.js": "/Nigeria/static/js/602.f0f95994.chunk.js",
@@ -41,7 +41,7 @@
     "index.html": "/Nigeria/index.html",
     "static/media/Ball.svg": "/Nigeria/static/media/Ball.dd1bd72e54cf6c8d1b108e44e73427ac.svg",
     "main.021abe3f.css.map": "/Nigeria/static/css/main.021abe3f.css.map",
-    "main.bfd10451.js.map": "/Nigeria/static/js/main.bfd10451.js.map",
+    "main.c803b0ec.js.map": "/Nigeria/static/js/main.c803b0ec.js.map",
     "84.c4fa3a1b.chunk.js.map": "/Nigeria/static/js/84.c4fa3a1b.chunk.js.map",
     "831.e8e1a6ab.chunk.js.map": "/Nigeria/static/js/831.e8e1a6ab.chunk.js.map",
     "602.f0f95994.chunk.js.map": "/Nigeria/static/js/602.f0f95994.chunk.js.map",
@@ -66,6 +66,6 @@
   },
   "entrypoints": [
     "static/css/main.021abe3f.css",
-    "static/js/main.bfd10451.js"
+    "static/js/main.c803b0ec.js"
   ]
 }
