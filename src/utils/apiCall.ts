@@ -3,7 +3,7 @@ import customAxiosMethod from "./customAxiosMethod";
 type Prop = {
   url: string;
   data?: {
-    [index: string]: string | number | undefined;
+    [index: string]: string | number | undefined | string[];
   };
 };
 

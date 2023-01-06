@@ -1,5 +1,4 @@
 export type FasProp = {
-  imageA: string;
   foundPersonType?: string;
   firstName: string;
   lastName: string;

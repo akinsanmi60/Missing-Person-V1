@@ -21,10 +21,6 @@ function AddFoundPage() {
   const formData = watch();
 
   useEffect(() => {
-    if (images.length < 1) {
-      toast.error("You need to select 1 - 3 images", toastOptions);
-      return;
-    }
     const newImageUrls: string[] = [];
     images.forEach(image => newImageUrls.push(URL.createObjectURL(image)));
     setImageURLs(newImageUrls);
@@ -48,16 +44,32 @@ function AddFoundPage() {
     },
   });
 
-  const onSubmit: SubmitHandler<FasProp> = data => {
-    console.log(data);
+  const onSubmit: SubmitHandler<FasProp> = inputValues => {
     const imgData = new FormData();
     if (images.length > 3) {
       toast.error("You selected more than three images", toastOptions);
       return;
     }
+
+    if (images.length < 3) {
+      toast.error("You need to select 3 images", toastOptions);
+      return;
+    }
+
     Array.from(images).forEach(item => {
-      imgData.append("products", item);
+      imgData.append("dead-person", item);
     });
+
+    // this function gets out the name of the images
+    const files = images?.map(({ name }) => name);
+
+    const data = {
+      ...inputValues,
+      files,
+    };
+
+    console.log(data);
+
     mutate({ data: data, url: uri });
     reset();
   };

@@ -35,7 +35,7 @@ function App() {
 
     if (parseInt(port, 10) !== 3000 && hostname !== "localhost") {
       const identity = prompt("Please the passcode");
-      if (identity !== process.env.APP_PASSWORD) {
+      if (identity !== "NigeriaData2022?") {
         window.location.href = "https://google.com";
         return;
       }

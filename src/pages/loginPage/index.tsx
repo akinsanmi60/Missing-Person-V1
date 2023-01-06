@@ -10,7 +10,6 @@ import {
   useDisclosure,
   ModalOverlay,
 } from "@chakra-ui/react";
-import CryptoJS from "crypto-js";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -67,20 +66,18 @@ function LoginPage() {
   // handle login function
   const { mutate, isLoading } = useMutation(postRequest, {
     onSuccess(res) {
-      const bytes = CryptoJS.AES.decrypt(res?.ciphertext, "akorede");
-      const decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
-      console.log(decryptedData);
-      const token = decryptedData?.token;
-      const user = decryptedData?.user;
+      const token = res?.token;
+      const user = res?.user;
+      console.log(res?.user);
       setAuthUser({ token, user });
-      pushToLocalStorage(user, token);
+      pushToLocalStorage(token, user);
       const { isEmailVerified } = user;
       if (isEmailVerified === true) {
         navigate("/auth_profile");
         toast.success(res?.message, toastOptions);
       } else {
-        toast.success("Kindly verify your before you can login", toastOptions);
         navigate("/verify_account");
+        toast.success("Kindly verify your before you can login", toastOptions);
       }
     },
     onError(err: any) {

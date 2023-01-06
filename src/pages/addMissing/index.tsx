@@ -41,13 +41,29 @@ function AddMissingPage() {
     },
   });
 
-  const onSubmit: SubmitHandler<FasProp> = data => {
-    console.log(data);
+  const onSubmit: SubmitHandler<FasProp> = inputValues => {
     const imgData = new FormData();
-    if (images.length > 3) return;
+    if (images.length > 3) {
+      toast.error("You selected more than three images", toastOptions);
+      return;
+    }
+
+    if (images.length < 3) {
+      toast.error("You need to select 3 images", toastOptions);
+      return;
+    }
     Array.from(images).forEach(item => {
       imgData.append("products", item);
     });
+
+    // this function gets out the name of the images
+    const files = images?.map(({ name }) => name);
+
+    const data = {
+      ...inputValues,
+      files,
+    };
+
     mutate({ data: data, url: ADDMISSINGPERSON_ROUTE });
     reset();
   };
