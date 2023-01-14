@@ -17,6 +17,7 @@ import toastOptions from "hooks/toast";
 import { postRequest } from "utils/apiCall";
 import { useMutation } from "@tanstack/react-query";
 import { OTP_ROUTE } from "utils/Api-Routes";
+import { maxDateToTime } from "utils/helper";
 
 function AddFormPage({
   formType,
@@ -112,12 +113,12 @@ function AddFormPage({
           </div>
           <div>
             <FormField label="Height">
-              <Input {...register("height")} />
+              <Input {...register("height")} placeholder="in ft" />
             </FormField>
           </div>
           <div>
             <FormField label="Weight">
-              <Input {...register("weight")} />
+              <Input {...register("weight")} placeholder="in kg" />
             </FormField>
           </div>
         </div>
@@ -237,7 +238,12 @@ function AddFormPage({
           <div className="issue_ad">
             <div>
               <FormField label="Date">
-                <Input type="date" {...register("issueDate")} />
+                <Input
+                  type="datetime-local"
+                  {...register("issueDate")}
+                  min="1900-12-31"
+                  max={maxDateToTime}
+                />
               </FormField>
             </div>
             <div>
@@ -387,7 +393,12 @@ function AddFormPage({
         <div className="police_ad_box">
           <div>
             <FormField label="Date Reported">
-              <Input {...register("dateReport")} />
+              <Input
+                {...register("dateReport")}
+                type="datetime-local"
+                min="1900-12-31"
+                max={maxDateToTime}
+              />
             </FormField>
           </div>
         </div>

@@ -55,8 +55,9 @@ const FormAddBox = styled.div`
 
   .uploadFile {
     font-size: 16px;
-    width: 95%;
-    border: 5px solid;
+    width: 100%;
+    border: none;
+    /* border: 5px solid; */
   }
 
   .uploadFile :hover {
