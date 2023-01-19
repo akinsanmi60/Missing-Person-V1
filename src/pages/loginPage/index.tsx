@@ -74,14 +74,20 @@ function LoginPage() {
       const { isEmailVerified } = user;
       if (isEmailVerified === true) {
         navigate("/auth_profile");
+        window.location.reload();
         toast.success(res?.message, toastOptions);
       } else {
         navigate("/verify_account");
+        window.location.reload();
         toast.success("Kindly verify your before you can login", toastOptions);
       }
     },
-    onError(err: any) {
-      toast.error(err?.message, toastOptions);
+    onError(error: any) {
+      const content =
+        (error.response && error.response.data) ||
+        error.message ||
+        error.toString();
+      toast.error(content, toastOptions);
     },
   });
 

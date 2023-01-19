@@ -36,8 +36,12 @@ function AddMissingPage() {
     onSuccess(res) {
       toast.success(res?.message, toastOptions);
     },
-    onError(err: any) {
-      toast.error(err?.message, toastOptions);
+    onError(error: any) {
+      const content =
+        (error.response && error.response.data) ||
+        error.message ||
+        error.toString();
+      toast.error(content, toastOptions);
     },
   });
 

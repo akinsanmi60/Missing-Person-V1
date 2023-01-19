@@ -49,13 +49,16 @@ function ResetFormPage() {
       toast.success(res?.message, toastOptions);
       navigate("/studentlogin");
     },
-    onError(err: any) {
-      toast.error(err?.message, toastOptions);
+    onError(error: any) {
+      const content =
+        (error.response && error.response.data) ||
+        error.message ||
+        error.toString();
+      toast.error(content, toastOptions);
     },
   });
 
   const onSubmit = (valueInput: any) => {
-    console.log("<<<+++++>>>>", valueInput);
     mutate({ data: valueInput, url: RESET_PASSWORD });
   };
 
